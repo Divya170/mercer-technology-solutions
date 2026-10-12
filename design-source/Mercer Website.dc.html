@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Mercer Technology Solutions — Technology, Orchestrated.</title>
+<meta name="description" content="Mercer Technology Solutions connects systems, modernizes infrastructure and builds technology foundations for enterprise growth. Phoenix, Arizona.">
+<meta property="og:title" content="Mercer Technology Solutions">
+<meta property="og:description" content="Complex technology. Clear business outcomes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFFFFF;color:#1E1638;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#4B2FD1}
+a:hover{color:#B8336A}
+h1,h2,h3,h4,h5,p{margin:0}
+:focus-visible{outline:2px solid #6C4CF5;outline-offset:3px}
+::selection{background:#FFC9DD;color:#1E1638}
+input::placeholder,textarea::placeholder{color:#8A84A3}
+@keyframes mts-draw{to{stroke-dashoffset:0}}
+@keyframes mts-flow{to{stroke-dashoffset:-40}}
+@keyframes mts-glow{0%,100%{opacity:.15}50%{opacity:.85}}
+@keyframes mts-spin{to{transform:rotate(360deg)}}
+@keyframes mts-marquee{to{transform:translateX(-50%)}}
+@keyframes mts-fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+[data-mts-paused] *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+</style>
+</helmet>
+
+<a href="#main" style="position:fixed;left:16px;top:-60px;z-index:200;background:#1E1638;color:#FFFFFF;padding:12px 16px;border-radius:8px;font-weight:600;text-decoration:none" style-focus="top:16px">Skip to content</a>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;background:{{ navBg }};border-bottom:1px solid {{ navBorder }};backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .3s ease,border-color .3s ease">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#/" aria-label="Mercer Technology Solutions — home" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#1E1638">
+      <span aria-hidden="true" style="display:grid;grid-template-columns:10px 10px;gap:3px">
+        <span style="width:10px;height:10px;background:#1E1638;border-radius:2px"></span>
+        <span style="width:10px;height:10px;background:#A994FF;border-radius:50%"></span>
+        <span style="width:10px;height:10px;background:#FF9EC4;border-radius:50%"></span>
+        <span style="width:10px;height:10px;background:#6C4CF5;border-radius:2px"></span>
+      </span>
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;letter-spacing:.06em">MERCER</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#5E5878;margin-top:4px">TECHNOLOGY SOLUTIONS</span>
+      </span>
+    </a>
+    <sc-if value="{{ wideNav }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:6px">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
+          <a href="{{ item.href }}" aria-current="{{ item.current }}" style="padding:10px 14px;border-radius:999px;background:{{ item.bg }};color:#1E1638;text-decoration:none;font-size:14.5px;font-weight:500;transition:background .2s" style-hover="background:#F6F3FF;color:#1E1638">{{ item.label }}</a>
+        </sc-for>
+        <a href="#/contact" style="margin-left:10px;display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 20px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-size:14.5px;font-weight:600;border-radius:999px;transition:background .2s" style-hover="background:#6C4CF5;color:#FFFFFF">Discuss a Solution <span aria-hidden="true">→</span></a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ compactNav }}" hint-placeholder-val="{{ false }}">
+      <button type="button" ref="{{ menuBtnRef }}" onClick="{{ toggleMenu }}" aria-expanded="{{ menuExpanded }}" aria-controls="mobile-menu" style="display:flex;align-items:center;gap:12px;height:48px;padding:0 18px;background:#1E1638;border:0;border-radius:999px;color:#FFFFFF;font:inherit;font-size:14px;font-weight:500;cursor:pointer">
+        <span>{{ menuLabel }}</span>
+        <span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px;width:16px">
+          <span style="height:1.5px;background:#FFFFFF;transform:{{ burgerTop }};transition:transform .25s"></span>
+          <span style="height:1.5px;background:#FFFFFF;transform:{{ burgerBot }};transition:transform .25s"></span>
+        </span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav id="mobile-menu" aria-label="Mobile" onKeyDown="{{ onMenuKey }}" style="position:fixed;top:76px;left:0;right:0;bottom:0;background:#F6F3FF;overflow-y:auto;padding:16px clamp(20px,4vw,56px) 40px;display:flex;flex-direction:column;animation:mts-fade .25s ease">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
+        <a href="{{ item.href }}" aria-current="{{ item.current }}" style="display:flex;justify-content:space-between;align-items:center;min-height:62px;border-bottom:1px solid #DCD2FF;color:#1E1638;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:500">
+          <span>{{ item.label }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6C4CF5">{{ item.num }}</span>
+        </a>
+      </sc-for>
+      <a href="#/contact" style="margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;height:56px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;border-radius:999px">Discuss a Solution <span aria-hidden="true">→</span></a>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;font-size:15px">
+        <a href="mailto:holden.mercer@outlook.com">holden.mercer@outlook.com</a>
+        <a href="tel:+14072398251">+1 (407) 239-8251</a>
+      </div>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="main" ref="{{ mainRef }}" tabIndex="-1" style="outline:none;display:block">
+
+<sc-if value="{{ page.home }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Home — Hero" style="position:relative;background:linear-gradient(180deg,#F6F3FF 0%,#FFFFFF 85%);overflow:hidden">
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(120px,15vh,170px) clamp(20px,4vw,56px) clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:clamp(40px,5vw,72px);align-items:center">
+      <div style="display:flex;flex-direction:column">
+        <p data-reveal="" style="align-self:flex-start;display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;background:#FFFFFF;border:1px solid #DCD2FF;border-radius:999px;font-size:13.5px;font-weight:500;color:#1E1638">
+          <span style="padding:4px 10px;background:#FFE3EE;color:#B8336A;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em">MTS</span>Technology, Orchestrated.
+        </p>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(48px,7.2vw,118px);line-height:.92;letter-spacing:-.045em;margin-top:32px">
+          <span data-reveal="" data-reveal-delay="80" style="display:block">Complex</span>
+          <span data-reveal="" data-reveal-delay="180" style="display:block">technology.</span>
+          <span data-reveal="" data-reveal-delay="300" style="display:block;color:#6C4CF5">Clear business</span>
+          <span data-reveal="" data-reveal-delay="400" style="display:block"><span data-reveal="mark" style="background-image:linear-gradient(#FFC9DD,#FFC9DD);background-repeat:no-repeat;background-position:0 88%;background-size:100% 38%;padding:0 .06em">outcomes.</span></span>
+        </h1>
+        <p data-reveal="" data-reveal-delay="520" style="margin-top:32px;max-width:500px;font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:#5E5878;text-wrap:pretty">Connect your systems, modernize your infrastructure, and build technology foundations that support your next stage of growth.</p>
+        <div data-reveal="" data-reveal-delay="620" style="margin-top:38px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#/contact" style="display:inline-flex;align-items:center;gap:12px;height:58px;padding:0 28px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;font-size:16px;border-radius:999px;transition:background .2s,transform .2s" style-hover="background:#6C4CF5;color:#FFFFFF;transform:translateY(-2px)">Discuss a Solution <span aria-hidden="true">→</span></a>
+          <a href="#capabilities" style="display:inline-flex;align-items:center;gap:12px;height:58px;padding:0 26px;background:#FFFFFF;border:1px solid #DCD2FF;color:#1E1638;text-decoration:none;font-weight:500;font-size:16px;border-radius:999px;transition:background .2s,border-color .2s" style-hover="background:#FFE3EE;border-color:#FFC9DD;color:#1E1638">Explore Our Capabilities <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div data-reveal="clip" style="position:relative;min-width:0">
+        <div ref="{{ heroVisRef }}" style="position:relative;aspect-ratio:1/1;max-width:640px;margin:0 auto;width:100%;border-radius:32px;background:#ECE6FF;overflow:hidden;transition:transform .6s cubic-bezier(.2,.7,.2,1)">
+          <div aria-hidden="true" style="position:absolute;inset:0">{{ topoHero }}</div>
+          <div style="position:absolute;left:20px;bottom:20px;right:20px;display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ heroServices }}" as="s" hint-placeholder-count="3">
+              <a href="{{ s.href }}" style="display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;background:#FFFFFF;border-radius:999px;color:#1E1638;text-decoration:none;font-size:13.5px;font-weight:500;box-shadow:0 2px 10px rgba(75,47,209,.08);transition:background .2s" style-hover="background:#FFE3EE;color:#1E1638"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6C4CF5">{{ s.n }}</span>{{ s.name }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div aria-hidden="true" style="position:absolute;top:-28px;right:-10px;width:128px;height:128px;border-radius:50%;background:#FFC9DD;display:flex;align-items:center;justify-content:center">{{ badge }}</div>
+      </div>
+    </div>
+    <div aria-hidden="true" style="background:#1E1638;color:#FFC9DD;overflow:hidden;padding:20px 0">{{ marquee }}</div>
+  </section>
+
+  <section id="capabilities" data-screen-label="Home — Capabilities" style="background:#FFFFFF;scroll-margin-top:76px;padding:clamp(80px,10vw,140px) 0">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:end;margin-bottom:clamp(40px,5vw,72px)">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5">02 — CAPABILITIES</p>
+          <h2 data-reveal="" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,5vw,80px);line-height:.98;letter-spacing:-.04em;max-width:12ch">Distinct disciplines. One connected system.</h2>
+        </div>
+        <p data-reveal="" style="font-size:18px;line-height:1.65;color:#5E5878;max-width:460px;text-wrap:pretty">Software, cloud and integration work best when they're planned together. Each capability can stand alone or form part of a wider programme.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+          <a href="{{ s.href }}" style="position:{{ s.pos }};top:{{ s.stickyTop }};display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,64px);padding:clamp(28px,4vw,56px);background:{{ s.cardBg }};border:1px solid {{ s.cardBorder }};border-radius:28px;text-decoration:none;color:#1E1638;box-shadow:0 -8px 30px rgba(30,22,56,.04);transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-4px);color:#1E1638">
+            <span style="display:flex;flex-direction:column;justify-content:space-between;gap:28px">
+              <span style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(64px,8vw,120px);font-weight:600;line-height:.8;letter-spacing:-.05em;color:#6C4CF5">{{ s.n }}</span>
+                <sc-if value="{{ s.isDraft }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#B8336A;background:#FFFFFF;border:1px dashed #E2558D;padding:5px 10px;border-radius:999px">DRAFT · NOT PUBLISHED</span></sc-if>
+              </span>
+              <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,3.6vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1">{{ s.name }}</span>
+            </span>
+            <span style="display:flex;flex-direction:column;gap:24px;justify-content:space-between">
+              <span style="font-size:18px;line-height:1.6;color:#3F3860;text-wrap:pretty">{{ s.short }}</span>
+              <span style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ s.scopeTop }}" as="sc" hint-placeholder-count="4">
+                  <span style="padding:8px 14px;background:rgba(255,255,255,.75);border:1px solid {{ s.cardBorder }};border-radius:999px;font-size:13.5px">{{ sc }}</span>
+                </sc-for>
+              </span>
+              <span style="display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:15px"><span aria-hidden="true" style="width:44px;height:44px;border-radius:50%;background:#1E1638;color:#FFFFFF;display:flex;align-items:center;justify-content:center">→</span>Explore {{ s.name }}</span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Home — Approach" style="background:#ECE6FF;padding:clamp(80px,10vw,140px) 0;border-radius:clamp(28px,4vw,56px) clamp(28px,4vw,56px) 0 0">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:32px;align-items:end;margin-bottom:clamp(48px,6vw,88px)">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5">03 — APPROACH</p>
+          <h2 data-reveal="" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,5vw,80px);line-height:.98;letter-spacing:-.04em;max-width:13ch">Start with the business. Then the system.</h2>
+        </div>
+        <p data-reveal="" style="font-size:18px;line-height:1.65;color:#3F3860;max-width:480px;text-wrap:pretty">A technology initiative holds up when each decision traces back to a business need. These are the questions we work through with you, in order.</p>
+      </div>
+      <div style="position:relative">
+        <span aria-hidden="true" data-reveal="line" style="position:absolute;left:0;right:0;top:27px;height:2px;background:linear-gradient(90deg,#6C4CF5,#FF9EC4);transform-origin:left"></span>
+        <ol style="list-style:none;margin:0;padding:0;position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px">
+          <sc-for list="{{ stages }}" as="st" hint-placeholder-count="5">
+            <li data-reveal="" data-reveal-delay="{{ st.delay }}" style="display:flex;flex-direction:column;gap:18px">
+              <span style="width:56px;height:56px;border-radius:50%;background:{{ st.dot }};color:{{ st.dotText }};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;border:4px solid #ECE6FF;box-sizing:border-box">{{ st.n }}</span>
+              <span style="background:#FFFFFF;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px;flex:1">
+                <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:23px;font-weight:600;letter-spacing:-.02em">{{ st.name }}</h3>
+                <p style="font-size:15.5px;line-height:1.6;color:#5E5878;text-wrap:pretty">{{ st.body }}</p>
+              </span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Home — Stack" style="background:#ECE6FF">
+    <div style="background:#FFFFFF;border-radius:clamp(28px,4vw,56px) clamp(28px,4vw,56px) 0 0;padding:clamp(80px,10vw,140px) 0">
+      <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,96px);align-items:center">
+        <div style="display:flex;flex-direction:column;gap:26px">
+          <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5">04 — ACROSS THE STACK</p>
+          <h2 data-reveal="" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(36px,4.4vw,68px);line-height:1;letter-spacing:-.04em;max-width:13ch">Where each capability sits in your architecture.</h2>
+          <p data-reveal="" style="font-size:18px;line-height:1.65;color:#5E5878;max-width:460px">Select a capability to see the layers of an enterprise environment it typically touches.</p>
+          <div role="group" aria-label="Highlight layers by capability" style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ stackToggles }}" as="tg" hint-placeholder-count="3">
+              <button type="button" onClick="{{ tg.onClick }}" aria-pressed="{{ tg.pressed }}" style="min-height:46px;padding:0 18px;border-radius:999px;border:1px solid {{ tg.border }};background:{{ tg.bg }};color:{{ tg.color }};font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;transition:all .2s">{{ tg.name }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div data-reveal="clip" style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ layers }}" as="ly" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:18px;padding:26px 24px;margin-left:{{ ly.indent }};border:1px solid {{ ly.border }};background:{{ ly.bg }};border-radius:20px;transform:{{ ly.lift }};transition:all .4s cubic-bezier(.2,.7,.2,1)">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6C4CF5">{{ ly.n }}</span>
+              <span style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:600">{{ ly.name }}</span>
+                <span style="font-size:14px;color:#5E5878">{{ ly.desc }}</span>
+              </span>
+              <span aria-hidden="true" style="width:14px;height:14px;border-radius:50%;background:{{ ly.dot }};transition:all .3s"></span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Home — Industries (draft)" style="background:#FFF4F8;padding:clamp(72px,9vw,120px) 0;border-top:2px dashed #FFC9DD">
+      <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:32px">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:end">
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(32px,3.6vw,52px);letter-spacing:-.035em">Industries</h2>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#B8336A;border:1px dashed #E2558D;padding:6px 12px;border-radius:999px;background:#FFFFFF">DRAFT SECTION · HIDDEN UNTIL INDUSTRIES ARE VERIFIED</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+          <sc-for list="{{ industryDrafts }}" as="ind" hint-placeholder-count="3">
+            <a href="#/industries" style="background:#FFFFFF;border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:#1E1638;border:1px solid #FFE3EE" style-hover="border-color:#FFC9DD;color:#1E1638">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#B8336A">{{ ind.n }}</span>
+              <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:600">{{ ind.name }}</span>
+              <span style="font-size:15px;color:#5E5878;line-height:1.5">{{ ind.challenges }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section data-screen-label="Home — Closing CTA" style="padding:clamp(20px,3vw,40px)">
+    <div style="position:relative;background:#1E1638;color:#FFFFFF;overflow:hidden;border-radius:clamp(28px,4vw,48px);padding:clamp(72px,11vw,170px) clamp(24px,6vw,96px)">
+      <div aria-hidden="true" style="position:absolute;inset:0;opacity:.7;-webkit-mask-image:radial-gradient(ellipse at 80% 50%,#000 15%,transparent 65%);mask-image:radial-gradient(ellipse at 80% 50%,#000 15%,transparent 65%)">{{ topoCta }}</div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:40px">
+        <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FFC9DD">05 — START A CONVERSATION</p>
+        <h2 data-reveal="" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(44px,7vw,116px);line-height:.94;letter-spacing:-.045em;max-width:12ch;text-wrap:balance">Let's solve your next <span style="color:#FFC9DD">technology challenge.</span></h2>
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
+          <a href="#/contact" style="display:inline-flex;align-items:center;gap:12px;height:60px;padding:0 30px;background:#FFC9DD;color:#1E1638;text-decoration:none;font-weight:600;font-size:17px;border-radius:999px;transition:background .2s" style-hover="background:#FFFFFF;color:#1E1638">Discuss a Solution <span aria-hidden="true">→</span></a>
+          <a href="mailto:holden.mercer@outlook.com" style="color:#DCD2FF;font-size:16px">holden.mercer@outlook.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.solutions }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Solutions — Intro" style="position:relative;overflow:hidden;background:#F6F3FF;padding:clamp(150px,17vw,210px) 0 clamp(64px,8vw,110px)">
+    <span aria-hidden="true" style="position:absolute;right:-2vw;bottom:-6vw;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:34vw;line-height:.8;color:transparent;-webkit-text-stroke:2px #DCD2FF;letter-spacing:-.06em">S</span>
+    <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+      <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5">SOLUTIONS</p>
+      <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(50px,7.4vw,124px);line-height:.92;letter-spacing:-.045em;max-width:10ch">Capabilities, <span data-reveal="mark" style="background-image:linear-gradient(#FFC9DD,#FFC9DD);background-repeat:no-repeat;background-position:0 88%;background-size:100% 36%">connected.</span></h1>
+      <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:#5E5878;max-width:540px;text-wrap:pretty">Explore each capability: the problems it addresses, what the work involves, and what to consider before you begin.</p>
+    </div>
+  </section>
+
+  <section id="explorer" aria-labelledby="explorer-title" data-screen-label="Solutions — Explorer" style="background:#FFFFFF;padding:clamp(56px,7vw,100px) 0;scroll-margin-top:90px">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+      <h2 id="explorer-title" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5;font-weight:500;margin-bottom:24px">SERVICE EXPLORER</h2>
+      <div role="tablist" aria-label="Services" onKeyDown="{{ onTabKey }}" style="display:flex;flex-wrap:wrap;gap:8px;padding:8px;background:#F6F3FF;border-radius:999px;margin-bottom:24px;width:fit-content;max-width:100%;box-sizing:border-box">
+        <sc-for list="{{ svcTabs }}" as="tb" hint-placeholder-count="3">
+          <button type="button" role="tab" id="{{ tb.tabId }}" aria-selected="{{ tb.selected }}" aria-controls="svc-panel" tabIndex="{{ tb.tabindex }}" onClick="{{ tb.onClick }}" style="min-height:48px;padding:0 20px;border:0;border-radius:999px;background:{{ tb.bg }};color:{{ tb.color }};font:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:background .25s,color .25s">{{ tb.n }} · {{ tb.label }}</button>
+        </sc-for>
+      </div>
+      <div id="svc-panel" role="tabpanel" aria-labelledby="{{ act.tabId }}" tabIndex="0" style="border-radius:32px;background:{{ act.cardBg }};border:1px solid {{ act.cardBorder }};padding:clamp(28px,4.5vw,64px);display:flex;flex-direction:column;gap:48px;transition:background .35s">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px;align-items:end">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(64px,7vw,104px);font-weight:600;line-height:.8;letter-spacing:-.05em;color:#6C4CF5">{{ act.n }}</span>
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,3.8vw,58px);font-weight:600;letter-spacing:-.035em;line-height:1">{{ act.name }}</h3>
+            <sc-if value="{{ act.isDraft }}"><span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B8336A;border:1px dashed #E2558D;padding:5px 10px;border-radius:999px;background:#FFFFFF">DRAFT · NOT PUBLISHED</span></sc-if>
+          </div>
+          <p style="font-size:18px;line-height:1.65;color:#3F3860;text-wrap:pretty">{{ act.overview }}</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+          <div style="background:#FFFFFF;border-radius:22px;padding:28px">
+            <h4 style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6C4CF5;font-weight:500;margin-bottom:12px">BUSINESS PROBLEMS ADDRESSED</h4>
+            <ul style="list-style:none;margin:0;padding:0">
+              <sc-for list="{{ act.problems }}" as="pr" hint-placeholder-count="3">
+                <li style="display:grid;grid-template-columns:20px 1fr;gap:10px;padding:14px 0;border-top:1px solid #F0ECFA;font-size:16px;line-height:1.5"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#FF9EC4;margin-top:8px"></span>{{ pr }}</li>
+              </sc-for>
+            </ul>
+          </div>
+          <div style="background:#FFFFFF;border-radius:22px;padding:28px">
+            <h4 style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6C4CF5;font-weight:500;margin-bottom:16px">RELEVANT TECHNICAL SCOPE</h4>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ act.scope }}" as="sc" hint-placeholder-count="4">
+                <li style="padding:9px 14px;border-radius:999px;font-size:14.5px;background:#F6F3FF;border:1px solid #ECE6FF">{{ sc }}</li>
+              </sc-for>
+            </ul>
+            <p style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#B8336A">[Specific technologies and platforms — to be confirmed]</p>
+          </div>
+        </div>
+        <div style="background:#FFFFFF;border-radius:22px;padding:8px 28px">
+          <h4 style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6C4CF5;font-weight:500;padding:20px 0 6px">IMPLEMENTATION CONSIDERATIONS</h4>
+          <sc-for list="{{ act.considerations }}" as="c" hint-placeholder-count="4">
+            <div style="border-top:1px solid #F0ECFA">
+              <h5 style="font-size:inherit;font-weight:inherit">
+                <button type="button" id="{{ c.btnId }}" aria-expanded="{{ c.expanded }}" aria-controls="{{ c.panelId }}" onClick="{{ c.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px;padding:0;background:none;border:0;font:inherit;font-size:17px;font-weight:500;color:#1E1638;text-align:left;cursor:pointer">
+                  {{ c.title }}
+                  <span aria-hidden="true" style="width:32px;height:32px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:50%;background:{{ c.iconBg }};font-size:18px;transform:{{ c.rot }};transition:transform .3s,background .3s">+</span>
+                </button>
+              </h5>
+              <div id="{{ c.panelId }}" role="region" aria-labelledby="{{ c.btnId }}" style="display:grid;grid-template-rows:{{ c.rows }};transition:grid-template-rows .3s cubic-bezier(.2,.7,.2,1)">
+                <div style="overflow:hidden;visibility:{{ c.vis }}"><p style="padding:0 0 22px;font-size:16px;line-height:1.65;color:#5E5878;max-width:680px">{{ c.body }}</p></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px">
+          <p style="font-size:15px;color:#5E5878">Related industry use cases: <strong style="color:#1E1638;font-weight:500">none published yet</strong></p>
+          <a href="{{ act.contactHref }}" style="display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;border-radius:999px" style-hover="background:#6C4CF5;color:#FFFFFF">Discuss {{ act.name }} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Solutions — In context" style="background:#FFFFFF;padding:clamp(40px,6vw,100px) 0 clamp(80px,10vw,140px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:clamp(64px,8vw,120px)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+        <article style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};gap:clamp(32px,5vw,80px);align-items:center">
+          <div data-reveal="clip" style="flex:1 1 420px;min-width:0;aspect-ratio:4/3;border-radius:28px;background:repeating-linear-gradient(135deg,{{ s.stripeA }} 0 12px,{{ s.stripeB }} 12px 24px);display:flex;align-items:flex-end;padding:20px;box-sizing:border-box">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5E5878;background:#FFFFFF;padding:8px 12px;border-radius:999px">{{ s.image }}</span>
+          </div>
+          <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:20px">
+            <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6C4CF5">{{ s.n }}</p>
+            <h2 data-reveal="" style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,3.8vw,60px);font-weight:600;letter-spacing:-.04em;line-height:1">{{ s.name }}</h2>
+            <p data-reveal="" style="font-size:18px;line-height:1.65;color:#5E5878;text-wrap:pretty">{{ s.short }}</p>
+            <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+              <button type="button" onClick="{{ s.openExplorer }}" style="min-height:50px;padding:0 22px;border:1px solid #DCD2FF;background:#FFFFFF;border-radius:999px;font:inherit;font-weight:500;cursor:pointer;color:#1E1638" style-hover="background:#ECE6FF">View details</button>
+              <a href="{{ s.contactHref }}" style="display:inline-flex;align-items:center;min-height:50px;padding:0 22px;border-radius:999px;background:#FFE3EE;color:#1E1638;text-decoration:none;font-weight:500" style-hover="background:#FFC9DD;color:#1E1638">Enquire →</a>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.industries }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Industries — Intro" style="position:relative;overflow:hidden;background:#FFF4F8;padding:clamp(150px,17vw,210px) 0 clamp(64px,8vw,110px)">
+    <span aria-hidden="true" style="position:absolute;right:-2vw;bottom:-6vw;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:34vw;line-height:.8;color:transparent;-webkit-text-stroke:2px #FFC9DD;letter-spacing:-.06em">I</span>
+    <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+      <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#B8336A">INDUSTRIES</p>
+      <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(46px,6.8vw,110px);line-height:.94;letter-spacing:-.045em;max-width:13ch">Technology shaped by the sector it serves.</h1>
+      <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:#5E5878;max-width:560px;text-wrap:pretty">Each industry has its own constraints, regulations and ways of working. We publish industry profiles once each one is backed by verified work.</p>
+    </div>
+  </section>
+  <section data-screen-label="Industries — Profiles" style="background:#FFFFFF;padding:clamp(72px,9vw,130px) 0">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+      <sc-if value="{{ noDrafts }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,96px)">
+          <div style="display:flex;flex-direction:column;gap:24px">
+            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,3.6vw,52px);font-weight:600;letter-spacing:-.035em;line-height:1.02;max-width:15ch">Industry profiles are in preparation.</h2>
+            <p style="font-size:18px;line-height:1.65;color:#5E5878;max-width:480px">If you're evaluating a partner for a specific sector, tell us about your environment and we'll discuss how our capabilities apply.</p>
+            <a href="#/contact" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;border-radius:999px" style-hover="background:#6C4CF5;color:#FFFFFF">Tell us about your sector <span aria-hidden="true">→</span></a>
+          </div>
+          <div style="background:#F6F3FF;border-radius:28px;padding:clamp(24px,3vw,40px)">
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6C4CF5;margin-bottom:8px">EACH PROFILE WILL COVER</p>
+            <ol style="list-style:none;margin:0;padding:0">
+              <sc-for list="{{ industryFields }}" as="fl" hint-placeholder-count="5">
+                <li data-reveal="" style="display:grid;grid-template-columns:48px 1fr;gap:12px;padding:20px 0;border-top:1px solid #DCD2FF">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6C4CF5;padding-top:6px">{{ fl.n }}</span>
+                  <span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:600">{{ fl.name }}</span><span style="font-size:15px;color:#5E5878">{{ fl.desc }}</span></span>
+                </li>
+              </sc-for>
+            </ol>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B8336A;border:1px dashed #E2558D;padding:6px 12px;border-radius:999px">DRAFT PREVIEW · PLACEHOLDER ENTRIES ARE NOT PUBLISHED</span>
+          <div role="tablist" aria-label="Draft industries" style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ industryTabs }}" as="it" hint-placeholder-count="3">
+              <button type="button" role="tab" aria-selected="{{ it.selected }}" onClick="{{ it.onClick }}" style="min-height:48px;padding:0 20px;border-radius:999px;border:1px solid #FFC9DD;background:{{ it.bg }};font:inherit;font-size:15px;font-weight:500;color:#1E1638;cursor:pointer">{{ it.n }} · {{ it.name }}</button>
+            </sc-for>
+          </div>
+          <div role="tabpanel" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px">
+            <sc-for list="{{ indDetail }}" as="d" hint-placeholder-count="4">
+              <div style="background:#FFF4F8;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:10px;min-height:140px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B8336A">{{ d.label }}</span>
+                <span style="font-size:16px;line-height:1.55;color:#3F3860">{{ d.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.cases }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Case Studies — Intro" style="background:#F6F3FF;padding:clamp(150px,17vw,210px) 0 clamp(64px,8vw,110px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:40px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5">CASE STUDIES</p>
+        <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(50px,7.4vw,124px);line-height:.92;letter-spacing:-.045em">Work, <span style="color:#6C4CF5">documented.</span></h1>
+      </div>
+      <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:#5E5878;max-width:520px">Every case study here is published with client approval and describes verified outcomes only.</p>
+    </div>
+  </section>
+  <section data-screen-label="Case Studies — Portfolio" style="background:#FFFFFF;padding:clamp(64px,8vw,120px) 0">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+      <sc-if value="{{ noDrafts }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#FFF4F8;border-radius:32px;padding:clamp(36px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:48px;align-items:center">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#B8336A">PORTFOLIO · 0 PUBLISHED</p>
+            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.4vw,50px);font-weight:600;letter-spacing:-.035em;line-height:1.02">Case studies will appear here once approved for publication.</h2>
+            <p style="font-size:17px;line-height:1.65;color:#5E5878">In the meantime, we're happy to talk through relevant experience directly.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <a href="#/contact" style="display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;border-radius:999px" style-hover="background:#6C4CF5;color:#FFFFFF">Discuss a Solution <span aria-hidden="true">→</span></a>
+              <a href="#/solutions" style="display:inline-flex;align-items:center;height:54px;padding:0 22px;background:#FFFFFF;border-radius:999px;text-decoration:none;color:#1E1638;font-weight:500" style-hover="background:#FFE3EE;color:#1E1638">View capabilities</a>
+            </div>
+          </div>
+          <div aria-hidden="true" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <span style="aspect-ratio:1;border-radius:24px;border:2px dashed #FFC9DD"></span>
+            <span style="aspect-ratio:1;border-radius:50%;border:2px dashed #DCD2FF"></span>
+            <span style="aspect-ratio:1;border-radius:50%;border:2px dashed #DCD2FF"></span>
+            <span style="aspect-ratio:1;border-radius:24px;border:2px dashed #FFC9DD"></span>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:28px">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+            <div role="group" aria-label="Filter by solution" style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ caseFilters }}" as="cf" hint-placeholder-count="4">
+                <button type="button" aria-pressed="{{ cf.pressed }}" onClick="{{ cf.onClick }}" style="min-height:46px;padding:0 18px;border-radius:999px;border:1px solid {{ cf.border }};background:{{ cf.bg }};color:{{ cf.color }};font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;transition:all .2s">{{ cf.label }}</button>
+              </sc-for>
+            </div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B8336A;border:1px dashed #E2558D;padding:6px 12px;border-radius:999px">DRAFT PREVIEW · ADMIN ONLY</span>
+          </div>
+          <p aria-live="polite" style="font-size:14px;color:#5E5878">{{ caseCount }}</p>
+          <sc-if value="{{ casesEmpty }}">
+            <div style="border:2px dashed #DCD2FF;border-radius:28px;padding:56px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:600">No case studies in this category yet.</p>
+              <button type="button" onClick="{{ resetCases }}" style="min-height:48px;padding:0 22px;border-radius:999px;border:0;background:#1E1638;color:#FFFFFF;font:inherit;font-weight:500;cursor:pointer">Show all case studies</button>
+            </div>
+          </sc-if>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px">
+            <sc-for list="{{ filteredCases }}" as="cs" hint-placeholder-count="2">
+              <a href="{{ cs.href }}" style="display:flex;flex-direction:column;border-radius:28px;overflow:hidden;background:{{ cs.bg }};text-decoration:none;color:#1E1638;transition:transform .3s" style-hover="transform:translateY(-4px);color:#1E1638">
+                <span style="aspect-ratio:16/9;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 12px,transparent 12px 24px);display:flex;align-items:flex-end;padding:18px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#FFFFFF;padding:6px 10px;border-radius:999px;color:#5E5878">IMAGE — approved project imagery</span></span>
+                <span style="padding:28px;display:flex;flex-direction:column;gap:12px">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6C4CF5">{{ cs.cat }} · DRAFT</span>
+                  <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:600;letter-spacing:-.02em">{{ cs.title }}</span>
+                  <span style="font-size:15px;color:#5E5878">{{ cs.ctx }}</span>
+                </span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.caseDetail }}" hint-placeholder-val="{{ false }}">
+  <article data-screen-label="Case Study — Detail" style="background:#FFFFFF">
+    <header style="background:#F6F3FF;padding:clamp(140px,15vw,190px) 0 clamp(56px,7vw,96px)">
+      <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:22px">
+        <a href="#/case-studies" style="align-self:flex-start;font-size:15px">← All case studies</a>
+        <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B8336A;border:1px dashed #E2558D;padding:6px 12px;border-radius:999px;background:#FFFFFF">{{ caseItem.cat }} · DRAFT · NOT PUBLISHED</span>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(38px,5vw,72px);line-height:1;letter-spacing:-.04em">{{ caseItem.title }}</h1>
+        <p style="font-size:18px;color:#5E5878">{{ caseItem.ctx }}</p>
+      </div>
+    </header>
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+      <sc-for list="{{ caseSections }}" as="sec" hint-placeholder-count="6">
+        <section style="background:{{ sec.bg }};border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:12px;min-height:150px">
+          <h2 style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6C4CF5;font-weight:500">{{ sec.label }}</h2>
+          <p style="font-size:16px;color:#5E5878">[Awaiting approved content]</p>
+        </section>
+      </sc-for>
+    </div>
+    <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,56px) clamp(72px,9vw,120px);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
+      <p style="font-size:16px;color:#5E5878">Related solution: <a href="{{ caseItem.svcHref }}">{{ caseItem.cat }}</a></p>
+      <a href="#/contact" style="display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;border-radius:999px" style-hover="background:#6C4CF5;color:#FFFFFF">Discuss a similar project →</a>
+    </div>
+  </article>
+</sc-if>
+
+<sc-if value="{{ page.company }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Company — Intro" style="background:#FFFFFF;padding:clamp(150px,17vw,210px) 0 clamp(56px,7vw,96px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+      <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5">COMPANY</p>
+      <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(46px,6.8vw,112px);line-height:.94;letter-spacing:-.045em;max-width:15ch">An enterprise technology partner, <span style="color:#6C4CF5">based in Phoenix.</span></h1>
+    </div>
+  </section>
+  <section data-screen-label="Company — Overview" style="background:#FFFFFF;padding:0 0 clamp(72px,9vw,130px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+      <div data-reveal="clip" style="aspect-ratio:5/4;border-radius:32px;background:repeating-linear-gradient(135deg,#ECE6FF 0 12px,#F6F3FF 12px 24px);display:flex;align-items:flex-end;padding:20px;box-sizing:border-box">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5E5878;background:#FFFFFF;padding:8px 12px;border-radius:999px">IMAGE — architectural office facade, editorial</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px;padding-top:12px">
+        <p data-reveal="" style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,2.4vw,34px);line-height:1.25;letter-spacing:-.02em;font-weight:500;text-wrap:pretty">Mercer Technology Solutions helps organizations plan, build and connect the technology they run on: enterprise software, cloud environments and the integrations between them.</p>
+        <p data-reveal="" style="font-size:17px;line-height:1.7;color:#5E5878">[Company overview — extended history and background to be supplied and approved before publication.]</p>
+        <dl data-reveal="" style="margin:0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#ECE6FF;border-radius:20px;overflow:hidden">
+          <div style="background:#F6F3FF;padding:22px"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6C4CF5">LOCATION</dt><dd style="margin:8px 0 0;font-size:16px">301 E Jefferson St<br>Phoenix, AZ 85004</dd></div>
+          <div style="background:#F6F3FF;padding:22px"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6C4CF5">FOCUS</dt><dd style="margin:8px 0 0;font-size:16px">Enterprise software, cloud and systems integration</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+  <section data-screen-label="Company — Principles" style="background:#F6F3FF;padding:clamp(72px,9vw,130px) 0;border-radius:clamp(28px,4vw,56px) clamp(28px,4vw,56px) 0 0">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:40px">
+      <h2 data-reveal="" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(36px,4.4vw,68px);letter-spacing:-.04em;line-height:1">How we work</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px">
+        <sc-for list="{{ principles }}" as="pp" hint-placeholder-count="4">
+          <div data-reveal="" data-reveal-delay="{{ pp.delay }}" style="background:{{ pp.bg }};color:{{ pp.fg }};border-radius:26px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:280px;box-sizing:border-box">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:{{ pp.accent }}">{{ pp.n }}</span>
+            <span style="display:flex;flex-direction:column;gap:12px">
+              <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:600;letter-spacing:-.03em">{{ pp.name }}</span>
+              <span style="font-size:15.5px;line-height:1.6;color:{{ pp.sub }}">{{ pp.body }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <section data-screen-label="Company — Leadership" style="background:#F6F3FF;padding:0 0 clamp(72px,9vw,130px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+      <div style="background:#FFFFFF;border-radius:32px;padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.2vw,46px);letter-spacing:-.035em">Leadership</h2>
+          <p style="font-size:17px;line-height:1.65;color:#5E5878;max-width:460px">Leadership profiles will be published once titles and biographies have been verified.</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px;padding:22px;border-radius:22px;background:#FFF4F8">
+          <span aria-hidden="true" style="width:72px;height:72px;flex:none;border-radius:50%;background:#FFC9DD;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;color:#1E1638">HM</span>
+          <span style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B8336A">PRIMARY CONTACT</span>
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:600">Holden Mercer</span>
+            <a href="mailto:holden.mercer@outlook.com" style="font-size:15px">holden.mercer@outlook.com</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.careers }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Careers — Intro" style="position:relative;overflow:hidden;background:#FFF4F8;padding:clamp(150px,17vw,210px) 0 clamp(64px,8vw,110px)">
+    <span aria-hidden="true" style="position:absolute;right:-2vw;bottom:-6vw;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:34vw;line-height:.8;color:transparent;-webkit-text-stroke:2px #FFC9DD;letter-spacing:-.06em">C</span>
+    <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+      <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#B8336A">CAREERS</p>
+      <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(50px,7.4vw,124px);line-height:.92;letter-spacing:-.045em;max-width:11ch">Build what holds it all together.</h1>
+    </div>
+  </section>
+  <section data-screen-label="Careers — Openings" style="background:#FFFFFF;padding:clamp(64px,8vw,120px) 0">
+    <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:24px">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.2vw,46px);letter-spacing:-.035em">Open positions</h2>
+      <sc-if value="{{ noDrafts }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#F6F3FF;border-radius:28px;padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;gap:14px">
+          <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,2.4vw,32px);font-weight:600;letter-spacing:-.02em">There are no open positions right now.</p>
+          <p style="font-size:17px;line-height:1.65;color:#5E5878;max-width:560px">New roles will be listed on this page as they open, with details on how to apply.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ jobs }}" as="jb" hint-placeholder-count="1">
+            <li>
+              <a href="{{ jb.href }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px;align-items:center;padding:26px 28px;border-radius:22px;background:#F6F3FF;text-decoration:none;color:#1E1638;transition:background .2s" style-hover="background:#ECE6FF;color:#1E1638">
+                <span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:600">{{ jb.title }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B8336A">DRAFT · NOT PUBLISHED</span></span>
+                <span style="font-size:15px;color:#5E5878">{{ jb.dept }}</span>
+                <span style="font-size:15px;color:#5E5878">{{ jb.loc }}</span>
+                <span style="font-size:15px;color:#5E5878">{{ jb.type }}</span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.jobDetail }}" hint-placeholder-val="{{ false }}">
+  <article data-screen-label="Careers — Job detail" style="background:#FFFFFF;padding:clamp(140px,15vw,190px) 0 clamp(72px,9vw,120px)">
+    <div style="max-width:860px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:24px">
+      <a href="#/careers" style="align-self:flex-start;font-size:15px">← All positions</a>
+      <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B8336A;border:1px dashed #E2558D;padding:6px 12px;border-radius:999px">DRAFT · NOT PUBLISHED</span>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,5vw,72px);letter-spacing:-.04em;line-height:1">{{ job.title }}</h1>
+      <p style="font-size:16px;color:#5E5878">{{ job.dept }} · {{ job.loc }} · {{ job.type }}</p>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+        <div style="background:#F6F3FF;border-radius:22px;padding:28px"><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:600;margin-bottom:8px">About the role</h2><p style="color:#5E5878">[Role description — to be written and approved]</p></div>
+        <div style="background:#F6F3FF;border-radius:22px;padding:28px"><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:600;margin-bottom:8px">Requirements</h2><p style="color:#5E5878">[Requirements — to be confirmed]</p></div>
+        <div style="background:#FFF4F8;border-radius:22px;padding:28px"><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:600;margin-bottom:8px">How to apply</h2><p style="color:#5E5878">[Application instructions — to be confirmed before publication]</p></div>
+      </div>
+    </div>
+  </article>
+</sc-if>
+
+<sc-if value="{{ page.insights }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Insights — Intro" style="background:#F6F3FF;padding:clamp(150px,17vw,210px) 0 clamp(56px,7vw,96px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:40px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5">INSIGHTS</p>
+        <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(50px,7.4vw,124px);line-height:.92;letter-spacing:-.045em">Notes on <span data-reveal="mark" style="background-image:linear-gradient(#FFC9DD,#FFC9DD);background-repeat:no-repeat;background-position:0 88%;background-size:100% 36%">systems.</span></h1>
+      </div>
+      <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:#5E5878;max-width:520px">Technical perspectives and practical resources for teams planning enterprise technology work.</p>
+    </div>
+  </section>
+  <section data-screen-label="Insights — Articles" style="background:#FFFFFF;padding:clamp(56px,7vw,110px) 0">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+      <sc-if value="{{ noDrafts }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#FFF4F8;border-radius:32px;padding:clamp(36px,6vw,80px);display:flex;flex-direction:column;gap:16px;max-width:820px">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#B8336A">0 ARTICLES PUBLISHED</p>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.4vw,50px);font-weight:600;letter-spacing:-.035em;line-height:1.02">The first articles are being prepared.</h2>
+          <p style="font-size:17px;line-height:1.65;color:#5E5878">Have a question you'd like us to cover? <a href="#/contact">Get in touch</a>.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:28px">
+          <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+            <div role="group" aria-label="Filter by category" style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ insFilters }}" as="cf" hint-placeholder-count="4">
+                <button type="button" aria-pressed="{{ cf.pressed }}" onClick="{{ cf.onClick }}" style="min-height:46px;padding:0 18px;border-radius:999px;border:1px solid {{ cf.border }};background:{{ cf.bg }};color:{{ cf.color }};font:inherit;font-size:14.5px;font-weight:500;cursor:pointer">{{ cf.label }}</button>
+              </sc-for>
+            </div>
+            <label style="display:flex;align-items:center;gap:10px;height:48px;padding:0 18px;border:1px solid #DCD2FF;border-radius:999px;min-width:min(100%,300px);box-sizing:border-box">
+              <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search articles</span>
+              <span aria-hidden="true" style="width:12px;height:12px;border:1.5px solid #5E5878;border-radius:50%;flex:none"></span>
+              <input type="search" value="{{ query }}" onChange="{{ onQuery }}" placeholder="Search articles" style="flex:1;border:0;outline:none;font:inherit;font-size:15px;background:transparent;color:#1E1638;min-width:0">
+            </label>
+          </div>
+          <p aria-live="polite" style="font-size:14px;color:#5E5878">{{ insCount }}</p>
+          <sc-if value="{{ insEmpty }}">
+            <div style="border:2px dashed #DCD2FF;border-radius:28px;padding:56px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:600">No articles match your search.</p>
+              <button type="button" onClick="{{ resetIns }}" style="min-height:48px;padding:0 22px;border-radius:999px;border:0;background:#1E1638;color:#FFFFFF;font:inherit;font-weight:500;cursor:pointer">Clear filters</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ hasFeatured }}">
+            <a href="{{ featured.href }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));border-radius:32px;overflow:hidden;background:#ECE6FF;text-decoration:none;color:#1E1638" style-hover="color:#1E1638">
+              <span style="min-height:300px;background:repeating-linear-gradient(135deg,#DCD2FF 0 12px,#ECE6FF 12px 24px);display:flex;align-items:flex-end;padding:20px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#FFFFFF;padding:6px 10px;border-radius:999px;color:#5E5878">IMAGE — abstract digital infrastructure</span></span>
+              <span style="padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;gap:16px;justify-content:center">
+                <span style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;background:#FFFFFF;color:#6C4CF5">FEATURED · {{ featured.cat }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;border:1px dashed #E2558D;color:#B8336A">{{ featured.status }}</span></span>
+                <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.05">{{ featured.title }}</span>
+                <span style="font-size:16px;color:#3F3860">{{ featured.excerpt }}</span>
+              </span>
+            </a>
+          </sc-if>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+            <sc-for list="{{ restArticles }}" as="ar" hint-placeholder-count="3">
+              <a href="{{ ar.href }}" style="display:flex;flex-direction:column;gap:14px;padding:28px;border-radius:26px;background:{{ ar.bg }};text-decoration:none;color:#1E1638;min-height:240px;box-sizing:border-box;transition:transform .3s" style-hover="transform:translateY(-4px);color:#1E1638">
+                <span style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;background:#FFFFFF;color:#6C4CF5">{{ ar.cat }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;border:1px dashed #E2558D;color:#B8336A">{{ ar.status }}</span></span>
+                <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1.15;flex:1">{{ ar.title }}</span>
+                <span style="font-size:14.5px;font-weight:500">Read draft →</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.article }}" hint-placeholder-val="{{ false }}">
+  <article data-screen-label="Insights — Article" style="background:#FFFFFF;padding:clamp(140px,15vw,190px) 0 clamp(72px,9vw,120px)">
+    <div style="max-width:760px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:24px">
+      <a href="#/insights" style="align-self:flex-start;font-size:15px">← All insights</a>
+      <span style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;background:#ECE6FF;color:#4B2FD1">{{ article.cat }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;border:1px dashed #E2558D;color:#B8336A">{{ article.status }} · NOT PUBLISHED</span></span>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(36px,4.6vw,64px);letter-spacing:-.04em;line-height:1.02">{{ article.title }}</h1>
+      <p style="font-size:14px;color:#5E5878;font-family:'IBM Plex Mono',monospace">[Author, date and reading time — added on publication]</p>
+      <div style="aspect-ratio:16/9;border-radius:28px;background:repeating-linear-gradient(135deg,#FFE3EE 0 12px,#FFF4F8 12px 24px);display:flex;align-items:flex-end;padding:18px;box-sizing:border-box;margin:12px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:#FFFFFF;padding:6px 10px;border-radius:999px;color:#5E5878">IMAGE — article lead image</span></div>
+      <p style="font-size:19px;line-height:1.75;color:#3F3860">[Article body — to be written. This template uses a 19px body size and a measure of roughly 70 characters for comfortable long-form reading.]</p>
+      <div style="margin-top:24px;padding:28px;border-radius:24px;background:#F6F3FF;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
+        <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:600">Working on something similar?</p>
+        <a href="#/contact" style="display:inline-flex;align-items:center;height:50px;padding:0 22px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;border-radius:999px" style-hover="background:#6C4CF5;color:#FFFFFF">Discuss a Solution →</a>
+      </div>
+    </div>
+  </article>
+</sc-if>
+
+<sc-if value="{{ page.contact }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Contact" style="background:linear-gradient(180deg,#F6F3FF 0%,#FFF4F8 100%);padding:clamp(120px,13vw,170px) 0 clamp(64px,8vw,110px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:28px;padding-top:12px">
+        <p data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6C4CF5">CONTACT</p>
+        <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(48px,6.4vw,104px);line-height:.92;letter-spacing:-.045em">Discuss a <span style="color:#6C4CF5">solution.</span></h1>
+        <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:#5E5878;max-width:480px;text-wrap:pretty">Tell us about the systems you're working with and what you need them to do. The more context you share, the more useful our first conversation will be.</p>
+        <div data-reveal="" data-reveal-delay="300" style="background:#FFFFFF;border-radius:26px;padding:8px 24px;max-width:480px">
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid #F0ECFA"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6C4CF5;padding-top:3px">COMPANY</span><span style="font-size:16px">Mercer Technology Solutions</span></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid #F0ECFA"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6C4CF5;padding-top:3px">CONTACT</span><span style="font-size:16px">Holden Mercer</span></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid #F0ECFA"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6C4CF5;padding-top:3px">EMAIL</span><a href="mailto:holden.mercer@outlook.com" style="font-size:16px;word-break:break-all">holden.mercer@outlook.com</a></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid #F0ECFA"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6C4CF5;padding-top:3px">PHONE</span><a href="tel:+14072398251" style="font-size:16px">+1 (407) 239-8251</a></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:18px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6C4CF5;padding-top:3px">ADDRESS</span><address style="font-style:normal;font-size:16px;line-height:1.5">301 E Jefferson St<br>Phoenix, AZ 85004</address></div>
+        </div>
+      </div>
+
+      <div style="background:#FFFFFF;border-radius:32px;padding:clamp(24px,4vw,52px);box-shadow:0 20px 60px rgba(75,47,209,.08)">
+        <sc-if value="{{ formSuccess }}" hint-placeholder-val="{{ false }}">
+          <div role="status" ref="{{ successRef }}" tabIndex="-1" style="display:flex;flex-direction:column;gap:18px;padding:12px 0;outline:none">
+            <span aria-hidden="true" style="width:64px;height:64px;border-radius:50%;background:#E3F5EC;color:#1B7A4E;display:flex;align-items:center;justify-content:center;font-size:28px">✓</span>
+            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:600;letter-spacing:-.03em">Thank you. Your enquiry has been received.</h2>
+            <p style="font-size:17px;line-height:1.65;color:#5E5878">We'll review the details you shared and reply to the email address you provided. If anything changes in the meantime, you can reach us at <a href="mailto:holden.mercer@outlook.com">holden.mercer@outlook.com</a>.</p>
+            <button type="button" onClick="{{ resetForm }}" style="align-self:flex-start;min-height:50px;padding:0 22px;border-radius:999px;border:1px solid #DCD2FF;background:#FFFFFF;font:inherit;font-weight:500;cursor:pointer;color:#1E1638">Send another enquiry</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ formVisible }}" hint-placeholder-val="{{ true }}">
+          <form noValidate="{{ true }}" onSubmit="{{ onSubmit }}" aria-labelledby="form-title" style="display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 id="form-title" style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:600;letter-spacing:-.03em">Project enquiry</h2>
+              <p style="font-size:14px;color:#5E5878">Fields marked <span aria-hidden="true" style="color:#B8336A">*</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">with an asterisk</span> are required.</p>
+            </div>
+
+            <sc-if value="{{ showSummary }}">
+              <div ref="{{ summaryRef }}" tabIndex="-1" role="alert" style="border-radius:18px;background:#FFF0F2;border:1px solid #F2B8C2;padding:18px 20px;outline:none">
+                <p style="font-weight:600;color:#A3243B;margin-bottom:8px">Please check {{ errCount }} before sending:</p>
+                <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px">
+                  <sc-for list="{{ errList }}" as="er">
+                    <li><a href="{{ er.href }}" onClick="{{ er.focus }}" style="color:#A3243B">{{ er.msg }}</a></li>
+                  </sc-for>
+                </ul>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ formFailed }}">
+              <div role="alert" style="border-radius:18px;background:#FFF4E5;border:1px solid #F3CF96;padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+                <p style="font-weight:600;color:#7A4A00">Your enquiry was not sent.</p>
+                <p style="font-size:15px;line-height:1.55;color:#5C3D0A">{{ failMsg }}</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px">
+                  <button type="submit" style="min-height:44px;padding:0 18px;border-radius:999px;border:0;background:#1E1638;color:#FFFFFF;font:inherit;font-weight:500;cursor:pointer">Try again</button>
+                  <a href="{{ mailtoHref }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-weight:500">Email your enquiry instead</a>
+                </div>
+              </div>
+            </sc-if>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-name" style="font-size:14.5px;font-weight:500">Full name <span aria-hidden="true" style="color:#B8336A">*</span></label>
+                <input id="f-name" name="name" type="text" autoComplete="name" maxLength="120" aria-required="true" aria-invalid="{{ inv.name }}" aria-describedby="e-name" value="{{ f.name }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:52px;padding:0 16px;font:inherit;font-size:16px;color:#1E1638;background:{{ fb.name }};border:1.5px solid {{ bc.name }};border-radius:14px;outline:none;transition:border-color .2s,background .2s" style-focus="border-color:#6C4CF5;background:#FFFFFF">
+                <sc-if value="{{ has.name }}"><p id="e-name" style="font-size:13.5px;color:#A3243B">{{ err.name }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-email" style="font-size:14.5px;font-weight:500">Business email <span aria-hidden="true" style="color:#B8336A">*</span></label>
+                <input id="f-email" name="email" type="email" autoComplete="email" maxLength="254" aria-required="true" aria-invalid="{{ inv.email }}" aria-describedby="e-email" value="{{ f.email }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:52px;padding:0 16px;font:inherit;font-size:16px;color:#1E1638;background:{{ fb.email }};border:1.5px solid {{ bc.email }};border-radius:14px;outline:none;transition:border-color .2s,background .2s" style-focus="border-color:#6C4CF5;background:#FFFFFF">
+                <sc-if value="{{ has.email }}"><p id="e-email" style="font-size:13.5px;color:#A3243B">{{ err.email }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-company" style="font-size:14.5px;font-weight:500">Company name <span aria-hidden="true" style="color:#B8336A">*</span></label>
+                <input id="f-company" name="company" type="text" autoComplete="organization" maxLength="160" aria-required="true" aria-invalid="{{ inv.company }}" aria-describedby="e-company" value="{{ f.company }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:52px;padding:0 16px;font:inherit;font-size:16px;color:#1E1638;background:{{ fb.company }};border:1.5px solid {{ bc.company }};border-radius:14px;outline:none;transition:border-color .2s,background .2s" style-focus="border-color:#6C4CF5;background:#FFFFFF">
+                <sc-if value="{{ has.company }}"><p id="e-company" style="font-size:13.5px;color:#A3243B">{{ err.company }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-title" style="font-size:14.5px;font-weight:500">Job title <span style="color:#5E5878;font-weight:400">(optional)</span></label>
+                <input id="f-title" name="title" type="text" autoComplete="organization-title" maxLength="120" value="{{ f.title }}" onChange="{{ onField }}" style="height:52px;padding:0 16px;font:inherit;font-size:16px;color:#1E1638;background:#FAF8FF;border:1.5px solid #E6E1F5;border-radius:14px;outline:none;transition:border-color .2s,background .2s" style-focus="border-color:#6C4CF5;background:#FFFFFF">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-phone" style="font-size:14.5px;font-weight:500">Phone number <span style="color:#5E5878;font-weight:400">(optional)</span></label>
+                <input id="f-phone" name="phone" type="tel" autoComplete="tel" maxLength="30" aria-invalid="{{ inv.phone }}" aria-describedby="e-phone" value="{{ f.phone }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:52px;padding:0 16px;font:inherit;font-size:16px;color:#1E1638;background:{{ fb.phone }};border:1.5px solid {{ bc.phone }};border-radius:14px;outline:none;transition:border-color .2s,background .2s" style-focus="border-color:#6C4CF5;background:#FFFFFF">
+                <sc-if value="{{ has.phone }}"><p id="e-phone" style="font-size:13.5px;color:#A3243B">{{ err.phone }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-interest" style="font-size:14.5px;font-weight:500">Area of interest <span aria-hidden="true" style="color:#B8336A">*</span></label>
+                <select id="f-interest" name="interest" aria-required="true" aria-invalid="{{ inv.interest }}" aria-describedby="e-interest" value="{{ f.interest }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:52px;padding:0 14px;font:inherit;font-size:16px;color:#1E1638;background:{{ fb.interest }};border:1.5px solid {{ bc.interest }};border-radius:14px;outline:none">
+                  <option value="">Select an area</option>
+                  <sc-for list="{{ interestOptions }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for>
+                </select>
+                <sc-if value="{{ has.interest }}"><p id="e-interest" style="font-size:13.5px;color:#A3243B">{{ err.interest }}</p></sc-if>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="f-overview" style="font-size:14.5px;font-weight:500">Project overview / business challenge <span aria-hidden="true" style="color:#B8336A">*</span></label>
+              <textarea id="f-overview" name="overview" rows="6" maxLength="4000" aria-required="true" aria-invalid="{{ inv.overview }}" aria-describedby="h-overview e-overview" value="{{ f.overview }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="padding:14px 16px;font:inherit;font-size:16px;line-height:1.55;color:#1E1638;background:{{ fb.overview }};border:1.5px solid {{ bc.overview }};border-radius:14px;outline:none;resize:vertical;min-height:150px" style-focus="border-color:#6C4CF5;background:#FFFFFF"></textarea>
+              <p id="h-overview" style="font-size:13px;color:#5E5878;display:flex;justify-content:space-between;gap:12px"><span>Current systems, what needs to change, and any constraints.</span><span>{{ overviewCount }}</span></p>
+              <sc-if value="{{ has.overview }}"><p id="e-overview" style="font-size:13.5px;color:#A3243B">{{ err.overview }}</p></sc-if>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-timeline" style="font-size:14.5px;font-weight:500">Expected timeline <span aria-hidden="true" style="color:#B8336A">*</span></label>
+                <select id="f-timeline" name="timeline" aria-required="true" aria-invalid="{{ inv.timeline }}" aria-describedby="e-timeline" value="{{ f.timeline }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:52px;padding:0 14px;font:inherit;font-size:16px;color:#1E1638;background:{{ fb.timeline }};border:1.5px solid {{ bc.timeline }};border-radius:14px;outline:none">
+                  <option value="">Select a timeline</option>
+                  <sc-for list="{{ timelineOptions }}" as="o"><option value="{{ o }}">{{ o }}</option></sc-for>
+                </select>
+                <sc-if value="{{ has.timeline }}"><p id="e-timeline" style="font-size:13.5px;color:#A3243B">{{ err.timeline }}</p></sc-if>
+              </div>
+              <sc-if value="{{ showBudget }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <label for="f-budget" style="font-size:14.5px;font-weight:500">Estimated budget <span style="color:#5E5878;font-weight:400">(optional)</span></label>
+                  <select id="f-budget" name="budget" value="{{ f.budget }}" onChange="{{ onField }}" style="height:52px;padding:0 14px;font:inherit;font-size:16px;color:#1E1638;background:#FAF8FF;border:1.5px solid #E6E1F5;border-radius:14px;outline:none">
+                    <option value="">Select a range</option>
+                    <sc-for list="{{ budgetOptions }}" as="o"><option value="{{ o }}">{{ o }}</option></sc-for>
+                  </select>
+                </div>
+              </sc-if>
+            </div>
+
+            <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
+              <label for="f-website">Website</label>
+              <input id="f-website" name="website" type="text" tabIndex="-1" autoComplete="off" value="{{ f.website }}" onChange="{{ onField }}">
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="f-consent" style="display:flex;gap:14px;align-items:flex-start;cursor:pointer;font-size:15px;line-height:1.5;color:#3F3860">
+                <input id="f-consent" name="consent" type="checkbox" checked="{{ f.consent }}" onChange="{{ onField }}" aria-required="true" aria-invalid="{{ inv.consent }}" aria-describedby="e-consent" style="width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:#6C4CF5;cursor:pointer">
+                <span>I agree that Mercer Technology Solutions may store and use these details to respond to my enquiry. <span aria-hidden="true" style="color:#B8336A">*</span> <span style="color:#5E5878">[Privacy policy link — add when published]</span></span>
+              </label>
+              <sc-if value="{{ has.consent }}"><p id="e-consent" style="font-size:13.5px;color:#A3243B;padding-left:36px">{{ err.consent }}</p></sc-if>
+            </div>
+
+            <button type="submit" disabled="{{ sending }}" aria-busy="{{ sendingStr }}" style="display:inline-flex;align-items:center;justify-content:center;gap:12px;height:60px;padding:0 30px;background:{{ submitBg }};color:#FFFFFF;border:0;border-radius:999px;font:inherit;font-size:17px;font-weight:600;cursor:{{ submitCursor }};transition:background .2s" style-hover="background:#6C4CF5">
+              <sc-if value="{{ sending }}"><span aria-hidden="true" style="width:18px;height:18px;border:2px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:mts-spin .8s linear infinite"></span></sc-if>
+              {{ submitLabel }}
+            </button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.notFound }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Not found" style="min-height:80vh;background:#F6F3FF;display:flex;align-items:center;padding:140px 0 80px">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:24px;width:100%;box-sizing:border-box">
+      <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(100px,18vw,260px);font-weight:700;line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:2px #A994FF">404</p>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,56px);font-weight:600;letter-spacing:-.035em">This page isn't available.</h1>
+      <p style="font-size:18px;color:#5E5878">It may have moved, or it hasn't been published yet.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#/" style="display:inline-flex;align-items:center;height:54px;padding:0 24px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;border-radius:999px" style-hover="background:#6C4CF5;color:#FFFFFF">Back to home</a>
+        <a href="#/contact" style="display:inline-flex;align-items:center;height:54px;padding:0 22px;background:#FFFFFF;color:#1E1638;text-decoration:none;font-weight:500;border-radius:999px" style-hover="background:#FFE3EE;color:#1E1638">Contact us</a>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+</main>
+
+<footer style="background:#F6F3FF;color:#1E1638;padding:clamp(64px,8vw,110px) 0 32px">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:40px">
+      <div style="display:flex;flex-direction:column;gap:18px;grid-column:span 1">
+        <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1.05">Technology, <span style="color:#6C4CF5">orchestrated.</span></p>
+        <a href="#/contact" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;background:#1E1638;color:#FFFFFF;text-decoration:none;font-weight:600;border-radius:999px" style-hover="background:#6C4CF5;color:#FFFFFF">Discuss a Solution →</a>
+      </div>
+      <nav aria-label="Solutions" style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#6C4CF5">SOLUTIONS</p>
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="3"><a href="{{ s.href }}" style="color:#1E1638;text-decoration:none;font-size:15px" style-hover="color:#6C4CF5">{{ s.name }}</a></sc-for>
+      </nav>
+      <nav aria-label="Company" style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#6C4CF5">COMPANY</p>
+        <a href="#/company" style="color:#1E1638;text-decoration:none;font-size:15px" style-hover="color:#6C4CF5">Company</a>
+        <a href="#/industries" style="color:#1E1638;text-decoration:none;font-size:15px" style-hover="color:#6C4CF5">Industries</a>
+        <a href="#/case-studies" style="color:#1E1638;text-decoration:none;font-size:15px" style-hover="color:#6C4CF5">Case Studies</a>
+        <a href="#/careers" style="color:#1E1638;text-decoration:none;font-size:15px" style-hover="color:#6C4CF5">Careers</a>
+        <a href="#/insights" style="color:#1E1638;text-decoration:none;font-size:15px" style-hover="color:#6C4CF5">Insights</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#6C4CF5">CONTACT</p>
+        <address style="font-style:normal;font-size:15px;line-height:1.6">301 E Jefferson St<br>Phoenix, AZ 85004</address>
+        <a href="mailto:holden.mercer@outlook.com" style="font-size:15px;word-break:break-all">holden.mercer@outlook.com</a>
+        <a href="tel:+14072398251" style="font-size:15px">+1 (407) 239-8251</a>
+      </div>
+    </div>
+    <p aria-hidden="true" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(64px,16vw,260px);line-height:.78;letter-spacing:-.06em;color:#ECE6FF;margin:0 -.04em">MERCER</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid #DCD2FF;font-size:13.5px;color:#5E5878">
+      <p>© {{ year }} Mercer Technology Solutions</p>
+      <p>Privacy policy and terms — to be published</p>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showDrafts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showBudget&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Enquiry form&quot;},&quot;enquiryEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Integrations&quot;}}">
+class Component extends DCLogic {
+  SVC = [
+    { slug: 'enterprise-software', name: 'Enterprise Software', status: 'published',
+      short: 'Software shaped around how your organization operates, from new platforms to modernizing the systems you already depend on.',
+      overview: 'We plan, design and build enterprise applications that fit the way your teams work, and modernize existing systems where they have become a constraint. Work starts with your processes and the systems around them, not a predetermined platform.',
+      problems: ['Core processes run across disconnected or ageing applications', 'Off-the-shelf tools no longer fit how teams work', 'Changes to critical systems are slow and risky'],
+      scope: ['Application architecture', 'Custom application development', 'Legacy system modernization', 'Workflow automation'],
+      cons: [['Existing system dependencies', 'New software rarely starts from a blank slate. Mapping the systems, data and teams it will depend on keeps scope realistic.'], ['Data migration and continuity', 'Plan how existing records move across, how they are validated, and how operations continue during the transition.'], ['Security and access', 'Define who needs access to what early, so roles, permissions and audit requirements are designed in rather than added later.'], ['Adoption and change', 'Software only delivers value when it is used. Training, rollout sequencing and feedback loops belong in the plan.']],
+      image: 'IMAGE — modern technology office, team at work' },
+    { slug: 'cloud-solutions', name: 'Cloud Solutions', status: 'published',
+      short: 'Cloud environments planned around your workloads, costs and compliance needs, with a clear path from where you are today.',
+      overview: 'We help organizations assess, plan and move to cloud environments, and bring structure to environments that have grown without a clear architecture. Decisions are grounded in workload needs, cost and governance.',
+      problems: ['Infrastructure costs and capacity are hard to predict', 'On-premise environments limit how quickly teams can deliver', 'Cloud environments have grown without a clear architecture'],
+      scope: ['Cloud readiness assessment', 'Migration planning', 'Cloud architecture', 'Governance and cost visibility'],
+      cons: [['Workload suitability', 'Not every workload benefits from moving. Assess each one for cost, performance and operational fit.'], ['Compliance and data residency', 'Confirm regulatory, contractual and data-location requirements before choosing services or regions.'], ['Cost visibility', 'Agree how spend will be tracked and owned so costs stay predictable after migration.'], ['Operational ownership', 'Decide who runs, monitors and supports each environment once it is live.']],
+      image: 'IMAGE — minimal cloud infrastructure architecture' },
+    { slug: 'systems-integration', name: 'Systems Integration', status: 'published',
+      short: "Connect the applications and data your teams rely on, so information moves reliably and work isn't repeated between systems.",
+      overview: 'We design and implement the connections between your business systems: APIs, data synchronization and event flows. The aim is dependable, observable integrations that reduce manual work and give teams a consistent view of their data.',
+      problems: ['Data is re-entered by hand between systems', 'Reporting depends on manual reconciliation', 'Each new tool adds to the integration backlog'],
+      scope: ['Integration architecture', 'API design and development', 'Data synchronization', 'Middleware and event flows'],
+      cons: [['System of record', "For each type of data, agree which system is authoritative so integrations don't create conflicting versions."], ['Error handling and monitoring', 'Integrations fail occasionally. Define how failures are detected, retried and reported.'], ['Change and versioning', "Plan for the systems on either side changing over time, so a vendor update doesn't break a critical flow."], ['Security between systems', 'Credentials, permissions and data in transit need the same care as any user-facing application.']],
+      image: 'IMAGE — connected nodes, technical diagram' },
+    { slug: 'infrastructure-managed-services', name: 'Infrastructure & Managed Services', status: 'draft',
+      short: '[Service description — publish only after this service is confirmed]',
+      overview: '[Overview pending confirmation that this service is offered.]',
+      problems: ['[Problem statement — to be confirmed]'], scope: ['[Scope — to be confirmed]'],
+      cons: [['[Consideration — to be confirmed]', '[Details pending]']],
+      image: 'IMAGE — data center architecture, blue lighting' }
+  ];
+  STAGES = [
+    ['Business needs', 'Start with the outcomes the organization needs, the constraints it works within, and who depends on the result.'],
+    ['System architecture', 'Map current systems, data flows and dependencies before choosing what to build, buy or change.'],
+    ['Integration', 'Plan how new and existing systems will exchange data reliably and securely.'],
+    ['Delivery', 'Deliver in stages that can be tested, adopted and measured against the original need.'],
+    ['Ongoing improvement', 'Treat launch as a starting point: monitor, refine and plan the next stage.']
+  ];
+  LAYERS = [
+    { n: 'L4', name: 'Business applications', desc: 'Workflows, portals and line-of-business software', svc: ['enterprise-software', 'systems-integration'] },
+    { n: 'L3', name: 'Data & integration', desc: 'APIs, data flows and synchronization', svc: ['systems-integration', 'enterprise-software'] },
+    { n: 'L2', name: 'Cloud platform', desc: 'Hosting, environments and governance', svc: ['cloud-solutions'] },
+    { n: 'L1', name: 'Infrastructure', desc: 'Networks, compute and storage', svc: ['cloud-solutions', 'infrastructure-managed-services'] }
+  ];
+  CASES = [
+    { id: 'draft-integration', cat: 'Systems Integration', slug: 'systems-integration', title: '[Project title — awaiting client approval]', ctx: '[Client and sector withheld until approved]' },
+    { id: 'draft-software', cat: 'Enterprise Software', slug: 'enterprise-software', title: '[Project title — awaiting client approval]', ctx: '[Client and sector withheld until approved]' }
+  ];
+  JOBS = [{ slug: 'draft-role', title: '[Role title]', dept: '[Department — to verify]', loc: '[Location — to verify]', type: '[Employment type — to verify]' }];
+  INS = [
+    { slug: 'integration-before-software', cat: 'Integration', status: 'Draft', title: 'Working title: Map your integrations before you choose new software', excerpt: '[Summary to be written]' },
+    { slug: 'cloud-readiness', cat: 'Cloud', status: 'Scheduled', title: 'Working title: What a cloud readiness review should answer', excerpt: '[Summary to be written]' },
+    { slug: 'modernizing-core-systems', cat: 'Architecture', status: 'Draft', title: 'Working title: Modernizing a core system without stopping the business', excerpt: '[Summary to be written]' },
+    { slug: 'system-of-record', cat: 'Integration', status: 'Draft', title: 'Working title: Choosing a system of record', excerpt: '[Summary to be written]' }
+  ];
+  EMPTY_F = { name: '', email: '', company: '', title: '', phone: '', interest: '', overview: '', timeline: '', budget: '', consent: false, website: '' };
+  LABELS = { name: 'Full name', email: 'Business email', company: 'Company name', phone: 'Phone number', interest: 'Area of interest', overview: 'Project overview', timeline: 'Expected timeline', consent: 'Consent' };
+
+  state = { route: this.parse(), w: typeof window !== 'undefined' ? window.innerWidth : 1440, scrolled: false, menuOpen: false, stackSel: null, svcSel: null, acc: null, indSel: 0, caseCat: 'All', insCat: 'All', query: '', f: { ...this.EMPTY_F }, errors: {}, touched: {}, status: 'idle', failMsg: '', showSummary: false };
+
+  mainRef = React.createRef(); menuBtnRef = React.createRef(); heroVisRef = React.createRef(); summaryRef = React.createRef(); successRef = React.createRef();
+
+  parse() {
+    const h = (typeof location !== 'undefined' && location.hash) || '#/';
+    if (!h.startsWith('#/')) return this.state ? this.state.route : { parts: [], q: {} };
+    const [p, qs] = h.slice(2).split('?');
+    const q = {}; new URLSearchParams(qs || '').forEach((v, k) => { q[k] = v; });
+    return { parts: p.split('/').filter(Boolean), q };
+  }
+
+  componentDidMount() {
+    this.rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.startedAt = Date.now();
+    this.applyRouteExtras(this.state.route);
+    this.onHash = () => {
+      const prev = this.state.route, r = this.parse();
+      if (r === prev) return;
+      const same = prev.parts[0] === 'solutions' && r.parts[0] === 'solutions';
+      this.setState({ route: r, menuOpen: false }, () => {
+        this.applyRouteExtras(r);
+        if (same) { const el = document.getElementById('explorer'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: this.rm ? 'auto' : 'smooth' }); }
+        else { window.scrollTo(0, 0); this.mainRef.current && this.mainRef.current.focus({ preventScroll: true }); }
+      });
+    };
+    this.onScroll = () => { this.checkReveal(); const s = window.scrollY > 24; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onVis = () => document.documentElement.toggleAttribute('data-mts-paused', document.hidden);
+    this.onMove = (e) => {
+      const el = this.heroVisRef.current; if (!el || this.rm || this.state.w < 980) return;
+      const x = e.clientX / window.innerWidth - .5, y = e.clientY / window.innerHeight - .5;
+      el.style.transform = `translate(${x * -12}px, ${y * -12}px)`;
+    };
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onAnyScroll = () => this.checkReveal();
+    document.addEventListener('scroll', this.onAnyScroll, { passive: true, capture: true });
+    this.revealTick = setInterval(() => this.checkReveal(), 700);
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('mousemove', this.onMove, { passive: true });
+    document.addEventListener('visibilitychange', this.onVis);
+    if ('IntersectionObserver' in window) {
+      this.io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.setAttribute('data-rv', '2'); this.show(en.target); this.io.unobserve(en.target); } }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    }
+    this.onScroll();
+    this.reveal();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash); window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize); window.removeEventListener('mousemove', this.onMove);
+    document.removeEventListener('visibilitychange', this.onVis);
+    document.removeEventListener('scroll', this.onAnyScroll, true); clearInterval(this.revealTick); this.io && this.io.disconnect();
+    document.body.style.overflow = '';
+  }
+  componentDidUpdate(pp, ps) {
+    if (ps.route !== this.state.route || pp.showDrafts !== this.props.showDrafts) requestAnimationFrame(() => this.reveal());
+    if (ps.menuOpen !== this.state.menuOpen) {
+      document.body.style.overflow = this.state.menuOpen ? 'hidden' : '';
+      if (this.state.menuOpen) setTimeout(() => { const a = document.querySelector('#mobile-menu a'); a && a.focus(); }, 30);
+    }
+  }
+  applyRouteExtras(r) {
+    const titles = { '': 'Technology, Orchestrated.', solutions: 'Solutions', industries: 'Industries', 'case-studies': 'Case Studies', company: 'Company', careers: 'Careers', insights: 'Insights', contact: 'Discuss a Solution' };
+    document.title = (titles[r.parts[0] || ''] || 'Page not found') + ' — Mercer Technology Solutions';
+    if (r.parts[0] === 'solutions' && r.parts[1]) this.setState({ svcSel: r.parts[1] });
+    if (r.parts[0] === 'contact' && r.q.interest && this.SVC.some((s) => s.slug === r.q.interest)) this.setState((s) => ({ f: { ...s.f, interest: r.q.interest } }));
+  }
+  checkReveal() {
+    const vh = window.innerHeight || 800;
+    document.querySelectorAll('[data-rv]:not([data-shown])').forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.95) this.show(el);
+    });
+  }
+  reveal() {
+    if (this.rm || !this.io || document.hidden) return;
+    const vh = window.innerHeight, now = [];
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach((el) => {
+      el.setAttribute('data-rv', '1');
+      if (el.getBoundingClientRect().top < vh) now.push(el);
+      const k = el.getAttribute('data-reveal');
+      if (k === 'clip') { el.style.opacity = '0'; el.style.transform = 'translateY(40px) scale(.98)'; }
+      else if (k === 'mark') el.style.backgroundSize = '0% 36%';
+      else if (k === 'line') el.style.transform = 'scaleX(0)';
+      else { el.style.opacity = '0'; el.style.transform = 'translateY(28px)'; }
+      this.io.observe(el);
+    });
+    this.checkReveal();
+    requestAnimationFrame(() => requestAnimationFrame(() => now.forEach((el) => { this.show(el); this.io.unobserve(el); })));
+    clearTimeout(this.safety);
+    this.safety = setTimeout(() => document.querySelectorAll('[data-rv]:not([data-shown])').forEach((el) => { if (el.getBoundingClientRect().top < window.innerHeight * 1.5) this.show(el); }), 1500);
+  }
+  show(el) {
+    if (el.hasAttribute('data-shown')) return; el.setAttribute('data-shown', '1');
+    const d = +(el.getAttribute('data-reveal-delay') || 0), k = el.getAttribute('data-reveal'), ez = 'cubic-bezier(.2,.7,.2,1)';
+    if (k === 'clip') { el.style.transition = `opacity 1s ${ez} ${d}ms, transform 1.1s ${ez} ${d}ms`; el.style.opacity = '1'; el.style.transform = 'none'; }
+    else if (k === 'mark') { el.style.transition = `background-size .9s ${ez} ${d + 500}ms`; el.style.backgroundSize = '100% 36%'; }
+    else if (k === 'line') { el.style.transition = `transform 1.6s ${ez} ${d}ms`; el.style.transform = 'scaleX(1)'; }
+    else { el.style.transition = `opacity .8s ${ez} ${d}ms, transform .8s ${ez} ${d}ms`; el.style.opacity = '1'; el.style.transform = 'none'; }
+  }
+
+  buildTopo(seed, dark) {
+    if (this['topo' + seed]) return this['topo' + seed];
+    let a = seed; const R = () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+    const h = React.createElement, C = dark
+      ? { line: '#4A3F7A', hub: '#A994FF', flow: '#FF9EC4', node: '#1E1638', ns: '#A994FF', glow: '#FF9EC4', label: '#A994FF', dot: '#352B5E' }
+      : { line: '#C9BCFF', hub: '#6C4CF5', flow: '#E2558D', node: '#FFFFFF', ns: '#6C4CF5', glow: '#FF9EC4', label: '#4B2FD1', dot: '#D6CCFF' };
+    const core = { x: 450, y: 400 };
+    const hubs = [{ x: 230, y: 210, l: 'APPLICATIONS' }, { x: 680, y: 190, l: 'CLOUD' }, { x: 690, y: 620, l: 'INTEGRATION' }, { x: 220, y: 600, l: 'DATA' }];
+    const nodes = [], edges = [];
+    hubs.forEach((hb) => { for (let i = 0; i < 7; i++) { const g = R() * Math.PI * 2, r = 50 + R() * 90; const nd = { x: hb.x + Math.cos(g) * r, y: hb.y + Math.sin(g) * r }; nodes.push(nd); edges.push([hb, nd, 0]); } edges.push([hb, core, 1]); });
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) { const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y; if (dx * dx + dy * dy < 75 * 75 && R() < .55) edges.push([nodes[i], nodes[j], 0]); }
+    hubs.forEach((p, i) => edges.push([p, hubs[(i + 1) % 4], 2]));
+    const kids = [h('defs', { key: 'd' }, h('pattern', { id: 'mts-dots' + seed, width: 30, height: 30, patternUnits: 'userSpaceOnUse' }, h('circle', { cx: 2, cy: 2, r: 1.2, fill: C.dot }))), h('rect', { key: 'bg', width: 900, height: 800, fill: `url(#mts-dots${seed})` })];
+    edges.forEach(([p, q, t], i) => {
+      if (t === 2) kids.push(h('line', { key: 'e' + i, x1: p.x, y1: p.y, x2: q.x, y2: q.y, stroke: C.line, strokeWidth: 1, strokeDasharray: '2 7', style: { animation: `mts-fade 1s ease ${1 + i * .02}s both` } }));
+      else kids.push(h('line', { key: 'e' + i, x1: p.x, y1: p.y, x2: q.x, y2: q.y, pathLength: 1, stroke: t ? C.hub : C.line, strokeWidth: t ? 1.6 : 1.1, strokeDasharray: 1, strokeDashoffset: 1, style: { animation: `mts-draw 1.4s cubic-bezier(.6,0,.2,1) ${.2 + i * .018}s forwards` } }));
+      if (t === 1) kids.push(h('line', { key: 'f' + i, x1: p.x, y1: p.y, x2: q.x, y2: q.y, stroke: C.flow, strokeWidth: 2.4, strokeLinecap: 'round', strokeDasharray: '3 37', style: { animation: `mts-flow ${2 + R() * 1.5}s linear infinite` } }));
+    });
+    nodes.forEach((n, i) => {
+      if (R() < .35) kids.push(h('circle', { key: 'g' + i, cx: n.x, cy: n.y, r: 9, fill: C.glow, style: { opacity: .15, animation: `mts-glow ${3 + R() * 3}s ease-in-out ${R() * 4}s infinite` } }));
+      kids.push(h('circle', { key: 'n' + i, cx: n.x, cy: n.y, r: 3 + R() * 2, fill: C.node, stroke: C.ns, strokeWidth: 1.4 }));
+    });
+    hubs.forEach((hb, i) => {
+      kids.push(h('rect', { key: 'h' + i, x: hb.x - 9, y: hb.y - 9, width: 18, height: 18, rx: 4, fill: C.node, stroke: C.hub, strokeWidth: 1.6 }));
+      kids.push(h('rect', { key: 'hi' + i, x: hb.x - 3, y: hb.y - 3, width: 6, height: 6, rx: 1, fill: C.flow }));
+      kids.push(h('text', { key: 'hl' + i, x: hb.x + 18, y: hb.y - 16, fill: C.label, style: { font: "500 12px 'IBM Plex Mono', monospace", letterSpacing: '1.5px' } }, hb.l));
+    });
+    kids.push(h('circle', { key: 'cr', cx: core.x, cy: core.y, r: 40, fill: 'none', stroke: C.hub, strokeWidth: 1.2, strokeDasharray: '4 6', style: { transformOrigin: `${core.x}px ${core.y}px`, animation: 'mts-spin 30s linear infinite' } }));
+    kids.push(h('circle', { key: 'cc', cx: core.x, cy: core.y, r: 18, fill: C.hub }));
+    kids.push(h('circle', { key: 'cd', cx: core.x, cy: core.y, r: 6, fill: C.glow }));
+    const el = h('svg', { viewBox: '0 0 900 800', width: '100%', height: '100%', preserveAspectRatio: 'xMidYMid slice', style: { display: 'block' } }, kids);
+    this['topo' + seed] = el; return el;
+  }
+  buildMarquee() {
+    if (this.mq) return this.mq;
+    const h = React.createElement, words = ['Enterprise Software', 'Cloud Solutions', 'Systems Integration', 'Technology, Orchestrated.'];
+    const run = (k) => h('div', { key: k, style: { display: 'flex', alignItems: 'center', gap: 40, paddingRight: 40 } }, [0, 1].flatMap((r) => words.map((w, i) => [h('span', { key: r + 'w' + i, style: { fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: 'clamp(22px,2.6vw,36px)', fontWeight: 500, whiteSpace: 'nowrap', letterSpacing: '-.02em' } }, w), h('span', { key: r + 's' + i, style: { width: 12, height: 12, borderRadius: '50%', background: i % 2 ? '#A994FF' : '#FFC9DD', flex: 'none' } })])));
+    this.mq = h('div', { style: { display: 'flex', width: 'max-content', animation: 'mts-marquee 40s linear infinite' } }, run('a'), run('b'));
+    return this.mq;
+  }
+  buildBadge() {
+    if (this.bd) return this.bd;
+    const h = React.createElement;
+    this.bd = h('svg', { viewBox: '0 0 120 120', width: 112, height: 112, style: { animation: 'mts-spin 22s linear infinite' } },
+      h('defs', null, h('path', { id: 'mts-circ', d: 'M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0' })),
+      h('text', { fill: '#1E1638', style: { font: "500 10.5px 'IBM Plex Mono', monospace", letterSpacing: '2.6px' } }, h('textPath', { href: '#mts-circ' }, 'TECHNOLOGY · ORCHESTRATED · MTS · ')),
+      h('rect', { x: 52, y: 52, width: 16, height: 16, rx: 3, fill: '#6C4CF5' }));
+    return this.bd;
+  }
+
+  selectSvc(slug, scroll) {
+    this.setState({ svcSel: slug, acc: null });
+    try { history.replaceState(null, '', '#/solutions/' + slug); this.setState({ route: { parts: ['solutions', slug], q: {} } }); } catch (e) {}
+    if (scroll) { const el = document.getElementById('explorer'); el && window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: this.rm ? 'auto' : 'smooth' }); }
+  }
+
+  validateField(n, f) {
+    const v = typeof f[n] === 'string' ? f[n].trim() : f[n];
+    switch (n) {
+      case 'name': return !v ? 'Enter your full name.' : v.length > 120 ? 'Name must be 120 characters or fewer.' : '';
+      case 'email': return !v ? 'Enter your business email address.' : !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? 'Enter a valid email address, like name@company.com.' : '';
+      case 'company': return !v ? 'Enter your company name.' : '';
+      case 'phone': return v && !/^[0-9+()\-.\s]{7,30}$/.test(v) ? 'Enter a valid phone number, or leave this blank.' : '';
+      case 'interest': return !v ? 'Select an area of interest.' : '';
+      case 'overview': return !v ? 'Describe your project or business challenge.' : v.length < 30 ? 'Add a little more detail (at least 30 characters).' : '';
+      case 'timeline': return !v ? 'Select an expected timeline.' : '';
+      case 'consent': return !v ? 'Confirm you agree so we can respond to your enquiry.' : '';
+      default: return '';
+    }
+  }
+  validateAll(f) { const e = {}; Object.keys(this.LABELS).forEach((k) => { const m = this.validateField(k, f); if (m) e[k] = m; }); return e; }
+
+  onField = (e) => {
+    const { name, type, checked, value } = e.target, v = type === 'checkbox' ? checked : value;
+    this.setState((s) => {
+      const f = { ...s.f, [name]: v }, errors = { ...s.errors };
+      if (s.touched[name] || s.showSummary || type === 'checkbox') { const m = this.validateField(name, f); if (m) errors[name] = m; else delete errors[name]; }
+      return { f, errors, showSummary: s.showSummary && Object.keys(errors).length > 0 };
+    });
+  };
+  onBlur = (e) => {
+    const n = e.target.name;
+    this.setState((s) => { const m = this.validateField(n, s.f), errors = { ...s.errors }; if (m) errors[n] = m; else delete errors[n]; return { touched: { ...s.touched, [n]: true }, errors }; });
+  };
+  onSubmit = async (e) => {
+    e.preventDefault();
+    if (this.state.status === 'sending') return;
+    const errors = this.validateAll(this.state.f);
+    if (Object.keys(errors).length) { this.setState({ errors, showSummary: true, status: 'idle' }, () => this.summaryRef.current && this.summaryRef.current.focus()); return; }
+    const f = this.state.f;
+    this.setState({ status: 'sending', showSummary: false, failMsg: '' });
+    const fail = (msg) => this.setState({ status: 'error', failMsg: msg });
+    if (f.website || Date.now() - this.startedAt < 2500) { await new Promise((r) => setTimeout(r, 600)); return fail('Something went wrong while sending. Please try again in a moment.'); }
+    const ep = (this.props.enquiryEndpoint || '').trim();
+    if (!ep) { await new Promise((r) => setTimeout(r, 700)); return fail('The online enquiry service is not connected yet, so this message could not be delivered. Your details are still in the form. Please email holden.mercer@outlook.com or call +1 (407) 239-8251.'); }
+    const payload = { name: f.name.trim(), email: f.email.trim().toLowerCase(), company: f.company.trim(), jobTitle: f.title.trim() || null, phone: f.phone.trim() || null, interest: f.interest, overview: f.overview.trim(), timeline: f.timeline, budget: f.budget || null, consent: true, meta: { source: 'website-contact', formStartedAt: new Date(this.startedAt).toISOString(), hp: f.website } };
+    try {
+      const res = await fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+      if (res.ok) { this.setState({ status: 'success' }, () => { this.successRef.current && this.successRef.current.focus(); }); return; }
+      if (res.status === 422) { let body = {}; try { body = await res.json(); } catch (x) {} const fe = body && body.errors; if (fe && typeof fe === 'object') { this.setState({ status: 'idle', errors: fe, showSummary: true }, () => this.summaryRef.current && this.summaryRef.current.focus()); return; } return fail('Some details could not be accepted. Please review the form and try again.'); }
+      if (res.status === 429) return fail('Too many submissions from this connection. Please wait a few minutes and try again.');
+      return fail('Our server could not process the enquiry. Please try again, or email holden.mercer@outlook.com.');
+    } catch (x) { return fail('We could not reach the server. Check your connection and try again.'); }
+  };
+
+  renderVals() {
+    const s = this.state, P = this.props, drafts = !!P.showDrafts, r = s.route, top = r.parts[0] || '', sub = r.parts[1];
+    const wide = s.w >= 980, wideNav = s.w >= 1180;
+    const svcs = this.SVC.filter((x) => drafts || x.status === 'published');
+    const pal = [['#ECE6FF', '#DCD2FF', '#DCD2FF', '#ECE6FF'], ['#FFE3EE', '#FFC9DD', '#FFC9DD', '#FFE3EE'], ['#F6F3FF', '#ECE6FF', '#ECE6FF', '#F6F3FF'], ['#FFF4F8', '#FFE3EE', '#FFE3EE', '#FFF4F8']];
+    const services = svcs.map((x, i) => ({ ...x, n: String(i + 1).padStart(2, '0'), isDraft: x.status !== 'published', href: '#/solutions/' + x.slug, contactHref: '#/contact?interest=' + x.slug, cardBg: pal[i % 4][0], cardBorder: pal[i % 4][1], stripeA: pal[i % 4][2], stripeB: pal[i % 4][3], stickyTop: wide ? (100 + i * 24) + 'px' : 'auto', pos: wide ? 'sticky' : 'relative', dir: i % 2 ? 'row-reverse' : 'row', scopeTop: x.scope.slice(0, 4), openExplorer: () => this.selectSvc(x.slug, true) }));
+    const sel = services.find((x) => x.slug === (s.svcSel || sub)) || services[0];
+    const act = { ...sel, tabId: 'tab-' + sel.slug, considerations: sel.cons.map(([t, b], i) => { const key = sel.slug + i, open = s.acc === key; return { title: t, body: b, btnId: 'acc-b-' + key, panelId: 'acc-p-' + key, expanded: open ? 'true' : 'false', rows: open ? '1fr' : '0fr', vis: open ? 'visible' : 'hidden', rot: open ? 'rotate(45deg)' : 'none', iconBg: open ? '#FFC9DD' : '#F6F3FF', toggle: () => this.setState({ acc: open ? null : key }) }; }) };
+    const svcTabs = services.map((x) => { const on = x.slug === sel.slug; return { n: x.n, label: x.name, tabId: 'tab-' + x.slug, selected: on ? 'true' : 'false', tabindex: on ? 0 : -1, bg: on ? '#1E1638' : 'transparent', color: on ? '#FFFFFF' : '#1E1638', onClick: () => this.selectSvc(x.slug, false) }; });
+    const onTabKey = (e) => {
+      const i = services.findIndex((x) => x.slug === sel.slug); let j = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % services.length;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + services.length) % services.length;
+      if (e.key === 'Home') j = 0; if (e.key === 'End') j = services.length - 1;
+      if (j === null) return; e.preventDefault(); this.selectSvc(services[j].slug, false);
+      setTimeout(() => { const b = document.getElementById('tab-' + services[j].slug); b && b.focus(); }, 0);
+    };
+
+    const NAV = [['Solutions', 'solutions'], ['Industries', 'industries'], ['Case Studies', 'case-studies'], ['Company', 'company'], ['Careers', 'careers'], ['Insights', 'insights'], ['Contact', 'contact']];
+    const navItems = NAV.map(([label, key], i) => { const on = top === key; return { label, href: '#/' + key, current: on ? 'page' : undefined, bg: on ? '#ECE6FF' : 'transparent', num: String(i + 1).padStart(2, '0') }; });
+
+    const stackToggles = services.map((x) => { const on = s.stackSel === x.slug; return { name: x.name, pressed: on ? 'true' : 'false', bg: on ? '#1E1638' : '#FFFFFF', color: on ? '#FFFFFF' : '#1E1638', border: on ? '#1E1638' : '#DCD2FF', onClick: () => this.setState({ stackSel: on ? null : x.slug }) }; });
+    const layers = this.LAYERS.map((l, i) => { const hit = s.stackSel && l.svc.includes(s.stackSel), dim = s.stackSel && !hit; return { ...l, indent: wide ? (i * 28) + 'px' : '0px', bg: hit ? '#ECE6FF' : '#FFFFFF', border: hit ? '#6C4CF5' : '#E6E1F5', dot: hit ? '#FF9EC4' : dim ? '#F0ECFA' : '#DCD2FF', lift: hit ? 'translateX(8px)' : 'none' }; });
+
+    const industryDrafts = [1, 2, 3].map((n) => ({ n: 'DRAFT 0' + n, name: '[Industry name]', challenges: '[Business challenges — pending verification]' }));
+    const industryTabs = industryDrafts.map((d, i) => ({ n: '0' + (i + 1), name: '[Industry name]', selected: s.indSel === i ? 'true' : 'false', bg: s.indSel === i ? '#FFC9DD' : '#FFFFFF', onClick: () => this.setState({ indSel: i }) }));
+    const indDetail = [{ label: 'BUSINESS CHALLENGES', value: '[Pending verification]' }, { label: 'RELEVANT SOLUTIONS', value: '[Select from published services]' }, { label: 'VERIFIED USE CASES', value: 'None approved yet' }, { label: 'RELATED CASE STUDIES', value: 'None approved yet' }];
+    const industryFields = [['Industry name', 'The sector, named as the company describes it'], ['Business challenges', 'The operational problems specific to that sector'], ['Relevant solutions', 'Which capabilities apply, and how'], ['Verified use cases', 'Real, approved examples of the work'], ['Related case studies', 'Linked once clients approve publication']].map(([name, desc], i) => ({ n: '0' + (i + 1), name, desc }));
+
+    const cats = ['All', 'Enterprise Software', 'Cloud Solutions', 'Systems Integration'];
+    const chip = (on) => ({ bg: on ? '#1E1638' : '#FFFFFF', color: on ? '#FFFFFF' : '#1E1638', border: on ? '#1E1638' : '#DCD2FF', pressed: on ? 'true' : 'false' });
+    const caseFilters = cats.map((c) => ({ label: c, ...chip(s.caseCat === c), onClick: () => this.setState({ caseCat: c }) }));
+    const caseList = drafts ? this.CASES : [];
+    const filteredCases = caseList.filter((c) => s.caseCat === 'All' || c.cat === s.caseCat).map((c, i) => ({ ...c, href: '#/case-studies/' + c.id, bg: i % 2 ? '#FFE3EE' : '#ECE6FF' }));
+    const caseFound = top === 'case-studies' && sub ? caseList.find((c) => c.id === sub) : null;
+    const caseItem = caseFound ? { ...caseFound, svcHref: '#/solutions/' + caseFound.slug } : { title: '', cat: '', ctx: '', svcHref: '#/solutions' };
+    const caseSections = ['CONTEXT', 'CHALLENGE', 'APPROACH', 'TECHNOLOGY SCOPE', 'IMPLEMENTATION', 'VERIFIED OUTCOMES'].map((label, i) => ({ label, bg: i % 3 === 1 ? '#FFF4F8' : '#F6F3FF' }));
+
+    const jobList = drafts ? this.JOBS : [];
+    const jobs = jobList.map((j) => ({ ...j, href: '#/careers/' + j.slug }));
+    const jobFound = top === 'careers' && sub ? jobList.find((j) => j.slug === sub) : null;
+
+    const insList = drafts ? this.INS : [];
+    const qy = s.query.trim().toLowerCase();
+    const insF = insList.filter((a) => (s.insCat === 'All' || a.cat === s.insCat) && (!qy || (a.title + ' ' + a.cat).toLowerCase().includes(qy))).map((a, i) => ({ ...a, href: '#/insights/' + a.slug, bg: ['#F6F3FF', '#FFF4F8', '#ECE6FF'][i % 3] }));
+    const insFilters = ['All', 'Architecture', 'Cloud', 'Integration'].map((c) => ({ label: c, ...chip(s.insCat === c), onClick: () => this.setState({ insCat: c }) }));
+    const artFound = top === 'insights' && sub ? insList.find((a) => a.slug === sub) : null;
+
+    const page = { home: top === '', solutions: top === 'solutions', industries: top === 'industries', cases: top === 'case-studies' && !sub, caseDetail: !!caseFound, company: top === 'company', careers: top === 'careers' && !sub, jobDetail: !!jobFound, insights: top === 'insights' && !sub, article: !!artFound, contact: top === 'contact' };
+    page.notFound = !Object.values(page).some(Boolean);
+
+    const f = s.f, E = s.errors, fields = ['name', 'email', 'company', 'phone', 'interest', 'overview', 'timeline', 'consent'];
+    const inv = {}, has = {}, bc = {}, fb = {};
+    fields.forEach((k) => { const e = !!E[k]; inv[k] = e ? 'true' : 'false'; has[k] = e; bc[k] = e ? '#C2334D' : '#E6E1F5'; fb[k] = e ? '#FFF7F8' : '#FAF8FF'; });
+    const errList = fields.filter((k) => E[k]).map((k) => ({ msg: E[k], href: '#', focus: (ev) => { ev.preventDefault(); const el = document.getElementById('f-' + k); el && el.focus(); } }));
+    const sending = s.status === 'sending';
+    const mailBody = encodeURIComponent(`Name: ${f.name}\nCompany: ${f.company}\nInterest: ${f.interest}\nTimeline: ${f.timeline}\n\n${f.overview}`);
+
+    return {
+      navBg: s.scrolled || s.menuOpen ? 'rgba(255,255,255,.88)' : 'rgba(255,255,255,0)', navBorder: s.scrolled ? '#ECE6FF' : 'transparent',
+      wideNav, compactNav: !wideNav, navItems, menuOpen: s.menuOpen, menuExpanded: s.menuOpen ? 'true' : 'false', menuLabel: s.menuOpen ? 'Close' : 'Menu',
+      burgerTop: s.menuOpen ? 'translateY(3.25px) rotate(45deg)' : 'none', burgerBot: s.menuOpen ? 'translateY(-3.25px) rotate(-45deg)' : 'none',
+      toggleMenu: () => this.setState((st) => ({ menuOpen: !st.menuOpen })),
+      onMenuKey: (e) => { if (e.key === 'Escape') { this.setState({ menuOpen: false }); this.menuBtnRef.current && this.menuBtnRef.current.focus(); } },
+      menuBtnRef: this.menuBtnRef, mainRef: this.mainRef, heroVisRef: this.heroVisRef, summaryRef: this.summaryRef, successRef: this.successRef,
+      page, showDrafts: drafts, noDrafts: !drafts, year: new Date().getFullYear(),
+      topoHero: this.buildTopo(7, false), topoCta: this.buildTopo(19, true), marquee: this.buildMarquee(), badge: this.buildBadge(),
+      heroServices: services.filter((x) => !x.isDraft), services,
+      stages: this.STAGES.map(([name, body], i) => ({ n: '0' + (i + 1), name, body, delay: i * 110, dot: i % 2 ? '#FFC9DD' : '#6C4CF5', dotText: i % 2 ? '#1E1638' : '#FFFFFF' })),
+      stackToggles, layers, industryDrafts, industryTabs, indDetail, industryFields,
+      svcTabs, act, onTabKey,
+      caseFilters, filteredCases, casesEmpty: drafts && filteredCases.length === 0, caseCount: filteredCases.length === 1 ? '1 draft case study' : filteredCases.length + ' draft case studies', resetCases: () => this.setState({ caseCat: 'All' }), caseItem, caseSections,
+      jobs, job: jobFound || { title: '', dept: '', loc: '', type: '' },
+      insFilters, query: s.query, onQuery: (e) => this.setState({ query: e.target.value }), insCount: insF.length === 1 ? '1 draft article' : insF.length + ' draft articles', insEmpty: drafts && insF.length === 0, hasFeatured: insF.length > 0, featured: insF[0] || { href: '#/insights', title: '', cat: '', status: '', excerpt: '' }, restArticles: insF.slice(1), resetIns: () => this.setState({ insCat: 'All', query: '' }), article: artFound || { title: '', cat: '', status: '' },
+      principles: [['Precise', 'Decisions are documented, scoped and traceable to the business need behind them.'], ['Dependable', 'Systems are built to be run, supported and changed safely over time.'], ['Forward-looking', 'Today’s work should make the next stage of growth easier, not harder.'], ['Human', 'Technology serves the people who use it. Plain language, clear ownership.']].map(([name, body], i) => ({ n: '0' + (i + 1), name, body, delay: i * 90, bg: ['#FFFFFF', '#FFC9DD', '#1E1638', '#ECE6FF'][i], fg: i === 2 ? '#FFFFFF' : '#1E1638', sub: i === 2 ? '#DCD2FF' : '#3F3860', accent: i === 2 ? '#FFC9DD' : '#6C4CF5' })),
+      f, err: E, inv, has, bc, fb, onField: this.onField, onBlur: this.onBlur, onSubmit: this.onSubmit,
+      showSummary: s.showSummary && errList.length > 0, errList, errCount: errList.length === 1 ? '1 field' : errList.length + ' fields',
+      formSuccess: s.status === 'success', formVisible: s.status !== 'success', formFailed: s.status === 'error', failMsg: s.failMsg,
+      mailtoHref: `mailto:holden.mercer@outlook.com?subject=${encodeURIComponent('Project enquiry — ' + (f.company || 'Website'))}&body=${mailBody}`,
+      sending, sendingStr: sending ? 'true' : 'false', submitLabel: sending ? 'Sending…' : 'Send enquiry', submitBg: sending ? '#5E5878' : '#1E1638', submitCursor: sending ? 'progress' : 'pointer',
+      overviewCount: f.overview.length + ' / 4000',
+      interestOptions: [...svcs.map((x) => ({ value: x.slug, label: x.name })), { value: 'not-sure', label: 'Not sure yet' }],
+      timelineOptions: ['As soon as possible', 'Within 3 months', '3–6 months', '6–12 months', 'Exploring options'],
+      budgetOptions: ['Under $50,000', '$50,000–$150,000', '$150,000–$500,000', 'Over $500,000', 'Prefer not to say'],
+      showBudget: P.showBudget ?? true,
+      resetForm: () => { this.startedAt = Date.now(); this.setState({ f: { ...this.EMPTY_F }, errors: {}, touched: {}, status: 'idle', showSummary: false }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

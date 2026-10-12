@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Mercer Technology Solutions — Technology, Orchestrated.</title>
+<meta name="description" content="Mercer Technology Solutions connects systems, modernizes infrastructure and builds technology foundations for enterprise growth. Phoenix, Arizona.">
+<meta property="og:title" content="Mercer Technology Solutions">
+<meta property="og:description" content="Complex technology. Clear business outcomes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;family=Unbounded:wght@400;500;600;700&amp;display=swap">
+<style>
+html{scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;background:#0D0A1C;color:#F4F0FF;font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#C9BAFF}
+a:hover{color:#FF8FC7}
+h1,h2,h3,h4,h5,p{margin:0}
+:focus-visible{outline:2px solid #FF8FC7;outline-offset:3px}
+::selection{background:#FF8FC7;color:#0D0A1C}
+input::placeholder,textarea::placeholder{color:#7D74A3}
+@keyframes mts-draw{to{stroke-dashoffset:0}}
+@keyframes mts-flow{to{stroke-dashoffset:-40}}
+@keyframes mts-glow{0%,100%{opacity:.2}50%{opacity:1}}
+@keyframes mts-spin{to{transform:rotate(360deg)}}
+@keyframes mts-marquee{to{transform:translateX(-50%)}}
+@keyframes mts-scan{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
+@keyframes mts-fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+[data-mts-paused] *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+</style>
+</helmet>
+
+<a href="#main" style="position:fixed;left:16px;top:-60px;z-index:200;background:#B9A6FF;color:#0D0A1C;padding:12px 16px;border-radius:8px;font-weight:700;text-decoration:none" style-focus="top:16px">Skip to content</a>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;background:{{ navBg }};border-bottom:1px solid {{ navBorder }};backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:background .3s,border-color .3s">
+  <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#/" aria-label="Mercer Technology Solutions — home" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#F4F0FF">
+      <span aria-hidden="true" style="position:relative;width:30px;height:30px;border:1px solid #B9A6FF;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(185,166,255,.35)">
+        <span style="width:10px;height:10px;background:#FF8FC7;border-radius:2px;box-shadow:0 0 12px #FF8FC7;transform:rotate(45deg)"></span>
+      </span>
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:'Unbounded',sans-serif;font-weight:600;font-size:17px;letter-spacing:.08em">MERCER</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#B6ADD3;margin-top:5px">TECHNOLOGY SOLUTIONS</span>
+      </span>
+    </a>
+    <sc-if value="{{ wideNav }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:4px">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
+          <a href="{{ item.href }}" aria-current="{{ item.current }}" style="display:flex;align-items:center;gap:8px;padding:10px 13px;border-radius:8px;color:{{ item.color }};text-decoration:none;font-size:14px;font-weight:600;transition:color .2s,background .2s" style-hover="color:#F4F0FF;background:rgba(185,166,255,.08)">
+            <span aria-hidden="true" style="width:5px;height:5px;border-radius:50%;background:#FF8FC7;box-shadow:0 0 8px #FF8FC7;opacity:{{ item.dot }}"></span>{{ item.label }}
+          </a>
+        </sc-for>
+        <a href="#/contact" style="margin-left:12px;display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-size:14px;font-weight:700;border-radius:10px;transition:background .25s,box-shadow .25s" style-hover="background:#FF8FC7;color:#0D0A1C;box-shadow:0 0 28px rgba(255,143,199,.5)">Discuss a Solution <span aria-hidden="true">→</span></a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ compactNav }}" hint-placeholder-val="{{ false }}">
+      <button type="button" ref="{{ menuBtnRef }}" onClick="{{ toggleMenu }}" aria-expanded="{{ menuExpanded }}" aria-controls="mobile-menu" style="display:flex;align-items:center;gap:12px;height:46px;padding:0 16px;background:rgba(185,166,255,.08);border:1px solid #3A2F6E;border-radius:10px;color:#F4F0FF;font:inherit;font-size:14px;font-weight:600;cursor:pointer">
+        <span>{{ menuLabel }}</span>
+        <span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px;width:16px">
+          <span style="height:1.5px;background:#F4F0FF;transform:{{ burgerTop }};transition:transform .25s"></span>
+          <span style="height:1.5px;background:#FF8FC7;transform:{{ burgerBot }};transition:transform .25s"></span>
+        </span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav id="mobile-menu" aria-label="Mobile" onKeyDown="{{ onMenuKey }}" style="position:fixed;top:72px;left:0;right:0;bottom:0;background:#0D0A1C;background-image:linear-gradient(rgba(185,166,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(185,166,255,.05) 1px,transparent 1px);background-size:48px 48px;overflow-y:auto;padding:12px clamp(20px,3.5vw,48px) 40px;display:flex;flex-direction:column;animation:mts-fade .25s ease">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
+        <a href="{{ item.href }}" aria-current="{{ item.current }}" style="display:flex;justify-content:space-between;align-items:center;min-height:62px;border-bottom:1px solid #2A2350;color:#F4F0FF;text-decoration:none;font-family:'Unbounded',sans-serif;font-size:24px;font-weight:500;letter-spacing:-.02em">
+          <span>{{ item.label }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#FF8FC7">{{ item.num }}</span>
+        </a>
+      </sc-for>
+      <a href="#/contact" style="margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;height:56px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:12px">Discuss a Solution <span aria-hidden="true">→</span></a>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;font-size:15px">
+        <a href="mailto:holden.mercer@outlook.com">holden.mercer@outlook.com</a>
+        <a href="tel:+14072398251">+1 (407) 239-8251</a>
+      </div>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="main" ref="{{ mainRef }}" tabIndex="-1" style="outline:none;display:block">
+
+<sc-if value="{{ page.home }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Home — Hero" style="position:relative;min-height:max(700px,100vh);overflow:hidden;display:flex;flex-direction:column;background-color:#0D0A1C;background-image:linear-gradient(rgba(185,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(185,166,255,.06) 1px,transparent 1px);background-size:64px 64px">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 72% 45%,rgba(155,130,255,.26),transparent 70%),radial-gradient(ellipse 35% 35% at 92% 88%,rgba(255,143,199,.18),transparent 70%),linear-gradient(180deg,transparent 70%,#0D0A1C)"></div>
+    <div aria-hidden="true" ref="{{ heroVisRef }}" style="position:absolute;top:56px;right:-4%;bottom:40px;width:{{ heroVisW }};opacity:{{ heroVisOp }};-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%);mask-image:linear-gradient(90deg,transparent 0%,#000 30%);transition:transform .6s cubic-bezier(.2,.7,.2,1)">{{ topoHero }}</div>
+    <div style="position:relative;z-index:2;flex:1;max-width:1480px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(120px,15vh,170px) clamp(20px,3.5vw,48px) 40px;display:flex;flex-direction:column;justify-content:center">
+      <p data-reveal="" style="align-self:flex-start;display:flex;align-items:center;gap:12px;padding:8px 14px;border:1px solid #3A2F6E;border-radius:8px;background:rgba(13,10,28,.6);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#C9BAFF">
+        <span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#FF8FC7;box-shadow:0 0 10px #FF8FC7;animation:mts-glow 2.4s ease-in-out infinite"></span>MTS / TECHNOLOGY, ORCHESTRATED.
+      </p>
+      <h1 style="margin-top:32px;max-width:15ch;font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(40px,6.3vw,108px);line-height:1;letter-spacing:-.045em;color:#F4F0FF">
+        <span data-reveal="" data-reveal-delay="80" style="display:block">Complex</span>
+        <span data-reveal="" data-reveal-delay="180" style="display:block">technology.</span>
+        <span data-reveal="" data-reveal-delay="300" style="display:block;margin-top:.08em;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.2em;line-height:1;letter-spacing:-.02em;color:#FF8FC7;text-shadow:0 0 40px rgba(255,143,199,.45)">Clear business outcomes.</span>
+      </h1>
+      <p data-reveal="" data-reveal-delay="440" style="margin-top:30px;max-width:480px;font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:#C4BCDF;text-wrap:pretty">Connect your systems, modernize your infrastructure, and build technology foundations that support your next stage of growth.</p>
+      <div data-reveal="" data-reveal-delay="540" style="margin-top:34px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#/contact" style="display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 26px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;font-size:15.5px;border-radius:12px;box-shadow:0 0 30px rgba(185,166,255,.3);transition:background .25s,box-shadow .25s,transform .25s" style-hover="background:#FF8FC7;color:#0D0A1C;box-shadow:0 0 40px rgba(255,143,199,.55);transform:translateY(-2px)">Discuss a Solution <span aria-hidden="true">→</span></a>
+        <a href="#capabilities" style="display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 24px;border:1px solid #3A2F6E;background:rgba(13,10,28,.5);color:#F4F0FF;text-decoration:none;font-weight:600;font-size:15.5px;border-radius:12px;transition:border-color .25s,background .25s" style-hover="border-color:#B9A6FF;background:rgba(185,166,255,.1);color:#F4F0FF">Explore Our Capabilities <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <div style="position:relative;z-index:2;border-top:1px solid #2A2350;background:rgba(13,10,28,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+      <div style="max-width:1480px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <sc-for list="{{ heroServices }}" as="s" hint-placeholder-count="3">
+          <a href="{{ s.href }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px clamp(20px,3.5vw,48px);border-right:1px solid #2A2350;color:#F4F0FF;text-decoration:none;font-size:15px;font-weight:600;transition:background .25s" style-hover="background:rgba(185,166,255,.08);color:#F4F0FF">
+            <span style="display:flex;align-items:center;gap:14px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FF8FC7">{{ s.n }}</span>{{ s.name }}</span><span aria-hidden="true" style="color:#B9A6FF">↗</span>
+          </a>
+        </sc-for>
+        <p style="display:flex;align-items:center;gap:10px;padding:22px clamp(20px,3.5vw,48px);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B6ADD3">PHOENIX, AZ · 33.45°N 112.07°W</p>
+      </div>
+    </div>
+  </section>
+
+  <div aria-hidden="true" style="background:#B9A6FF;color:#0D0A1C;overflow:hidden;padding:16px 0;border-block:1px solid #C9BAFF">{{ marquee }}</div>
+
+  <section id="capabilities" data-screen-label="Home — Capabilities" style="background:#0D0A1C;scroll-margin-top:72px;padding:clamp(64px,8vw,112px) 0">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px;align-items:end;margin-bottom:40px">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ 02 ] CAPABILITIES</p>
+          <h2 data-reveal="" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(32px,4.2vw,64px);line-height:1.02;letter-spacing:-.04em;max-width:14ch">Distinct disciplines. <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.15em;color:#C9BAFF">One connected system.</span></h2>
+        </div>
+        <p data-reveal="" style="font-size:17px;line-height:1.65;color:#B6ADD3;max-width:440px;text-wrap:pretty">Software, cloud and integration work best when they're planned together. Each capability can stand alone or form part of a wider programme.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+          <a href="{{ s.href }}" data-reveal="" data-reveal-delay="{{ s.delay }}" style="position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:440px;padding:28px;box-sizing:border-box;background:linear-gradient(180deg,#17122F,#110D24);border:1px solid #2A2350;border-radius:18px;color:#F4F0FF;text-decoration:none;transition:border-color .3s,box-shadow .3s,transform .3s" style-hover="border-color:{{ s.accent }};box-shadow:0 0 0 1px {{ s.accent }},0 20px 60px -20px {{ s.glow }};transform:translateY(-4px);color:#F4F0FF">
+            <span aria-hidden="true" style="position:absolute;right:-10px;top:-24px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:170px;line-height:1;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px {{ s.stroke }}">{{ s.n }}</span>
+            <span style="position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:{{ s.accent }}">/{{ s.n }}</span>
+                <sc-if value="{{ s.isDraft }}"><span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#FFC2E0;border:1px dashed #FF8FC7;padding:4px 8px;border-radius:6px">SAMPLE CONTENT</span></sc-if>
+              </span>
+              <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;border:1px solid #3A2F6E;display:flex;align-items:center;justify-content:center;color:{{ s.accent }}">↗</span>
+            </span>
+            <span aria-hidden="true" style="position:relative;display:flex;align-items:center">
+              <sc-for list="{{ s.dots }}" as="d" hint-placeholder-count="5">
+                <span style="display:flex;align-items:center;flex:{{ d.flex }}">
+                  <span style="width:{{ d.size }};height:{{ d.size }};border-radius:{{ d.radius }};border:1px solid {{ s.accent }};background:{{ d.fill }};box-shadow:{{ d.shadow }};flex:none"></span>
+                  <span style="flex:1;height:1px;background:linear-gradient(90deg,{{ s.accent }},transparent);opacity:{{ d.lineOp }}"></span>
+                </span>
+              </sc-for>
+            </span>
+            <span style="position:relative;display:flex;flex-direction:column;gap:16px">
+              <span style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,2.2vw,32px);font-weight:500;letter-spacing:-.035em;line-height:1.08">{{ s.name }}</span>
+              <span style="font-size:15.5px;line-height:1.6;color:#B6ADD3;text-wrap:pretty">{{ s.short }}</span>
+              <span style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ s.scopeTop }}" as="sc" hint-placeholder-count="4">
+                  <span style="padding:6px 10px;border:1px solid #2A2350;background:rgba(185,166,255,.05);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#D9D1F5">{{ sc }}</span>
+                </sc-for>
+              </span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+      <div data-reveal="" style="margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding:24px 28px;border:1px dashed #3A2F6E;border-radius:18px;background:rgba(255,143,199,.04)">
+        <p style="font-family:'Unbounded',sans-serif;font-size:clamp(18px,1.6vw,22px);font-weight:500;letter-spacing:-.02em">Not sure where your project fits?</p>
+        <a href="#/contact" style="display:inline-flex;align-items:center;gap:10px;font-weight:700;color:#FF8FC7;text-decoration:none" style-hover="color:#FFC2E0">Describe it and we'll map it with you →</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Home — Approach" style="position:relative;background:#110D24;border-top:1px solid #2A2350;padding:clamp(64px,8vw,112px) 0;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;left:-10%;top:20%;width:50%;height:60%;background:radial-gradient(closest-side,rgba(155,130,255,.16),transparent);pointer-events:none"></div>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+      <div style="position:sticky;top:110px;display:flex;flex-direction:column;gap:22px">
+        <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ 03 ] APPROACH</p>
+        <h2 data-reveal="" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(32px,4.2vw,64px);line-height:1.02;letter-spacing:-.04em;max-width:12ch">Start with the business. <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.15em;color:#C9BAFF">Then the system.</span></h2>
+        <p data-reveal="" style="font-size:17px;line-height:1.65;color:#B6ADD3;max-width:440px;text-wrap:pretty">A technology initiative holds up when each decision traces back to a business need. These are the questions we work through with you, in order.</p>
+        <p aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#B6ADD3;display:flex;align-items:center;gap:12px"><span style="color:#FF8FC7;font-size:28px;font-family:'Unbounded',sans-serif;font-weight:600">{{ stageCounter }}</span>/ 05 STAGES</p>
+      </div>
+      <ol ref="{{ approachRef }}" style="list-style:none;margin:0;padding:0;position:relative">
+        <span aria-hidden="true" style="position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:#2A2350"></span>
+        <span aria-hidden="true" ref="{{ approachFillRef }}" style="position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:linear-gradient(180deg,#B9A6FF,#FF8FC7);box-shadow:0 0 12px #FF8FC7;transform-origin:top;transform:scaleY(0);transition:transform .2s linear"></span>
+        <sc-for list="{{ stages }}" as="st" hint-placeholder-count="5">
+          <li style="position:relative;display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px;padding-bottom:28px">
+            <span style="width:56px;height:56px;border-radius:50%;border:1px solid {{ st.ring }};background:{{ st.dot }};color:{{ st.dotText }};box-shadow:{{ st.shadow }};display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;transition:all .4s">{{ st.n }}</span>
+            <span style="display:flex;flex-direction:column;gap:10px;padding:22px 24px;border:1px solid {{ st.border }};border-radius:16px;background:{{ st.bg }};transition:all .4s">
+              <h3 style="font-family:'Unbounded',sans-serif;font-size:21px;font-weight:500;letter-spacing:-.025em">{{ st.name }}</h3>
+              <p style="font-size:15.5px;line-height:1.6;color:#B6ADD3;text-wrap:pretty">{{ st.body }}</p>
+            </span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section data-screen-label="Home — Stack" style="background:#0D0A1C;border-top:1px solid #2A2350;padding:clamp(64px,8vw,112px) 0">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(32px,5vw,80px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ 04 ] ACROSS THE STACK</p>
+        <h2 data-reveal="" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,3.8vw,56px);line-height:1.04;letter-spacing:-.04em;max-width:14ch">Where each capability sits in <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.15em;color:#C9BAFF">your architecture.</span></h2>
+        <p data-reveal="" style="font-size:17px;line-height:1.65;color:#B6ADD3;max-width:440px">Select a capability to see the layers of an enterprise environment it typically touches.</p>
+        <div role="group" aria-label="Highlight layers by capability" style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ stackToggles }}" as="tg" hint-placeholder-count="3">
+            <button type="button" onClick="{{ tg.onClick }}" aria-pressed="{{ tg.pressed }}" style="min-height:44px;padding:0 16px;border-radius:10px;border:1px solid {{ tg.border }};background:{{ tg.bg }};color:{{ tg.color }};box-shadow:{{ tg.shadow }};font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s">{{ tg.name }}</button>
+          </sc-for>
+        </div>
+        <ul style="list-style:none;margin:8px 0 0;padding:0;border-top:1px solid #2A2350">
+          <sc-for list="{{ layers }}" as="ly" hint-placeholder-count="4">
+            <li style="display:grid;grid-template-columns:44px minmax(0,1fr) 12px;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #2A2350;opacity:{{ ly.op }};transition:opacity .3s">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:{{ ly.numColor }}">{{ ly.n }}</span>
+              <span style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Unbounded',sans-serif;font-size:16px;font-weight:500">{{ ly.name }}</span><span style="font-size:13.5px;color:#B6ADD3">{{ ly.desc }}</span></span>
+              <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:{{ ly.dot }};box-shadow:{{ ly.dotShadow }};transition:all .3s"></span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+      <div aria-hidden="true" data-reveal="clip" style="position:relative;height:{{ plateBoxH }};border:1px solid #2A2350;border-radius:20px;overflow:hidden;background-color:#0F0B22;background-image:radial-gradient(circle,rgba(185,166,255,.18) 1px,transparent 1.2px);background-size:22px 22px">
+        <span style="position:absolute;left:16px;top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#B6ADD3">STACK VIEW · {{ stackLabel }}</span>
+        <sc-for list="{{ plates }}" as="pl" hint-placeholder-count="4">
+          <span style="position:absolute;left:50%;top:52%;width:{{ plateS }};height:{{ plateS }};margin-left:{{ plateM }};margin-top:{{ plateM }};transform:translateY({{ pl.ty }}) rotateX(60deg) rotateZ(-45deg);border:1px solid {{ pl.border }};border-radius:14px;background-color:{{ pl.bg }};background-image:linear-gradient({{ pl.grid }} 1px,transparent 1px),linear-gradient(90deg,{{ pl.grid }} 1px,transparent 1px);background-size:22px 22px;box-shadow:{{ pl.shadow }};transition:transform .5s cubic-bezier(.2,.7,.2,1),background-color .4s,border-color .4s,box-shadow .4s"></span>
+        </sc-for>
+        <sc-for list="{{ plates }}" as="pl" hint-placeholder-count="4">
+          <span style="position:absolute;right:16px;top:calc(52% + {{ pl.ty }});transform:translateY(-50%);font-family:'JetBrains Mono',monospace;font-size:11px;color:{{ pl.labelColor }};display:flex;align-items:center;gap:8px;transition:color .3s"><span style="width:28px;height:1px;background:{{ pl.labelColor }}"></span>{{ pl.n }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Home — Industries (draft)" style="background:#110D24;padding:clamp(56px,7vw,96px) 0;border-top:1px dashed #FF8FC7">
+      <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:end">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,3.2vw,44px);letter-spacing:-.04em">Industries</h2>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFC2E0;border:1px dashed #FF8FC7;padding:6px 10px;border-radius:6px">SAMPLE CONTENT · REPLACE WITH VERIFIED INDUSTRIES</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px">
+          <sc-for list="{{ industryDrafts }}" as="ind" hint-placeholder-count="3">
+            <a href="#/industries" style="background:#15112B;border:1px solid #2A2350;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:#F4F0FF" style-hover="border-color:#FF8FC7;color:#F4F0FF">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#FF8FC7">{{ ind.n }}</span>
+              <span style="font-family:'Unbounded',sans-serif;font-size:20px;font-weight:500">{{ ind.name }}</span>
+              <span style="font-size:15px;color:#B6ADD3;line-height:1.5">{{ ind.challenges }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section data-screen-label="Home — Closing CTA" style="background:#0D0A1C;padding:clamp(16px,2.5vw,32px)">
+    <div style="position:relative;overflow:hidden;border:1px solid #3A2F6E;border-radius:clamp(20px,3vw,32px);padding:clamp(64px,9vw,140px) clamp(24px,5vw,80px);background-color:#120D2A;background-image:linear-gradient(rgba(185,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(185,166,255,.06) 1px,transparent 1px);background-size:48px 48px">
+      <div aria-hidden="true" style="position:absolute;inset:0;-webkit-mask-image:radial-gradient(ellipse at 80% 50%,#000 10%,transparent 65%);mask-image:radial-gradient(ellipse at 80% 50%,#000 10%,transparent 65%)">{{ topoCta }}</div>
+      <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 20% 100%,rgba(255,143,199,.18),transparent 70%)"></div>
+      <span aria-hidden="true" style="position:absolute;left:18px;top:18px;width:18px;height:18px;border-left:1px solid #FF8FC7;border-top:1px solid #FF8FC7"></span>
+      <span aria-hidden="true" style="position:absolute;right:18px;bottom:18px;width:18px;height:18px;border-right:1px solid #FF8FC7;border-bottom:1px solid #FF8FC7"></span>
+      <div style="position:relative;display:flex;flex-direction:column;gap:36px">
+        <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ 05 ] START A CONVERSATION</p>
+        <h2 data-reveal="" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(36px,6vw,100px);line-height:1;letter-spacing:-.05em;max-width:13ch;text-wrap:balance">Let's solve your next <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.15em;color:#FF8FC7;text-shadow:0 0 40px rgba(255,143,199,.5)">technology challenge.</span></h2>
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
+          <a href="#/contact" style="display:inline-flex;align-items:center;gap:12px;height:60px;padding:0 30px;background:#FF8FC7;color:#0D0A1C;text-decoration:none;font-weight:700;font-size:16px;border-radius:12px;box-shadow:0 0 40px rgba(255,143,199,.45);transition:background .25s,box-shadow .25s" style-hover="background:#FFC2E0;color:#0D0A1C;box-shadow:0 0 60px rgba(255,143,199,.65)">Discuss a Solution <span aria-hidden="true">→</span></a>
+          <a href="mailto:holden.mercer@outlook.com" style="font-family:'JetBrains Mono',monospace;font-size:14px">holden.mercer@outlook.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.solutions }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Solutions — Intro" style="position:relative;overflow:hidden;padding:clamp(130px,14vw,180px) 0 clamp(48px,6vw,80px);background-color:#0D0A1C;background-image:linear-gradient(rgba(185,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(185,166,255,.06) 1px,transparent 1px);background-size:64px 64px">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 85% 30%,rgba(155,130,255,.22),transparent 70%)"></div>
+    <span aria-hidden="true" style="position:absolute;right:-1vw;bottom:-5vw;font-family:'Unbounded',sans-serif;font-weight:700;font-size:28vw;line-height:.8;letter-spacing:-.08em;color:transparent;-webkit-text-stroke:1px rgba(185,166,255,.3)">SOL</span>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:32px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ SOLUTIONS ]</p>
+        <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(42px,6.4vw,104px);line-height:1;letter-spacing:-.05em">Capabilities, <span style="display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.2em;color:#FF8FC7;text-shadow:0 0 40px rgba(255,143,199,.4)">connected.</span></h1>
+      </div>
+      <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:#C4BCDF;max-width:500px;text-wrap:pretty">Explore each capability: the problems it addresses, what the work involves, and what to consider before you begin.</p>
+    </div>
+  </section>
+
+  <section id="explorer" aria-labelledby="explorer-title" data-screen-label="Solutions — Explorer" style="background:#0D0A1C;padding:clamp(24px,3vw,48px) 0 clamp(56px,7vw,96px);scroll-margin-top:84px">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px)">
+      <h2 id="explorer-title" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#B6ADD3;font-weight:500;margin-bottom:18px">SERVICE EXPLORER</h2>
+      <div style="display:flex;flex-wrap:wrap;border:1px solid #2A2350;border-radius:20px;overflow:hidden;background:#110D24">
+        <div role="tablist" aria-label="Services" aria-orientation="vertical" onKeyDown="{{ onTabKey }}" style="flex:1 1 280px;display:flex;flex-direction:column;border-right:1px solid #2A2350;background:#0F0B22">
+          <sc-for list="{{ svcTabs }}" as="tb" hint-placeholder-count="3">
+            <button type="button" role="tab" id="{{ tb.tabId }}" aria-selected="{{ tb.selected }}" aria-controls="svc-panel" tabIndex="{{ tb.tabindex }}" onClick="{{ tb.onClick }}" style="position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;padding:24px 26px;border:0;border-bottom:1px solid #2A2350;background:{{ tb.bg }};color:#F4F0FF;font:inherit;cursor:pointer;transition:background .25s">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:{{ tb.numColor }}">/{{ tb.n }}</span>
+              <span style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500;letter-spacing:-.02em">{{ tb.label }}</span>
+              <sc-if value="{{ tb.isDraft }}"><span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#FFC2E0">SAMPLE CONTENT</span></sc-if>
+              <span aria-hidden="true" style="position:absolute;right:0;top:0;bottom:0;width:2px;background:#FF8FC7;box-shadow:0 0 12px #FF8FC7;opacity:{{ tb.barOp }};transition:opacity .25s"></span>
+            </button>
+          </sc-for>
+        </div>
+        <div id="svc-panel" role="tabpanel" aria-labelledby="{{ act.tabId }}" tabIndex="0" style="flex:3 1 520px;min-width:0;padding:clamp(24px,3.5vw,48px);display:flex;flex-direction:column;gap:36px">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF8FC7">{{ act.n }} / SOLUTION OVERVIEW</p>
+            <h3 style="font-family:'Unbounded',sans-serif;font-size:clamp(28px,3vw,44px);font-weight:500;letter-spacing:-.04em;line-height:1.05">{{ act.name }}</h3>
+            <p style="font-size:17px;line-height:1.65;color:#C4BCDF;max-width:680px;text-wrap:pretty">{{ act.overview }}</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px">
+            <div style="border:1px solid #2A2350;border-radius:14px;padding:22px;background:#15112B">
+              <h4 style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#B9A6FF;font-weight:500;margin-bottom:6px">BUSINESS PROBLEMS ADDRESSED</h4>
+              <ul style="list-style:none;margin:0;padding:0">
+                <sc-for list="{{ act.problems }}" as="pr" hint-placeholder-count="3">
+                  <li style="display:grid;grid-template-columns:16px 1fr;gap:10px;padding:12px 0;border-top:1px solid #2A2350;font-size:15.5px;line-height:1.5"><span aria-hidden="true" style="width:6px;height:6px;background:#FF8FC7;box-shadow:0 0 8px #FF8FC7;transform:rotate(45deg);margin-top:8px"></span>{{ pr }}</li>
+                </sc-for>
+              </ul>
+            </div>
+            <div style="border:1px solid #2A2350;border-radius:14px;padding:22px;background:#15112B">
+              <h4 style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#B9A6FF;font-weight:500;margin-bottom:14px">RELEVANT TECHNICAL SCOPE</h4>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ act.scope }}" as="sc" hint-placeholder-count="4">
+                  <li style="padding:8px 12px;border:1px solid #3A2F6E;border-radius:8px;font-size:14px;background:rgba(185,166,255,.06)">{{ sc }}</li>
+                </sc-for>
+              </ul>
+              <p style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#FFC2E0">[Specific technologies and platforms — to be confirmed]</p>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#B9A6FF;font-weight:500;margin-bottom:6px">IMPLEMENTATION CONSIDERATIONS</h4>
+            <sc-for list="{{ act.considerations }}" as="c" hint-placeholder-count="4">
+              <div style="border-bottom:1px solid #2A2350">
+                <h5 style="font-size:inherit;font-weight:inherit">
+                  <button type="button" id="{{ c.btnId }}" aria-expanded="{{ c.expanded }}" aria-controls="{{ c.panelId }}" onClick="{{ c.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:58px;padding:0;background:none;border:0;font:inherit;font-size:16px;font-weight:600;color:#F4F0FF;text-align:left;cursor:pointer">
+                    {{ c.title }}
+                    <span aria-hidden="true" style="width:30px;height:30px;flex:none;display:flex;align-items:center;justify-content:center;border:1px solid {{ c.iconBorder }};border-radius:8px;color:{{ c.iconColor }};font-size:16px;transform:{{ c.rot }};transition:transform .3s,border-color .3s">+</span>
+                  </button>
+                </h5>
+                <div id="{{ c.panelId }}" role="region" aria-labelledby="{{ c.btnId }}" style="display:grid;grid-template-rows:{{ c.rows }};transition:grid-template-rows .3s cubic-bezier(.2,.7,.2,1)">
+                  <div style="overflow:hidden;visibility:{{ c.vis }}"><p style="padding:0 0 20px;font-size:15.5px;line-height:1.65;color:#B6ADD3;max-width:660px">{{ c.body }}</p></div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+            <p style="font-size:14.5px;color:#B6ADD3">Related industry use cases: <strong style="color:#F4F0FF;font-weight:600">none published yet</strong></p>
+            <a href="{{ act.contactHref }}" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:12px;transition:background .25s,box-shadow .25s" style-hover="background:#FF8FC7;color:#0D0A1C;box-shadow:0 0 30px rgba(255,143,199,.45)">Discuss {{ act.name }} <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Solutions — In context" style="background:#110D24;border-top:1px solid #2A2350;padding:clamp(56px,7vw,100px) 0">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:clamp(48px,6vw,88px)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+        <article style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};gap:clamp(28px,4vw,64px);align-items:center">
+          <div data-reveal="clip" style="position:relative;flex:1 1 420px;min-width:0;aspect-ratio:16/10;border-radius:20px;border:1px solid #2A2350;background:repeating-linear-gradient(135deg,#1A1436 0 12px,#130F28 12px 24px);display:flex;align-items:flex-end;padding:18px;box-sizing:border-box;overflow:hidden">
+            <span aria-hidden="true" style="position:absolute;left:14px;top:14px;width:16px;height:16px;border-left:1px solid {{ s.accent }};border-top:1px solid {{ s.accent }}"></span>
+            <span aria-hidden="true" style="position:absolute;right:14px;top:14px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1px {{ s.stroke }}">{{ s.n }}</span>
+            <span style="position:relative;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#C4BCDF;background:#0D0A1C;padding:7px 10px;border:1px solid #2A2350;border-radius:6px">{{ s.image }}</span>
+          </div>
+          <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:18px">
+            <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:{{ s.accent }}">/{{ s.n }}</p>
+            <h2 data-reveal="" style="font-family:'Unbounded',sans-serif;font-size:clamp(28px,3.2vw,48px);font-weight:500;letter-spacing:-.045em;line-height:1.04">{{ s.name }}</h2>
+            <p data-reveal="" style="font-size:17px;line-height:1.65;color:#B6ADD3;text-wrap:pretty">{{ s.short }}</p>
+            <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+              <button type="button" onClick="{{ s.openExplorer }}" style="min-height:48px;padding:0 20px;border:1px solid #3A2F6E;background:transparent;border-radius:12px;font:inherit;font-weight:600;cursor:pointer;color:#F4F0FF;transition:border-color .25s,background .25s" style-hover="border-color:#B9A6FF;background:rgba(185,166,255,.08)">View details</button>
+              <a href="{{ s.contactHref }}" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:12px;background:rgba(255,143,199,.12);border:1px solid rgba(255,143,199,.4);color:#FFC2E0;text-decoration:none;font-weight:600" style-hover="background:#FF8FC7;color:#0D0A1C">Enquire →</a>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.industries }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Industries — Intro" style="position:relative;overflow:hidden;padding:clamp(130px,14vw,180px) 0 clamp(48px,6vw,80px);background:#0D0A1C">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 10% 0%,rgba(255,143,199,.16),transparent 70%),radial-gradient(ellipse 50% 60% at 90% 80%,rgba(155,130,255,.2),transparent 70%)"></div>
+    <div aria-hidden="true" style="position:absolute;right:clamp(20px,3.5vw,48px);top:120px;display:grid;grid-template-columns:repeat(6,14px);gap:14px;opacity:.6">
+      <sc-for list="{{ dotGrid }}" as="d" hint-placeholder-count="24"><span style="width:14px;height:14px;border-radius:{{ d.r }};border:1px solid {{ d.c }};background:{{ d.f }}"></span></sc-for>
+    </div>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:24px">
+      <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ INDUSTRIES ]</p>
+      <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(38px,5.6vw,92px);line-height:1.02;letter-spacing:-.05em;max-width:14ch">Technology shaped by <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.18em;color:#FF8FC7">the sector it serves.</span></h1>
+      <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:#C4BCDF;max-width:540px;text-wrap:pretty">Each industry has its own constraints, regulations and ways of working. We publish industry profiles once each one is backed by verified work.</p>
+    </div>
+  </section>
+  <section data-screen-label="Industries — Profiles" style="background:#110D24;border-top:1px solid #2A2350;padding:clamp(56px,7vw,100px) 0">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px)">
+      <sc-if value="{{ noDrafts }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,64px)">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <h2 style="font-family:'Unbounded',sans-serif;font-size:clamp(26px,3vw,42px);font-weight:500;letter-spacing:-.04em;line-height:1.08;max-width:15ch">Industry profiles are in preparation.</h2>
+            <p style="font-size:17px;line-height:1.65;color:#B6ADD3;max-width:460px">If you're evaluating a partner for a specific sector, tell us about your environment and we'll discuss how our capabilities apply.</p>
+            <a href="#/contact" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:12px" style-hover="background:#FF8FC7;color:#0D0A1C">Tell us about your sector <span aria-hidden="true">→</span></a>
+          </div>
+          <div style="border:1px solid #2A2350;border-radius:18px;background:#15112B;padding:8px clamp(20px,2.5vw,32px)">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#B9A6FF;padding:18px 0 6px">EACH PROFILE WILL COVER</p>
+            <ol style="list-style:none;margin:0;padding:0">
+              <sc-for list="{{ industryFields }}" as="fl" hint-placeholder-count="5">
+                <li data-reveal="" style="display:grid;grid-template-columns:44px 1fr;gap:12px;padding:18px 0;border-top:1px solid #2A2350">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#FF8FC7;padding-top:4px">{{ fl.n }}</span>
+                  <span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Unbounded',sans-serif;font-size:17px;font-weight:500">{{ fl.name }}</span><span style="font-size:14.5px;color:#B6ADD3">{{ fl.desc }}</span></span>
+                </li>
+              </sc-for>
+            </ol>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <span style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFC2E0;border:1px dashed #FF8FC7;padding:6px 10px;border-radius:6px">SAMPLE CONTENT · FOR LAYOUT PREVIEW ONLY</span>
+          <div role="tablist" aria-label="Draft industries" style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ industryTabs }}" as="it" hint-placeholder-count="3">
+              <button type="button" role="tab" aria-selected="{{ it.selected }}" onClick="{{ it.onClick }}" style="min-height:46px;padding:0 18px;border-radius:10px;border:1px solid {{ it.border }};background:{{ it.bg }};font:inherit;font-size:14.5px;font-weight:600;color:{{ it.color }};cursor:pointer">{{ it.n }} · {{ it.name }}</button>
+            </sc-for>
+          </div>
+          <div role="tabpanel" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px">
+            <sc-for list="{{ indDetail }}" as="d" hint-placeholder-count="4">
+              <div style="background:#15112B;border:1px solid #2A2350;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;min-height:130px">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B9A6FF">{{ d.label }}</span>
+                <span style="font-size:15.5px;line-height:1.55;color:#C4BCDF">{{ d.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.cases }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Case Studies — Intro" style="position:relative;overflow:hidden;padding:clamp(130px,14vw,180px) 0 clamp(48px,6vw,80px);background-color:#0D0A1C;background-image:linear-gradient(rgba(185,166,255,.06) 1px,transparent 1px);background-size:100% 40px">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 45% 70% at 80% 40%,rgba(155,130,255,.2),transparent 70%)"></div>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:32px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ CASE STUDIES ]</p>
+        <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(42px,6.4vw,104px);line-height:1;letter-spacing:-.05em">Work, <span style="display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.2em;color:#FF8FC7">documented.</span></h1>
+      </div>
+      <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:#C4BCDF;max-width:500px">Every case study here is published with client approval and describes verified outcomes only.</p>
+    </div>
+  </section>
+  <section data-screen-label="Case Studies — Portfolio" style="background:#110D24;border-top:1px solid #2A2350;padding:clamp(48px,6vw,88px) 0">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px)">
+      <sc-if value="{{ noDrafts }}" hint-placeholder-val="{{ true }}">
+        <div style="border:1px solid #2A2350;border-radius:20px;background:#15112B;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;align-items:center">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF8FC7">PORTFOLIO · 0 PUBLISHED</p>
+            <h2 style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,2.8vw,40px);font-weight:500;letter-spacing:-.04em;line-height:1.1">Case studies will appear here once approved for publication.</h2>
+            <p style="font-size:16.5px;line-height:1.65;color:#B6ADD3">In the meantime, we're happy to talk through relevant experience directly.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href="#/contact" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:12px" style-hover="background:#FF8FC7;color:#0D0A1C">Discuss a Solution <span aria-hidden="true">→</span></a>
+              <a href="#/solutions" style="display:inline-flex;align-items:center;height:52px;padding:0 20px;border:1px solid #3A2F6E;border-radius:12px;text-decoration:none;color:#F4F0FF;font-weight:600" style-hover="border-color:#B9A6FF;color:#F4F0FF">View capabilities</a>
+            </div>
+          </div>
+          <div aria-hidden="true" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <span style="aspect-ratio:4/3;border-radius:14px;border:1px dashed #3A2F6E;background:repeating-linear-gradient(135deg,rgba(185,166,255,.05) 0 10px,transparent 10px 20px)"></span>
+            <span style="aspect-ratio:4/3;border-radius:14px;border:1px dashed #FF8FC7;opacity:.5"></span>
+            <span style="aspect-ratio:4/3;border-radius:14px;border:1px dashed #FF8FC7;opacity:.5"></span>
+            <span style="aspect-ratio:4/3;border-radius:14px;border:1px dashed #3A2F6E;background:repeating-linear-gradient(135deg,rgba(185,166,255,.05) 0 10px,transparent 10px 20px)"></span>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
+            <div role="group" aria-label="Filter by solution" style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ caseFilters }}" as="cf" hint-placeholder-count="4">
+                <button type="button" aria-pressed="{{ cf.pressed }}" onClick="{{ cf.onClick }}" style="min-height:44px;padding:0 16px;border-radius:10px;border:1px solid {{ cf.border }};background:{{ cf.bg }};color:{{ cf.color }};font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s">{{ cf.label }}</button>
+              </sc-for>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFC2E0;border:1px dashed #FF8FC7;padding:6px 10px;border-radius:6px">SAMPLE CONTENT · NOT REAL CLIENTS</span>
+          </div>
+          <p aria-live="polite" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#B6ADD3">{{ caseCount }}</p>
+          <sc-if value="{{ casesEmpty }}">
+            <div style="border:1px dashed #3A2F6E;border-radius:18px;padding:48px 28px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+              <p style="font-family:'Unbounded',sans-serif;font-size:20px;font-weight:500">No case studies in this category yet.</p>
+              <button type="button" onClick="{{ resetCases }}" style="min-height:46px;padding:0 20px;border-radius:10px;border:0;background:#B9A6FF;color:#0D0A1C;font:inherit;font-weight:700;cursor:pointer">Show all case studies</button>
+            </div>
+          </sc-if>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px">
+            <sc-for list="{{ filteredCases }}" as="cs" hint-placeholder-count="2">
+              <a href="{{ cs.href }}" style="display:flex;flex-direction:column;border-radius:18px;overflow:hidden;border:1px solid #2A2350;background:#15112B;text-decoration:none;color:#F4F0FF;transition:border-color .3s,transform .3s" style-hover="border-color:#FF8FC7;transform:translateY(-4px);color:#F4F0FF">
+                <span style="aspect-ratio:16/8;background:repeating-linear-gradient(135deg,#1C1638 0 12px,#15112B 12px 24px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#0D0A1C;padding:6px 10px;border-radius:6px;border:1px solid #2A2350;color:#C4BCDF">IMAGE — approved project imagery</span></span>
+                <span style="padding:24px;display:flex;flex-direction:column;gap:10px">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#FF8FC7">{{ cs.cat }} · SAMPLE</span>
+                  <span style="font-family:'Unbounded',sans-serif;font-size:20px;font-weight:500;letter-spacing:-.025em">{{ cs.title }}</span>
+                  <span style="font-size:14.5px;color:#B6ADD3">{{ cs.ctx }}</span>
+                </span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.caseDetail }}" hint-placeholder-val="{{ false }}">
+  <article data-screen-label="Case Study — Detail" style="background:#0D0A1C">
+    <header style="padding:clamp(120px,13vw,170px) 0 clamp(40px,5vw,72px);border-bottom:1px solid #2A2350;background:radial-gradient(ellipse 50% 80% at 85% 20%,rgba(155,130,255,.18),transparent 70%)">
+      <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:20px">
+        <a href="#/case-studies" style="align-self:flex-start;font-size:14.5px">← All case studies</a>
+        <span style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFC2E0;border:1px dashed #FF8FC7;padding:6px 10px;border-radius:6px">{{ caseItem.cat }} · SAMPLE CASE STUDY</span>
+        <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(32px,4.4vw,60px);line-height:1.06;letter-spacing:-.045em">{{ caseItem.title }}</h1>
+        <p style="font-size:17px;color:#B6ADD3">{{ caseItem.ctx }}</p>
+      </div>
+    </header>
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(40px,5vw,72px) clamp(20px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
+      <sc-for list="{{ caseSections }}" as="sec" hint-placeholder-count="6">
+        <section style="border:1px solid #2A2350;background:#15112B;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;min-height:130px">
+          <h2 style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:{{ sec.color }};font-weight:500">{{ sec.label }}</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:#C4BCDF">{{ sec.body }}</p>
+        </section>
+      </sc-for>
+    </div>
+    <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px) clamp(56px,7vw,96px);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center">
+      <p style="font-size:15.5px;color:#B6ADD3">Related solution: <a href="{{ caseItem.svcHref }}">{{ caseItem.cat }}</a></p>
+      <a href="#/contact" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:12px" style-hover="background:#FF8FC7;color:#0D0A1C">Discuss a similar project →</a>
+    </div>
+  </article>
+</sc-if>
+
+<sc-if value="{{ page.company }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Company — Intro" style="position:relative;overflow:hidden;padding:clamp(130px,14vw,180px) 0 clamp(40px,5vw,64px);background:#0D0A1C">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 100% 0%,rgba(155,130,255,.22),transparent 70%)"></div>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:24px">
+      <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ COMPANY ]</p>
+      <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(36px,5.6vw,92px);line-height:1.02;letter-spacing:-.05em;max-width:15ch">An enterprise technology partner, <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.18em;color:#FF8FC7">based in Phoenix.</span></h1>
+    </div>
+  </section>
+  <section data-screen-label="Company — Overview" style="background:#0D0A1C;padding:0 0 clamp(56px,7vw,96px)">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(24px,4vw,56px);align-items:stretch">
+      <div data-reveal="clip" style="position:relative;min-height:340px;border-radius:20px;border:1px solid #2A2350;background:repeating-linear-gradient(135deg,#1A1436 0 12px,#130F28 12px 24px);display:flex;align-items:flex-end;padding:18px;box-sizing:border-box">
+        <span aria-hidden="true" style="position:absolute;left:14px;top:14px;width:16px;height:16px;border-left:1px solid #FF8FC7;border-top:1px solid #FF8FC7"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#C4BCDF;background:#0D0A1C;padding:7px 10px;border:1px solid #2A2350;border-radius:6px">IMAGE — architectural office facade, editorial</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;justify-content:center">
+        <p data-reveal="" style="font-family:'Unbounded',sans-serif;font-size:clamp(20px,2vw,28px);line-height:1.35;letter-spacing:-.025em;font-weight:400;text-wrap:pretty">Mercer Technology Solutions helps organizations plan, build and connect the technology they run on: <span style="color:#C9BAFF">enterprise software, cloud environments and the integrations between them.</span></p>
+        <p data-reveal="" style="font-size:16px;line-height:1.7;color:#B6ADD3">[Company overview — extended history and background to be supplied and approved before publication.]</p>
+        <dl data-reveal="" style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:#2A2350;border:1px solid #2A2350;border-radius:14px;overflow:hidden">
+          <div style="background:#15112B;padding:20px"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B9A6FF">LOCATION</dt><dd style="margin:8px 0 0;font-size:15.5px">301 E Jefferson St<br>Phoenix, AZ 85004</dd></div>
+          <div style="background:#15112B;padding:20px"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B9A6FF">FOCUS</dt><dd style="margin:8px 0 0;font-size:15.5px">Enterprise software, cloud and systems integration</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+  <section data-screen-label="Company — Principles" style="background:#110D24;border-top:1px solid #2A2350;padding:clamp(56px,7vw,100px) 0">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:32px">
+      <h2 data-reveal="" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,3.8vw,56px);letter-spacing:-.045em;line-height:1">How we <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.15em;color:#FF8FC7">work</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px">
+        <sc-for list="{{ principles }}" as="pp" hint-placeholder-count="4">
+          <div data-reveal="" data-reveal-delay="{{ pp.delay }}" style="background:{{ pp.bg }};color:{{ pp.fg }};border:1px solid {{ pp.border }};box-shadow:{{ pp.shadow }};border-radius:18px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:260px;box-sizing:border-box">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:{{ pp.accent }}">/{{ pp.n }}</span>
+            <span style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:'Unbounded',sans-serif;font-size:24px;font-weight:500;letter-spacing:-.04em">{{ pp.name }}</span>
+              <span style="font-size:15px;line-height:1.6;color:{{ pp.sub }}">{{ pp.body }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border:1px solid #2A2350;border-radius:18px;background:#15112B;padding:clamp(22px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(24px,2.6vw,36px);letter-spacing:-.04em">Leadership</h2>
+          <p style="font-size:16px;line-height:1.65;color:#B6ADD3;max-width:440px">Leadership profiles will be published once titles and biographies have been verified.</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;padding:20px;border-radius:14px;border:1px solid #3A2F6E;background:#0F0B22">
+          <span aria-hidden="true" style="width:64px;height:64px;flex:none;border-radius:50%;border:1px solid #FF8FC7;box-shadow:0 0 20px rgba(255,143,199,.35);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-weight:600;font-size:18px;color:#FFC2E0">HM</span>
+          <span style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#FF8FC7">PRIMARY CONTACT</span>
+            <span style="font-family:'Unbounded',sans-serif;font-size:19px;font-weight:500">Holden Mercer</span>
+            <a href="mailto:holden.mercer@outlook.com" style="font-size:14.5px;word-break:break-all">holden.mercer@outlook.com</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.careers }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Careers — Intro" style="position:relative;overflow:hidden;padding:clamp(130px,14vw,180px) 0 clamp(48px,6vw,80px);background-color:#0D0A1C;background-image:radial-gradient(circle,rgba(185,166,255,.16) 1px,transparent 1.2px);background-size:24px 24px">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 80% 50%,rgba(255,143,199,.16),transparent 70%),linear-gradient(90deg,#0D0A1C 20%,transparent)"></div>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:24px">
+      <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ CAREERS ]</p>
+      <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(40px,6.2vw,100px);line-height:1;letter-spacing:-.05em;max-width:12ch">Build what <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.2em;color:#FF8FC7">holds it all together.</span></h1>
+    </div>
+  </section>
+  <section data-screen-label="Careers — Openings" style="background:#110D24;border-top:1px solid #2A2350;padding:clamp(48px,6vw,88px) 0">
+    <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(24px,2.6vw,36px);letter-spacing:-.04em">Open positions</h2>
+      <sc-if value="{{ noDrafts }}" hint-placeholder-val="{{ true }}">
+        <div style="border:1px solid #2A2350;background:#15112B;border-radius:18px;padding:clamp(26px,4vw,48px);display:flex;flex-direction:column;gap:12px">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#FF8FC7">0 OPEN ROLES</p>
+          <p style="font-family:'Unbounded',sans-serif;font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:-.03em">There are no open positions right now.</p>
+          <p style="font-size:16px;line-height:1.65;color:#B6ADD3;max-width:540px">New roles will be listed on this page as they open, with details on how to apply.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ jobs }}" as="jb" hint-placeholder-count="1">
+            <li>
+              <a href="{{ jb.href }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px;align-items:center;padding:22px 24px;border-radius:14px;border:1px solid #2A2350;background:#15112B;text-decoration:none;color:#F4F0FF;transition:border-color .25s" style-hover="border-color:#FF8FC7;color:#F4F0FF">
+                <span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500">{{ jb.title }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#FFC2E0">SAMPLE CONTENT</span></span>
+                <span style="font-size:14.5px;color:#B6ADD3">{{ jb.dept }}</span>
+                <span style="font-size:14.5px;color:#B6ADD3">{{ jb.loc }}</span>
+                <span style="font-size:14.5px;color:#B6ADD3">{{ jb.type }}</span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.jobDetail }}" hint-placeholder-val="{{ false }}">
+  <article data-screen-label="Careers — Job detail" style="background:#0D0A1C;padding:clamp(120px,13vw,170px) 0 clamp(56px,7vw,96px)">
+    <div style="max-width:860px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:20px">
+      <a href="#/careers" style="align-self:flex-start;font-size:14.5px">← All positions</a>
+      <span style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFC2E0;border:1px dashed #FF8FC7;padding:6px 10px;border-radius:6px">SAMPLE CONTENT</span>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(32px,4.4vw,60px);letter-spacing:-.045em;line-height:1.05">{{ job.title }}</h1>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#B6ADD3">{{ job.dept }} · {{ job.loc }} · {{ job.type }}</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+        <div style="border:1px solid #2A2350;background:#15112B;border-radius:14px;padding:24px"><h2 style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500;margin-bottom:8px">About the role</h2><p style="color:#C4BCDF;line-height:1.65">{{ job.about }}</p></div>
+        <div style="border:1px solid #2A2350;background:#15112B;border-radius:14px;padding:24px"><h2 style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500;margin-bottom:8px">Requirements</h2><ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;color:#C4BCDF;line-height:1.55"><sc-for list="{{ job.reqs }}" as="rq" hint-placeholder-count="4"><li>{{ rq }}</li></sc-for></ul></div>
+        <div style="border:1px solid #FF8FC7;background:rgba(255,143,199,.06);border-radius:14px;padding:24px"><h2 style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500;margin-bottom:8px">How to apply</h2><p style="color:#C4BCDF;line-height:1.65">{{ job.apply }}</p><a href="mailto:holden.mercer@outlook.com?subject=Application" style="display:inline-flex;margin-top:14px;align-items:center;height:48px;padding:0 20px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:12px">Apply by email →</a></div>
+      </div>
+    </div>
+  </article>
+</sc-if>
+
+<sc-if value="{{ page.insights }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Insights — Intro" style="position:relative;overflow:hidden;padding:clamp(130px,14vw,180px) 0 clamp(40px,5vw,72px);background:#0D0A1C">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 15% 30%,rgba(155,130,255,.2),transparent 70%)"></div>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:32px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ INSIGHTS ]</p>
+        <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(42px,6.4vw,104px);line-height:1;letter-spacing:-.05em">Notes on <span style="display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.2em;color:#FF8FC7">systems.</span></h1>
+      </div>
+      <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:#C4BCDF;max-width:500px">Technical perspectives and practical resources for teams planning enterprise technology work.</p>
+    </div>
+  </section>
+  <section data-screen-label="Insights — Articles" style="background:#110D24;border-top:1px solid #2A2350;padding:clamp(40px,5vw,80px) 0">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px)">
+      <sc-if value="{{ noDrafts }}" hint-placeholder-val="{{ true }}">
+        <div style="border:1px solid #2A2350;background:#15112B;border-radius:20px;padding:clamp(28px,5vw,64px);display:flex;flex-direction:column;gap:14px;max-width:820px">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF8FC7">0 ARTICLES PUBLISHED</p>
+          <h2 style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,2.8vw,40px);font-weight:500;letter-spacing:-.04em;line-height:1.1">The first articles are being prepared.</h2>
+          <p style="font-size:16.5px;line-height:1.65;color:#B6ADD3">Have a question you'd like us to cover? <a href="#/contact">Get in touch</a>.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showDrafts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+            <div role="group" aria-label="Filter by category" style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ insFilters }}" as="cf" hint-placeholder-count="4">
+                <button type="button" aria-pressed="{{ cf.pressed }}" onClick="{{ cf.onClick }}" style="min-height:44px;padding:0 16px;border-radius:10px;border:1px solid {{ cf.border }};background:{{ cf.bg }};color:{{ cf.color }};font:inherit;font-size:14px;font-weight:600;cursor:pointer">{{ cf.label }}</button>
+              </sc-for>
+            </div>
+            <label style="position:relative;display:flex;align-items:center;gap:10px;height:46px;padding:0 16px;border:1px solid #3A2F6E;border-radius:10px;background:#0F0B22;min-width:min(100%,300px);box-sizing:border-box">
+              <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search articles</span>
+              <span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#FF8FC7">&gt;_</span>
+              <input type="search" value="{{ query }}" onChange="{{ onQuery }}" placeholder="Search articles" style="flex:1;border:0;outline:none;font:inherit;font-size:15px;background:transparent;color:#F4F0FF;min-width:0">
+            </label>
+          </div>
+          <p aria-live="polite" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#B6ADD3">{{ insCount }}</p>
+          <sc-if value="{{ insEmpty }}">
+            <div style="border:1px dashed #3A2F6E;border-radius:18px;padding:48px 28px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+              <p style="font-family:'Unbounded',sans-serif;font-size:20px;font-weight:500">No articles match your search.</p>
+              <button type="button" onClick="{{ resetIns }}" style="min-height:46px;padding:0 20px;border-radius:10px;border:0;background:#B9A6FF;color:#0D0A1C;font:inherit;font-weight:700;cursor:pointer">Clear filters</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ hasFeatured }}">
+            <a href="{{ featured.href }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));border-radius:20px;overflow:hidden;border:1px solid #3A2F6E;background:#15112B;text-decoration:none;color:#F4F0FF;transition:border-color .3s" style-hover="border-color:#FF8FC7;color:#F4F0FF">
+              <span style="min-height:280px;background:repeating-linear-gradient(135deg,#1C1638 0 12px,#15112B 12px 24px);display:flex;align-items:flex-end;padding:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#0D0A1C;padding:6px 10px;border-radius:6px;border:1px solid #2A2350;color:#C4BCDF">IMAGE — abstract digital infrastructure</span></span>
+              <span style="padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:14px;justify-content:center">
+                <span style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;background:rgba(185,166,255,.12);color:#C9BAFF">FEATURED · {{ featured.cat }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;border:1px dashed #FF8FC7;color:#FFC2E0">{{ featured.status }}</span></span>
+                <span style="font-family:'Unbounded',sans-serif;font-size:clamp(22px,2.4vw,34px);font-weight:500;letter-spacing:-.04em;line-height:1.12">{{ featured.title }}</span>
+                <span style="font-size:15.5px;color:#B6ADD3">{{ featured.excerpt }}</span>
+              </span>
+            </a>
+          </sc-if>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
+            <sc-for list="{{ restArticles }}" as="ar" hint-placeholder-count="3">
+              <a href="{{ ar.href }}" style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:16px;border:1px solid #2A2350;background:#15112B;text-decoration:none;color:#F4F0FF;min-height:220px;box-sizing:border-box;transition:border-color .3s,transform .3s" style-hover="border-color:#B9A6FF;transform:translateY(-4px);color:#F4F0FF">
+                <span style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;background:rgba(185,166,255,.12);color:#C9BAFF">{{ ar.cat }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;border:1px dashed #FF8FC7;color:#FFC2E0">{{ ar.status }}</span></span>
+                <span style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500;letter-spacing:-.03em;line-height:1.25;flex:1">{{ ar.title }}</span>
+                <span style="font-size:14px;font-weight:700;color:#FF8FC7">Read article →</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.article }}" hint-placeholder-val="{{ false }}">
+  <article data-screen-label="Insights — Article" style="background:#0D0A1C;padding:clamp(120px,13vw,170px) 0 clamp(56px,7vw,96px)">
+    <div style="max-width:760px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:20px">
+      <a href="#/insights" style="align-self:flex-start;font-size:14.5px">← All insights</a>
+      <span style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;background:rgba(185,166,255,.12);color:#C9BAFF">{{ article.cat }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;border:1px dashed #FF8FC7;color:#FFC2E0">SAMPLE ARTICLE</span></span>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4vw,52px);letter-spacing:-.045em;line-height:1.08">{{ article.title }}</h1>
+      <p style="font-size:12.5px;color:#B6ADD3;font-family:'JetBrains Mono',monospace">{{ article.meta }}</p>
+      <div style="aspect-ratio:16/9;border-radius:18px;border:1px solid #2A2350;background:repeating-linear-gradient(135deg,#1C1638 0 12px,#15112B 12px 24px);display:flex;align-items:flex-end;padding:16px;box-sizing:border-box;margin:8px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#0D0A1C;padding:6px 10px;border-radius:6px;border:1px solid #2A2350;color:#C4BCDF">IMAGE — article lead image</span></div>
+      <sc-for list="{{ article.body }}" as="para" hint-placeholder-count="3"><p style="font-size:18.5px;line-height:1.75;color:#D9D1F5;text-wrap:pretty">{{ para }}</p></sc-for>
+      <div style="margin-top:20px;padding:24px;border-radius:16px;border:1px solid #3A2F6E;background:#15112B;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center">
+        <p style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500">Working on something similar?</p>
+        <a href="#/contact" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:12px" style-hover="background:#FF8FC7;color:#0D0A1C">Discuss a Solution →</a>
+      </div>
+    </div>
+  </article>
+</sc-if>
+
+<sc-if value="{{ page.contact }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Contact" style="position:relative;overflow:hidden;padding:clamp(110px,12vw,150px) 0 clamp(56px,7vw,96px);background-color:#0D0A1C;background-image:linear-gradient(rgba(185,166,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(185,166,255,.05) 1px,transparent 1px);background-size:64px 64px">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 45% 60% at 10% 20%,rgba(155,130,255,.2),transparent 70%),radial-gradient(ellipse 40% 50% at 90% 90%,rgba(255,143,199,.14),transparent 70%)"></div>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(28px,4vw,64px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:24px;padding-top:8px">
+        <p data-reveal="" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#FF8FC7">[ CONTACT ]</p>
+        <h1 data-reveal="" data-reveal-delay="100" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(40px,5.6vw,92px);line-height:1;letter-spacing:-.05em">Discuss a <span style="display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.2em;color:#FF8FC7;text-shadow:0 0 40px rgba(255,143,199,.4)">solution.</span></h1>
+        <p data-reveal="" data-reveal-delay="200" style="font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:#C4BCDF;max-width:460px;text-wrap:pretty">Tell us about the systems you're working with and what you need them to do. The more context you share, the more useful our first conversation will be.</p>
+        <dl data-reveal="" data-reveal-delay="300" style="margin:0;border:1px solid #2A2350;border-radius:16px;background:rgba(21,17,43,.8);max-width:480px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:16px 20px;border-bottom:1px solid #2A2350"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B9A6FF;padding-top:3px">COMPANY</dt><dd style="margin:0;font-size:15.5px">Mercer Technology Solutions</dd></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:16px 20px;border-bottom:1px solid #2A2350"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B9A6FF;padding-top:3px">CONTACT</dt><dd style="margin:0;font-size:15.5px">Holden Mercer</dd></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:16px 20px;border-bottom:1px solid #2A2350"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B9A6FF;padding-top:3px">EMAIL</dt><dd style="margin:0"><a href="mailto:holden.mercer@outlook.com" style="font-size:15.5px;word-break:break-all">holden.mercer@outlook.com</a></dd></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:16px 20px;border-bottom:1px solid #2A2350"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B9A6FF;padding-top:3px">PHONE</dt><dd style="margin:0"><a href="tel:+14072398251" style="font-size:15.5px">+1 (407) 239-8251</a></dd></div>
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:16px 20px"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#B9A6FF;padding-top:3px">ADDRESS</dt><dd style="margin:0"><address style="font-style:normal;font-size:15.5px;line-height:1.5">301 E Jefferson St<br>Phoenix, AZ 85004</address></dd></div>
+        </dl>
+      </div>
+
+      <div style="position:relative;border:1px solid #3A2F6E;border-radius:22px;background:#120E26;padding:clamp(22px,3.5vw,44px);box-shadow:0 0 0 1px rgba(185,166,255,.05),0 30px 80px -30px rgba(155,130,255,.45)">
+        <span aria-hidden="true" style="position:absolute;left:-1px;top:-1px;width:22px;height:22px;border-left:2px solid #FF8FC7;border-top:2px solid #FF8FC7;border-top-left-radius:22px"></span>
+        <span aria-hidden="true" style="position:absolute;right:-1px;bottom:-1px;width:22px;height:22px;border-right:2px solid #FF8FC7;border-bottom:2px solid #FF8FC7;border-bottom-right-radius:22px"></span>
+        <sc-if value="{{ formSuccess }}" hint-placeholder-val="{{ false }}">
+          <div role="status" ref="{{ successRef }}" tabIndex="-1" style="display:flex;flex-direction:column;gap:16px;padding:8px 0;outline:none">
+            <span aria-hidden="true" style="width:60px;height:60px;border-radius:50%;border:1px solid #6EE7B7;color:#6EE7B7;box-shadow:0 0 24px rgba(110,231,183,.35);display:flex;align-items:center;justify-content:center;font-size:26px">✓</span>
+            <h2 style="font-family:'Unbounded',sans-serif;font-size:28px;font-weight:500;letter-spacing:-.04em;line-height:1.15">Thank you. Your enquiry has been received.</h2>
+            <p style="font-size:16px;line-height:1.65;color:#B6ADD3">We'll review the details you shared and reply to the email address you provided. If anything changes in the meantime, you can reach us at <a href="mailto:holden.mercer@outlook.com">holden.mercer@outlook.com</a>.</p>
+            <button type="button" onClick="{{ resetForm }}" style="align-self:flex-start;min-height:48px;padding:0 20px;border-radius:12px;border:1px solid #3A2F6E;background:transparent;font:inherit;font-weight:600;cursor:pointer;color:#F4F0FF">Send another enquiry</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ formVisible }}" hint-placeholder-val="{{ true }}">
+          <form noValidate="{{ true }}" onSubmit="{{ onSubmit }}" aria-labelledby="form-title" style="display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap">
+              <h2 id="form-title" style="font-family:'Unbounded',sans-serif;font-size:24px;font-weight:500;letter-spacing:-.04em">Project enquiry</h2>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#B6ADD3"><span aria-hidden="true" style="color:#FF8FC7">*</span> Required<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> fields are marked with an asterisk</span></p>
+            </div>
+
+            <sc-if value="{{ showSummary }}">
+              <div ref="{{ summaryRef }}" tabIndex="-1" role="alert" style="border-radius:12px;background:rgba(255,122,138,.08);border:1px solid #FF7A8A;padding:16px 18px;outline:none">
+                <p style="font-weight:700;color:#FFB3BD;margin-bottom:8px">Please check {{ errCount }} before sending:</p>
+                <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px">
+                  <sc-for list="{{ errList }}" as="er">
+                    <li><a href="{{ er.href }}" onClick="{{ er.focus }}" style="color:#FFB3BD">{{ er.msg }}</a></li>
+                  </sc-for>
+                </ul>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ formFailed }}">
+              <div role="alert" style="border-radius:12px;background:rgba(255,196,120,.07);border:1px solid #E0A458;padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+                <p style="font-weight:700;color:#FFD39A">Your enquiry was not sent.</p>
+                <p style="font-size:14.5px;line-height:1.55;color:#EBD7B8">{{ failMsg }}</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px">
+                  <button type="submit" style="min-height:44px;padding:0 18px;border-radius:10px;border:0;background:#B9A6FF;color:#0D0A1C;font:inherit;font-weight:700;cursor:pointer">Try again</button>
+                  <a href="{{ mailtoHref }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-weight:600">Email your enquiry instead</a>
+                </div>
+              </div>
+            </sc-if>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-name" style="font-size:14px;font-weight:600">Full name <span aria-hidden="true" style="color:#FF8FC7">*</span></label>
+                <input id="f-name" name="name" type="text" autoComplete="name" maxLength="120" aria-required="true" aria-invalid="{{ inv.name }}" aria-describedby="e-name" value="{{ f.name }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:50px;padding:0 14px;font:inherit;font-size:16px;color:#F4F0FF;background:{{ fb.name }};border:1px solid {{ bc.name }};border-radius:10px;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#B9A6FF;box-shadow:0 0 0 3px rgba(185,166,255,.2)">
+                <sc-if value="{{ has.name }}"><p id="e-name" style="font-size:13px;color:#FFB3BD">{{ err.name }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-email" style="font-size:14px;font-weight:600">Business email <span aria-hidden="true" style="color:#FF8FC7">*</span></label>
+                <input id="f-email" name="email" type="email" autoComplete="email" maxLength="254" aria-required="true" aria-invalid="{{ inv.email }}" aria-describedby="e-email" value="{{ f.email }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:50px;padding:0 14px;font:inherit;font-size:16px;color:#F4F0FF;background:{{ fb.email }};border:1px solid {{ bc.email }};border-radius:10px;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#B9A6FF;box-shadow:0 0 0 3px rgba(185,166,255,.2)">
+                <sc-if value="{{ has.email }}"><p id="e-email" style="font-size:13px;color:#FFB3BD">{{ err.email }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-company" style="font-size:14px;font-weight:600">Company name <span aria-hidden="true" style="color:#FF8FC7">*</span></label>
+                <input id="f-company" name="company" type="text" autoComplete="organization" maxLength="160" aria-required="true" aria-invalid="{{ inv.company }}" aria-describedby="e-company" value="{{ f.company }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:50px;padding:0 14px;font:inherit;font-size:16px;color:#F4F0FF;background:{{ fb.company }};border:1px solid {{ bc.company }};border-radius:10px;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#B9A6FF;box-shadow:0 0 0 3px rgba(185,166,255,.2)">
+                <sc-if value="{{ has.company }}"><p id="e-company" style="font-size:13px;color:#FFB3BD">{{ err.company }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-title" style="font-size:14px;font-weight:600">Job title <span style="color:#B6ADD3;font-weight:400">(optional)</span></label>
+                <input id="f-title" name="title" type="text" autoComplete="organization-title" maxLength="120" value="{{ f.title }}" onChange="{{ onField }}" style="height:50px;padding:0 14px;font:inherit;font-size:16px;color:#F4F0FF;background:#0F0B22;border:1px solid #2A2350;border-radius:10px;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#B9A6FF;box-shadow:0 0 0 3px rgba(185,166,255,.2)">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-phone" style="font-size:14px;font-weight:600">Phone number <span style="color:#B6ADD3;font-weight:400">(optional)</span></label>
+                <input id="f-phone" name="phone" type="tel" autoComplete="tel" maxLength="30" aria-invalid="{{ inv.phone }}" aria-describedby="e-phone" value="{{ f.phone }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:50px;padding:0 14px;font:inherit;font-size:16px;color:#F4F0FF;background:{{ fb.phone }};border:1px solid {{ bc.phone }};border-radius:10px;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#B9A6FF;box-shadow:0 0 0 3px rgba(185,166,255,.2)">
+                <sc-if value="{{ has.phone }}"><p id="e-phone" style="font-size:13px;color:#FFB3BD">{{ err.phone }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-interest" style="font-size:14px;font-weight:600">Area of interest <span aria-hidden="true" style="color:#FF8FC7">*</span></label>
+                <select id="f-interest" name="interest" aria-required="true" aria-invalid="{{ inv.interest }}" aria-describedby="e-interest" value="{{ f.interest }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:50px;padding:0 12px;font:inherit;font-size:16px;color:#F4F0FF;background:{{ fb.interest }};border:1px solid {{ bc.interest }};border-radius:10px;outline:none">
+                  <option value="">Select an area</option>
+                  <sc-for list="{{ interestOptions }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for>
+                </select>
+                <sc-if value="{{ has.interest }}"><p id="e-interest" style="font-size:13px;color:#FFB3BD">{{ err.interest }}</p></sc-if>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="f-overview" style="font-size:14px;font-weight:600">Project overview / business challenge <span aria-hidden="true" style="color:#FF8FC7">*</span></label>
+              <textarea id="f-overview" name="overview" rows="5" maxLength="4000" aria-required="true" aria-invalid="{{ inv.overview }}" aria-describedby="h-overview e-overview" value="{{ f.overview }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="padding:12px 14px;font:inherit;font-size:16px;line-height:1.55;color:#F4F0FF;background:{{ fb.overview }};border:1px solid {{ bc.overview }};border-radius:10px;outline:none;resize:vertical;min-height:140px;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#B9A6FF;box-shadow:0 0 0 3px rgba(185,166,255,.2)"></textarea>
+              <p id="h-overview" style="font-size:12.5px;color:#B6ADD3;display:flex;justify-content:space-between;gap:12px"><span>Current systems, what needs to change, and any constraints.</span><span style="font-family:'JetBrains Mono',monospace">{{ overviewCount }}</span></p>
+              <sc-if value="{{ has.overview }}"><p id="e-overview" style="font-size:13px;color:#FFB3BD">{{ err.overview }}</p></sc-if>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label for="f-timeline" style="font-size:14px;font-weight:600">Expected timeline <span aria-hidden="true" style="color:#FF8FC7">*</span></label>
+                <select id="f-timeline" name="timeline" aria-required="true" aria-invalid="{{ inv.timeline }}" aria-describedby="e-timeline" value="{{ f.timeline }}" onChange="{{ onField }}" onBlur="{{ onBlur }}" style="height:50px;padding:0 12px;font:inherit;font-size:16px;color:#F4F0FF;background:{{ fb.timeline }};border:1px solid {{ bc.timeline }};border-radius:10px;outline:none">
+                  <option value="">Select a timeline</option>
+                  <sc-for list="{{ timelineOptions }}" as="o"><option value="{{ o }}">{{ o }}</option></sc-for>
+                </select>
+                <sc-if value="{{ has.timeline }}"><p id="e-timeline" style="font-size:13px;color:#FFB3BD">{{ err.timeline }}</p></sc-if>
+              </div>
+              <sc-if value="{{ showBudget }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <label for="f-budget" style="font-size:14px;font-weight:600">Estimated budget <span style="color:#B6ADD3;font-weight:400">(optional)</span></label>
+                  <select id="f-budget" name="budget" value="{{ f.budget }}" onChange="{{ onField }}" style="height:50px;padding:0 12px;font:inherit;font-size:16px;color:#F4F0FF;background:#0F0B22;border:1px solid #2A2350;border-radius:10px;outline:none">
+                    <option value="">Select a range</option>
+                    <sc-for list="{{ budgetOptions }}" as="o"><option value="{{ o }}">{{ o }}</option></sc-for>
+                  </select>
+                </div>
+              </sc-if>
+            </div>
+
+            <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
+              <label for="f-website">Website</label>
+              <input id="f-website" name="website" type="text" tabIndex="-1" autoComplete="off" value="{{ f.website }}" onChange="{{ onField }}">
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="f-consent" style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:14.5px;line-height:1.5;color:#D9D1F5">
+                <input id="f-consent" name="consent" type="checkbox" checked="{{ f.consent }}" onChange="{{ onField }}" aria-required="true" aria-invalid="{{ inv.consent }}" aria-describedby="e-consent" style="width:20px;height:20px;margin:2px 0 0;flex:none;accent-color:#FF8FC7;cursor:pointer">
+                <span>I agree that Mercer Technology Solutions may store and use these details to respond to my enquiry. <span aria-hidden="true" style="color:#FF8FC7">*</span> <span style="color:#B6ADD3">[Privacy policy link — add when published]</span></span>
+              </label>
+              <sc-if value="{{ has.consent }}"><p id="e-consent" style="font-size:13px;color:#FFB3BD;padding-left:32px">{{ err.consent }}</p></sc-if>
+            </div>
+
+            <button type="submit" disabled="{{ sending }}" aria-busy="{{ sendingStr }}" style="display:inline-flex;align-items:center;justify-content:center;gap:12px;height:58px;padding:0 28px;background:{{ submitBg }};color:#0D0A1C;border:0;border-radius:12px;font:inherit;font-size:16px;font-weight:700;cursor:{{ submitCursor }};box-shadow:0 0 30px rgba(185,166,255,.3);transition:background .25s,box-shadow .25s" style-hover="background:#FF8FC7;box-shadow:0 0 40px rgba(255,143,199,.5)">
+              <sc-if value="{{ sending }}"><span aria-hidden="true" style="width:18px;height:18px;border:2px solid rgba(13,10,28,.3);border-top-color:#0D0A1C;border-radius:50%;animation:mts-spin .8s linear infinite"></span></sc-if>
+              {{ submitLabel }}
+            </button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ page.notFound }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Not found" style="min-height:80vh;display:flex;align-items:center;padding:130px 0 72px;background-color:#0D0A1C;background-image:linear-gradient(rgba(185,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(185,166,255,.06) 1px,transparent 1px);background-size:64px 64px">
+    <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:20px;width:100%;box-sizing:border-box">
+      <p style="font-family:'Unbounded',sans-serif;font-size:clamp(96px,17vw,240px);font-weight:700;line-height:.85;letter-spacing:-.07em;color:transparent;-webkit-text-stroke:1.5px #FF8FC7;text-shadow:0 0 60px rgba(255,143,199,.35)">404</p>
+      <h1 style="font-family:'Unbounded',sans-serif;font-size:clamp(26px,3.4vw,44px);font-weight:500;letter-spacing:-.04em">This page isn't available.</h1>
+      <p style="font-size:17px;color:#B6ADD3">It may have moved, or it hasn't been published yet.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#/" style="display:inline-flex;align-items:center;height:52px;padding:0 22px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:12px" style-hover="background:#FF8FC7;color:#0D0A1C">Back to home</a>
+        <a href="#/contact" style="display:inline-flex;align-items:center;height:52px;padding:0 20px;border:1px solid #3A2F6E;color:#F4F0FF;text-decoration:none;font-weight:600;border-radius:12px" style-hover="border-color:#B9A6FF;color:#F4F0FF">Contact us</a>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+</main>
+
+<footer style="position:relative;overflow:hidden;background:#0A0817;border-top:1px solid #2A2350;padding:clamp(48px,6vw,88px) 0 28px">
+  <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,3.5vw,48px);display:flex;flex-direction:column;gap:clamp(36px,5vw,64px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:32px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <p style="font-family:'Unbounded',sans-serif;font-size:22px;font-weight:500;letter-spacing:-.035em;line-height:1.15">Technology, <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.2em;color:#FF8FC7">orchestrated.</span></p>
+        <a href="#/contact" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 18px;background:#B9A6FF;color:#0D0A1C;text-decoration:none;font-weight:700;border-radius:10px" style-hover="background:#FF8FC7;color:#0D0A1C">Discuss a Solution →</a>
+      </div>
+      <nav aria-label="Solutions" style="display:flex;flex-direction:column;gap:10px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#FF8FC7">SOLUTIONS</p>
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="3"><a href="{{ s.href }}" style="color:#D9D1F5;text-decoration:none;font-size:14.5px" style-hover="color:#FF8FC7">{{ s.name }}</a></sc-for>
+      </nav>
+      <nav aria-label="Company" style="display:flex;flex-direction:column;gap:10px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#FF8FC7">COMPANY</p>
+        <a href="#/company" style="color:#D9D1F5;text-decoration:none;font-size:14.5px" style-hover="color:#FF8FC7">Company</a>
+        <a href="#/industries" style="color:#D9D1F5;text-decoration:none;font-size:14.5px" style-hover="color:#FF8FC7">Industries</a>
+        <a href="#/case-studies" style="color:#D9D1F5;text-decoration:none;font-size:14.5px" style-hover="color:#FF8FC7">Case Studies</a>
+        <a href="#/careers" style="color:#D9D1F5;text-decoration:none;font-size:14.5px" style-hover="color:#FF8FC7">Careers</a>
+        <a href="#/insights" style="color:#D9D1F5;text-decoration:none;font-size:14.5px" style-hover="color:#FF8FC7">Insights</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#FF8FC7">CONTACT</p>
+        <address style="font-style:normal;font-size:14.5px;line-height:1.6;color:#D9D1F5">301 E Jefferson St<br>Phoenix, AZ 85004</address>
+        <a href="mailto:holden.mercer@outlook.com" style="font-size:14.5px;word-break:break-all">holden.mercer@outlook.com</a>
+        <a href="tel:+14072398251" style="font-size:14.5px">+1 (407) 239-8251</a>
+      </div>
+    </div>
+    
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:20px;border-top:1px solid #2A2350;font-family:'JetBrains Mono',monospace;font-size:12px;color:#B6ADD3">
+      <p>© {{ year }} Mercer Technology Solutions</p>
+      <p>Privacy policy and terms — to be published</p>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showSamples&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showBudget&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Enquiry form&quot;},&quot;enquiryEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Integrations&quot;}}">
+class Component extends DCLogic {
+  SVC = [
+    { slug: 'enterprise-software', name: 'Enterprise Software', status: 'published',
+      short: 'Software shaped around how your organization operates, from new platforms to modernizing the systems you already depend on.',
+      overview: 'We plan, design and build enterprise applications that fit the way your teams work, and modernize existing systems where they have become a constraint. Work starts with your processes and the systems around them, not a predetermined platform.',
+      problems: ['Core processes run across disconnected or ageing applications', 'Off-the-shelf tools no longer fit how teams work', 'Changes to critical systems are slow and risky'],
+      scope: ['Application architecture', 'Custom application development', 'Legacy system modernization', 'Workflow automation'],
+      cons: [['Existing system dependencies', 'New software rarely starts from a blank slate. Mapping the systems, data and teams it will depend on keeps scope realistic.'], ['Data migration and continuity', 'Plan how existing records move across, how they are validated, and how operations continue during the transition.'], ['Security and access', 'Define who needs access to what early, so roles, permissions and audit requirements are designed in rather than added later.'], ['Adoption and change', 'Software only delivers value when it is used. Training, rollout sequencing and feedback loops belong in the plan.']],
+      image: 'IMAGE — modern technology office, team at work' },
+    { slug: 'cloud-solutions', name: 'Cloud Solutions', status: 'published',
+      short: 'Cloud environments planned around your workloads, costs and compliance needs, with a clear path from where you are today.',
+      overview: 'We help organizations assess, plan and move to cloud environments, and bring structure to environments that have grown without a clear architecture. Decisions are grounded in workload needs, cost and governance.',
+      problems: ['Infrastructure costs and capacity are hard to predict', 'On-premise environments limit how quickly teams can deliver', 'Cloud environments have grown without a clear architecture'],
+      scope: ['Cloud readiness assessment', 'Migration planning', 'Cloud architecture', 'Governance and cost visibility'],
+      cons: [['Workload suitability', 'Not every workload benefits from moving. Assess each one for cost, performance and operational fit.'], ['Compliance and data residency', 'Confirm regulatory, contractual and data-location requirements before choosing services or regions.'], ['Cost visibility', 'Agree how spend will be tracked and owned so costs stay predictable after migration.'], ['Operational ownership', 'Decide who runs, monitors and supports each environment once it is live.']],
+      image: 'IMAGE — minimal cloud infrastructure architecture' },
+    { slug: 'systems-integration', name: 'Systems Integration', status: 'published',
+      short: "Connect the applications and data your teams rely on, so information moves reliably and work isn't repeated between systems.",
+      overview: 'We design and implement the connections between your business systems: APIs, data synchronization and event flows. The aim is dependable, observable integrations that reduce manual work and give teams a consistent view of their data.',
+      problems: ['Data is re-entered by hand between systems', 'Reporting depends on manual reconciliation', 'Each new tool adds to the integration backlog'],
+      scope: ['Integration architecture', 'API design and development', 'Data synchronization', 'Middleware and event flows'],
+      cons: [['System of record', "For each type of data, agree which system is authoritative so integrations don't create conflicting versions."], ['Error handling and monitoring', 'Integrations fail occasionally. Define how failures are detected, retried and reported.'], ['Change and versioning', "Plan for the systems on either side changing over time, so a vendor update doesn't break a critical flow."], ['Security between systems', 'Credentials, permissions and data in transit need the same care as any user-facing application.']],
+      image: 'IMAGE — connected nodes, technical diagram' },
+    { slug: 'infrastructure-managed-services', name: 'Infrastructure & Managed Services', status: 'draft',
+      short: '[Service description — publish only after this service is confirmed]',
+      overview: '[Overview pending confirmation that this service is offered.]',
+      problems: ['[Problem statement — to be confirmed]'], scope: ['[Scope — to be confirmed]'],
+      cons: [['[Consideration — to be confirmed]', '[Details pending]']],
+      image: 'IMAGE — data center architecture, blue lighting' }
+  ];
+  STAGES = [
+    ['Business needs', 'Start with the outcomes the organization needs, the constraints it works within, and who depends on the result.'],
+    ['System architecture', 'Map current systems, data flows and dependencies before choosing what to build, buy or change.'],
+    ['Integration', 'Plan how new and existing systems will exchange data reliably and securely.'],
+    ['Delivery', 'Deliver in stages that can be tested, adopted and measured against the original need.'],
+    ['Ongoing improvement', 'Treat launch as a starting point: monitor, refine and plan the next stage.']
+  ];
+  LAYERS = [
+    { n: 'L4', name: 'Business applications', desc: 'Workflows, portals and line-of-business software', svc: ['enterprise-software', 'systems-integration'] },
+    { n: 'L3', name: 'Data & integration', desc: 'APIs, data flows and synchronization', svc: ['systems-integration', 'enterprise-software'] },
+    { n: 'L2', name: 'Cloud platform', desc: 'Hosting, environments and governance', svc: ['cloud-solutions'] },
+    { n: 'L1', name: 'Infrastructure', desc: 'Networks, compute and storage', svc: ['cloud-solutions', 'infrastructure-managed-services'] }
+  ];
+  INDS = [
+    { name: 'Healthcare', challenges: 'Patient, scheduling and billing data spread across systems that were never designed to talk to each other.', solutions: 'Systems Integration, Enterprise Software', useCase: 'Connecting scheduling, records and billing so staff enter information once.', related: 'Unifying patient scheduling across legacy systems' },
+    { name: 'Financial Services', challenges: 'Core platforms that are expensive to run and slow to change, under strict compliance requirements.', solutions: 'Cloud Solutions, Systems Integration', useCase: 'Staged migration of a claims platform with compliance checks at each step.', related: 'Moving a claims platform to the cloud in stages' },
+    { name: 'Manufacturing', challenges: 'Production planning held in spreadsheets, with little visibility between the floor and the office.', solutions: 'Enterprise Software, Systems Integration', useCase: 'Replacing manual planning with an application connected to inventory data.', related: 'Replacing spreadsheet-based production planning' },
+    { name: 'Logistics & Distribution', challenges: 'Order, warehouse and carrier systems that drift out of sync and need manual reconciliation.', solutions: 'Systems Integration, Cloud Solutions', useCase: 'Event-driven integration between order management and warehouse systems.', related: 'None yet' }
+  ];
+  CASES = [
+    { id: 'patient-scheduling', cat: 'Systems Integration', slug: 'systems-integration', title: 'Unifying patient scheduling across legacy systems', ctx: 'Sample client: regional healthcare network',
+      sections: ['A multi-site healthcare provider running separate scheduling, records and billing systems at each location.', 'Staff re-entered appointment details several times, and reporting relied on manual reconciliation at month end.', 'Mapped every system and data flow first, agreed a system of record for each data type, then integrated one site before rolling out.', 'Integration architecture, API development, data synchronization, monitoring and alerting.', 'Phased rollout site by site, running old and new flows in parallel until each was validated.', 'Illustrative outcome: appointments entered once and visible everywhere. Replace with verified results.'] },
+    { id: 'claims-cloud', cat: 'Cloud Solutions', slug: 'cloud-solutions', title: 'Moving a claims platform to the cloud in stages', ctx: 'Sample client: mid-size insurance provider',
+      sections: ['An insurer running its claims platform on ageing on-premise infrastructure approaching end of support.', 'Capacity was hard to predict during peak periods, and every change required a long release window.', 'Assessed each workload for suitability, defined governance and cost ownership, then migrated in planned waves.', 'Cloud readiness assessment, migration planning, cloud architecture, cost visibility.', 'Non-critical workloads moved first; the core claims engine moved last, after rehearsals.', 'Illustrative outcome: predictable capacity and shorter release cycles. Replace with verified results.'] },
+    { id: 'production-planning', cat: 'Enterprise Software', slug: 'enterprise-software', title: 'Replacing spreadsheet-based production planning', ctx: 'Sample client: industrial components manufacturer',
+      sections: ['A manufacturer planning production across several lines using shared spreadsheets.', 'Plans went out of date within hours, and the floor had no live view of inventory or priorities.', 'Worked with planners and supervisors to model the real process before designing the application.', 'Custom application development, workflow automation, inventory integration.', 'Delivered in three releases, each adopted by one production line before the next.', 'Illustrative outcome: one shared, current plan for every line. Replace with verified results.'] }
+  ];
+  JOBS = [
+    { slug: 'senior-integration-engineer', title: 'Senior Integration Engineer', dept: 'Engineering', loc: 'Phoenix, AZ', type: 'Full-time',
+      about: 'Design and build the integrations that connect client business systems: APIs, data synchronization and event flows. You will work directly with client teams to understand their systems before writing any code.',
+      reqs: ['Experience designing and operating production integrations', 'Strong knowledge of REST APIs, messaging and data mapping', 'Comfort explaining technical trade-offs to non-technical stakeholders', 'A habit of building monitoring and error handling in from the start'],
+      apply: 'Send your CV and a short note about an integration you are proud of. Sample role: confirm details before publishing.' },
+    { slug: 'cloud-solutions-architect', title: 'Cloud Solutions Architect', dept: 'Cloud', loc: 'Phoenix, AZ / Hybrid', type: 'Full-time',
+      about: 'Lead cloud readiness assessments and migration plans, and help clients bring structure to environments that have grown without a clear architecture.',
+      reqs: ['Hands-on experience planning and running cloud migrations', 'Understanding of governance, security and cost management', 'Clear written communication for architecture documents', 'Experience working with regulated organizations is a plus'],
+      apply: 'Send your CV and a short note on a migration you led. Sample role: confirm details before publishing.' }
+  ];
+  INS = [
+    { slug: 'integration-before-software', cat: 'Integration', status: 'Sample', title: 'Map your integrations before you choose new software', excerpt: 'Most software projects inherit dependencies nobody wrote down. A short mapping exercise up front changes the scope, cost and risk of what you buy.', mins: 6,
+      body: ['New software rarely arrives into an empty space. It has to exchange data with finance, operations and reporting systems that already exist, and each of those connections carries assumptions.', 'Before comparing vendors, list every system the new application will touch, what data moves between them, and which system is authoritative for each type of record.', 'This map becomes the basis for realistic scope. It also tells you which integrations are critical on day one and which can follow later.'] },
+    { slug: 'cloud-readiness', cat: 'Cloud', status: 'Sample', title: 'What a cloud readiness review should answer', excerpt: 'Not every workload benefits from moving. A useful review tells you which ones do, what it will cost, and who will own them afterwards.', mins: 5,
+      body: ['A cloud readiness review should end with decisions, not a slide of logos. For each workload, it should say whether to move it, when, and why.', 'It should also cover compliance and data residency, expected running costs, and who will operate each environment once it is live.', 'Without those answers, migrations tend to move problems rather than solve them.'] },
+    { slug: 'modernizing-core-systems', cat: 'Architecture', status: 'Sample', title: 'Modernizing a core system without stopping the business', excerpt: 'Replacing a system everyone depends on is less risky when you plan it as a sequence of small, reversible steps.', mins: 7,
+      body: ['Core systems are hard to replace because so much depends on them. A single cut-over date concentrates all of that risk into one weekend.', 'A staged approach moves one capability at a time, runs old and new side by side, and keeps a way back at each step.', 'It takes more planning, but each stage can be tested, adopted and measured before the next begins.'] },
+    { slug: 'system-of-record', cat: 'Integration', status: 'Sample', title: 'Choosing a system of record', excerpt: 'When two systems both think they own customer data, integrations create conflicts instead of clarity.', mins: 4,
+      body: ['For every type of data, one system should be the source of truth. Others can read it, cache it or enrich it, but they should not compete to own it.', 'Agreeing this early is mostly an organizational conversation, not a technical one.', 'Once it is settled, integration design becomes much simpler.'] }
+  ];
+  EMPTY_F = { name: '', email: '', company: '', title: '', phone: '', interest: '', overview: '', timeline: '', budget: '', consent: false, website: '' };
+  LABELS = { name: 'Full name', email: 'Business email', company: 'Company name', phone: 'Phone number', interest: 'Area of interest', overview: 'Project overview', timeline: 'Expected timeline', consent: 'Consent' };
+
+  state = { route: this.parse(), w: typeof window !== 'undefined' ? window.innerWidth : 1440, scrolled: false, menuOpen: false, stackSel: null, svcSel: null, acc: null, indSel: 0, caseCat: 'All', insCat: 'All', query: '', stageOn: 0, f: { ...this.EMPTY_F }, errors: {}, touched: {}, status: 'idle', failMsg: '', showSummary: false };
+
+  mainRef = React.createRef(); menuBtnRef = React.createRef(); heroVisRef = React.createRef(); summaryRef = React.createRef(); successRef = React.createRef(); approachRef = React.createRef(); approachFillRef = React.createRef();
+
+  parse() {
+    const h = (typeof location !== 'undefined' && location.hash) || '#/';
+    if (!h.startsWith('#/')) return this.state ? this.state.route : { parts: [], q: {} };
+    const [p, qs] = h.slice(2).split('?');
+    const q = {}; new URLSearchParams(qs || '').forEach((v, k) => { q[k] = v; });
+    return { parts: p.split('/').filter(Boolean), q };
+  }
+
+  componentDidMount() {
+    this.rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.startedAt = Date.now();
+    this.applyRouteExtras(this.state.route);
+    this.onHash = () => {
+      const prev = this.state.route, r = this.parse();
+      if (r === prev) return;
+      const same = prev.parts[0] === 'solutions' && r.parts[0] === 'solutions';
+      this.setState({ route: r, menuOpen: false }, () => {
+        this.applyRouteExtras(r);
+        if (same) { const el = document.getElementById('explorer'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 84, behavior: this.rm ? 'auto' : 'smooth' }); }
+        else { window.scrollTo(0, 0); this.mainRef.current && this.mainRef.current.focus({ preventScroll: true }); }
+      });
+    };
+    this.onScroll = () => { this.tick(); const s = window.scrollY > 24; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onAnyScroll = () => this.tick();
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onVis = () => document.documentElement.toggleAttribute('data-mts-paused', document.hidden);
+    this.onMove = (e) => {
+      const el = this.heroVisRef.current; if (!el || this.rm || this.state.w < 980) return;
+      const x = e.clientX / window.innerWidth - .5, y = e.clientY / window.innerHeight - .5;
+      el.style.transform = `translate(${x * -16}px, ${y * -16}px)`;
+    };
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    document.addEventListener('scroll', this.onAnyScroll, { passive: true, capture: true });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('mousemove', this.onMove, { passive: true });
+    document.addEventListener('visibilitychange', this.onVis);
+    this.tickTimer = setInterval(() => this.tick(), 600);
+    this.onScroll();
+    this.reveal();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash); window.removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('scroll', this.onAnyScroll, true);
+    window.removeEventListener('resize', this.onResize); window.removeEventListener('mousemove', this.onMove);
+    document.removeEventListener('visibilitychange', this.onVis); clearInterval(this.tickTimer); clearTimeout(this.safety);
+    document.body.style.overflow = '';
+  }
+  componentDidUpdate(pp, ps) {
+    if (ps.route !== this.state.route || pp.showSamples !== this.props.showSamples) requestAnimationFrame(() => this.reveal());
+    if (ps.menuOpen !== this.state.menuOpen) {
+      document.body.style.overflow = this.state.menuOpen ? 'hidden' : '';
+      if (this.state.menuOpen) setTimeout(() => { const a = document.querySelector('#mobile-menu a'); a && a.focus(); }, 30);
+    }
+  }
+  applyRouteExtras(r) {
+    const titles = { '': 'Technology, Orchestrated.', solutions: 'Solutions', industries: 'Industries', 'case-studies': 'Case Studies', company: 'Company', careers: 'Careers', insights: 'Insights', contact: 'Discuss a Solution' };
+    document.title = (titles[r.parts[0] || ''] || 'Page not found') + ' — Mercer Technology Solutions';
+    if (r.parts[0] === 'solutions' && r.parts[1]) this.setState({ svcSel: r.parts[1] });
+    if (r.parts[0] === 'contact' && r.q.interest && this.SVC.some((s) => s.slug === r.q.interest)) this.setState((s) => ({ f: { ...s.f, interest: r.q.interest } }));
+  }
+
+  tick() {
+    const vh = window.innerHeight || 800;
+    document.querySelectorAll('[data-rv]:not([data-shown])').forEach((el) => { if (el.getBoundingClientRect().top < vh * 0.95) this.show(el); });
+    const ol = this.approachRef.current, fill = this.approachFillRef.current;
+    if (ol && fill) {
+      const r = ol.getBoundingClientRect(), mark = vh * 0.6;
+      const p = this.rm ? 1 : Math.max(0, Math.min(1, (mark - r.top) / Math.max(1, r.height - 60)));
+      fill.style.transform = `scaleY(${p})`;
+      let on = 0; ol.querySelectorAll('li').forEach((li) => { if (this.rm || li.getBoundingClientRect().top < mark) on++; });
+      if (on !== this.state.stageOn) this.setState({ stageOn: on });
+    }
+  }
+  reveal() {
+    if (this.rm) return;
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach((el) => {
+      el.setAttribute('data-rv', '1');
+      const k = el.getAttribute('data-reveal');
+      if (k === 'clip') { el.style.opacity = '0'; el.style.transform = 'translateY(40px) scale(.98)'; }
+      else { el.style.opacity = '0'; el.style.transform = 'translateY(26px)'; }
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => this.tick()));
+    clearTimeout(this.safety);
+    this.safety = setTimeout(() => document.querySelectorAll('[data-rv]:not([data-shown])').forEach((el) => { if (el.getBoundingClientRect().top < window.innerHeight * 1.5) this.show(el); }), 1500);
+  }
+  show(el) {
+    if (el.hasAttribute('data-shown')) return; el.setAttribute('data-shown', '1');
+    const d = +(el.getAttribute('data-reveal-delay') || 0), k = el.getAttribute('data-reveal'), ez = 'cubic-bezier(.2,.7,.2,1)';
+    const dur = k === 'clip' ? 1.1 : .8;
+    el.style.transition = `opacity ${dur}s ${ez} ${d}ms, transform ${dur}s ${ez} ${d}ms, border-color .3s, box-shadow .3s`;
+    el.style.opacity = '1'; el.style.transform = '';
+  }
+
+  buildTopo(seed) {
+    if (this['topo' + seed]) return this['topo' + seed];
+    let a = seed; const R = () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+    const h = React.createElement, C = { line: '#3D3275', hub: '#B9A6FF', flow: '#FF8FC7', node: '#0D0A1C', ns: '#9B82FF', glow: '#FF8FC7', label: '#C9BAFF' };
+    const core = { x: 450, y: 400 };
+    const hubs = [{ x: 230, y: 210, l: 'APPLICATIONS' }, { x: 680, y: 190, l: 'CLOUD' }, { x: 690, y: 620, l: 'INTEGRATION' }, { x: 220, y: 600, l: 'DATA' }];
+    const nodes = [], edges = [];
+    hubs.forEach((hb) => { for (let i = 0; i < 8; i++) { const g = R() * Math.PI * 2, r = 50 + R() * 100; const nd = { x: hb.x + Math.cos(g) * r, y: hb.y + Math.sin(g) * r }; nodes.push(nd); edges.push([hb, nd, 0]); } edges.push([hb, core, 1]); });
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) { const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y; if (dx * dx + dy * dy < 80 * 80 && R() < .5) edges.push([nodes[i], nodes[j], 0]); }
+    hubs.forEach((p, i) => edges.push([p, hubs[(i + 1) % 4], 2]));
+    const base = [], flows = [];
+    edges.forEach(([p, q, t], i) => {
+      if (t === 2) base.push(h('line', { key: 'e' + i, x1: p.x, y1: p.y, x2: q.x, y2: q.y, stroke: '#5A4A9E', strokeWidth: 1, strokeDasharray: '2 8', style: { animation: `mts-fade 1s ease ${1 + i * .02}s both` } }));
+      else base.push(h('line', { key: 'e' + i, x1: p.x, y1: p.y, x2: q.x, y2: q.y, pathLength: 1, stroke: t ? C.hub : C.line, strokeWidth: t ? 1.4 : 1, strokeDasharray: 1, strokeDashoffset: 1, style: { animation: `mts-draw 1.4s cubic-bezier(.6,0,.2,1) ${.2 + i * .016}s forwards` } }));
+      if (t === 1) flows.push(h('line', { key: 'f' + i, x1: p.x, y1: p.y, x2: q.x, y2: q.y, stroke: C.flow, strokeWidth: 2.4, strokeLinecap: 'round', strokeDasharray: '3 37', style: { animation: `mts-flow ${2 + R() * 1.5}s linear infinite` } }));
+    });
+    const kids = [h('g', { key: 'b' }, base), h('g', { key: 'fl', style: { filter: 'drop-shadow(0 0 4px #FF8FC7)' } }, flows)];
+    nodes.forEach((n, i) => {
+      if (R() < .35) kids.push(h('circle', { key: 'g' + i, cx: n.x, cy: n.y, r: 8, fill: C.glow, style: { opacity: .2, filter: 'blur(3px)', animation: `mts-glow ${3 + R() * 3}s ease-in-out ${R() * 4}s infinite` } }));
+      kids.push(h('circle', { key: 'n' + i, cx: n.x, cy: n.y, r: 2.5 + R() * 2, fill: C.node, stroke: C.ns, strokeWidth: 1.2 }));
+    });
+    hubs.forEach((hb, i) => {
+      kids.push(h('rect', { key: 'h' + i, x: hb.x - 10, y: hb.y - 10, width: 20, height: 20, rx: 4, fill: C.node, stroke: C.hub, strokeWidth: 1.4, transform: `rotate(45 ${hb.x} ${hb.y})` }));
+      kids.push(h('rect', { key: 'hi' + i, x: hb.x - 3, y: hb.y - 3, width: 6, height: 6, rx: 1, fill: C.flow, style: { filter: 'drop-shadow(0 0 4px #FF8FC7)' } }));
+      kids.push(h('text', { key: 'hl' + i, x: hb.x + 20, y: hb.y - 18, fill: C.label, style: { font: "500 12px 'JetBrains Mono', monospace", letterSpacing: '2px' } }, hb.l));
+    });
+    kids.push(h('circle', { key: 'cr2', cx: core.x, cy: core.y, r: 64, fill: 'none', stroke: '#3D3275', strokeWidth: 1 }));
+    kids.push(h('circle', { key: 'cr', cx: core.x, cy: core.y, r: 44, fill: 'none', stroke: C.flow, strokeWidth: 1.2, strokeDasharray: '4 8', style: { transformOrigin: `${core.x}px ${core.y}px`, animation: 'mts-spin 24s linear infinite' } }));
+    kids.push(h('circle', { key: 'cc', cx: core.x, cy: core.y, r: 20, fill: C.hub, style: { filter: 'drop-shadow(0 0 16px #B9A6FF)' } }));
+    kids.push(h('circle', { key: 'cd', cx: core.x, cy: core.y, r: 6, fill: C.glow }));
+    const el = h('svg', { viewBox: '0 0 900 800', width: '100%', height: '100%', preserveAspectRatio: 'xMidYMid slice', style: { display: 'block' } }, kids);
+    this['topo' + seed] = el; return el;
+  }
+  buildMarquee() {
+    if (this.mq) return this.mq;
+    const h = React.createElement, words = ['Enterprise Software', 'Cloud Solutions', 'Systems Integration', 'Technology, Orchestrated'];
+    const run = (k) => h('div', { key: k, style: { display: 'flex', alignItems: 'center', gap: 36, paddingRight: 36 } }, [0, 1].flatMap((r) => words.map((w, i) => [
+      h('span', { key: r + 'w' + i, style: i % 2 ? { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: 'clamp(26px,3vw,42px)', whiteSpace: 'nowrap' } : { fontFamily: "'Unbounded', sans-serif", fontSize: 'clamp(20px,2.3vw,32px)', fontWeight: 500, letterSpacing: '-.03em', whiteSpace: 'nowrap' } }, w),
+      h('span', { key: r + 's' + i, style: { width: 12, height: 12, background: '#0D0A1C', transform: 'rotate(45deg)', flex: 'none' } })])));
+    this.mq = h('div', { style: { display: 'flex', width: 'max-content', animation: 'mts-marquee 45s linear infinite' } }, run('a'), run('b'));
+    return this.mq;
+  }
+
+  selectSvc(slug, scroll) {
+    this.setState({ svcSel: slug, acc: null });
+    try { history.replaceState(null, '', '#/solutions/' + slug); this.setState({ route: { parts: ['solutions', slug], q: {} } }); } catch (e) {}
+    if (scroll) { const el = document.getElementById('explorer'); el && window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 84, behavior: this.rm ? 'auto' : 'smooth' }); }
+  }
+
+  validateField(n, f) {
+    const v = typeof f[n] === 'string' ? f[n].trim() : f[n];
+    switch (n) {
+      case 'name': return !v ? 'Enter your full name.' : v.length > 120 ? 'Name must be 120 characters or fewer.' : '';
+      case 'email': return !v ? 'Enter your business email address.' : !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? 'Enter a valid email address, like name@company.com.' : '';
+      case 'company': return !v ? 'Enter your company name.' : '';
+      case 'phone': return v && !/^[0-9+()\-.\s]{7,30}$/.test(v) ? 'Enter a valid phone number, or leave this blank.' : '';
+      case 'interest': return !v ? 'Select an area of interest.' : '';
+      case 'overview': return !v ? 'Describe your project or business challenge.' : v.length < 30 ? 'Add a little more detail (at least 30 characters).' : '';
+      case 'timeline': return !v ? 'Select an expected timeline.' : '';
+      case 'consent': return !v ? 'Confirm you agree so we can respond to your enquiry.' : '';
+      default: return '';
+    }
+  }
+  validateAll(f) { const e = {}; Object.keys(this.LABELS).forEach((k) => { const m = this.validateField(k, f); if (m) e[k] = m; }); return e; }
+
+  onField = (e) => {
+    const { name, type, checked, value } = e.target, v = type === 'checkbox' ? checked : value;
+    this.setState((s) => {
+      const f = { ...s.f, [name]: v }, errors = { ...s.errors };
+      if (s.touched[name] || s.showSummary || type === 'checkbox') { const m = this.validateField(name, f); if (m) errors[name] = m; else delete errors[name]; }
+      return { f, errors, showSummary: s.showSummary && Object.keys(errors).length > 0 };
+    });
+  };
+  onBlur = (e) => {
+    const n = e.target.name;
+    this.setState((s) => { const m = this.validateField(n, s.f), errors = { ...s.errors }; if (m) errors[n] = m; else delete errors[n]; return { touched: { ...s.touched, [n]: true }, errors }; });
+  };
+  onSubmit = async (e) => {
+    e.preventDefault();
+    if (this.state.status === 'sending') return;
+    const errors = this.validateAll(this.state.f);
+    if (Object.keys(errors).length) { this.setState({ errors, showSummary: true, status: 'idle' }, () => this.summaryRef.current && this.summaryRef.current.focus()); return; }
+    const f = this.state.f;
+    this.setState({ status: 'sending', showSummary: false, failMsg: '' });
+    const fail = (msg) => this.setState({ status: 'error', failMsg: msg });
+    if (f.website || Date.now() - this.startedAt < 2500) { await new Promise((r) => setTimeout(r, 600)); return fail('Something went wrong while sending. Please try again in a moment.'); }
+    const ep = (this.props.enquiryEndpoint || '').trim();
+    if (!ep) { await new Promise((r) => setTimeout(r, 700)); return fail('The online enquiry service is not connected yet, so this message could not be delivered. Your details are still in the form. Please email holden.mercer@outlook.com or call +1 (407) 239-8251.'); }
+    const payload = { name: f.name.trim(), email: f.email.trim().toLowerCase(), company: f.company.trim(), jobTitle: f.title.trim() || null, phone: f.phone.trim() || null, interest: f.interest, overview: f.overview.trim(), timeline: f.timeline, budget: f.budget || null, consent: true, meta: { source: 'website-contact', formStartedAt: new Date(this.startedAt).toISOString(), hp: f.website } };
+    try {
+      const res = await fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+      if (res.ok) { this.setState({ status: 'success' }, () => { this.successRef.current && this.successRef.current.focus(); }); return; }
+      if (res.status === 422) { let body = {}; try { body = await res.json(); } catch (x) {} const fe = body && body.errors; if (fe && typeof fe === 'object') { this.setState({ status: 'idle', errors: fe, showSummary: true }, () => this.summaryRef.current && this.summaryRef.current.focus()); return; } return fail('Some details could not be accepted. Please review the form and try again.'); }
+      if (res.status === 429) return fail('Too many submissions from this connection. Please wait a few minutes and try again.');
+      return fail('Our server could not process the enquiry. Please try again, or email holden.mercer@outlook.com.');
+    } catch (x) { return fail('We could not reach the server. Check your connection and try again.'); }
+  };
+
+  renderVals() {
+    const s = this.state, P = this.props, drafts = P.showSamples ?? true, r = s.route, top = r.parts[0] || '', sub = r.parts[1];
+    const wide = s.w >= 980, wideNav = s.w >= 1200;
+    const LAV = '#B9A6FF', PINK = '#FF8FC7';
+    const svcs = this.SVC.filter((x) => drafts || x.status === 'published');
+    const services = svcs.map((x, i) => {
+      const accent = i % 2 ? PINK : LAV;
+      return { ...x, n: String(i + 1).padStart(2, '0'), isDraft: x.status !== 'published', href: '#/solutions/' + x.slug, contactHref: '#/contact?interest=' + x.slug, accent, glow: i % 2 ? 'rgba(255,143,199,.45)' : 'rgba(185,166,255,.45)', stroke: i % 2 ? 'rgba(255,143,199,.22)' : 'rgba(185,166,255,.22)', delay: i * 100, dir: i % 2 ? 'row-reverse' : 'row', scopeTop: x.scope.slice(0, 4), openExplorer: () => this.selectSvc(x.slug, true),
+        dots: [0, 1, 2, 3, 4].map((k) => { const hub = k === (i % 3) + 1; return { flex: k === 4 ? '0 0 auto' : '1', size: hub ? '14px' : '8px', radius: hub ? '3px' : '50%', fill: hub ? accent : 'transparent', shadow: hub ? `0 0 14px ${accent}` : 'none', lineOp: k === 4 ? 0 : .7 }; }) };
+    });
+    const sel = services.find((x) => x.slug === (s.svcSel || sub)) || services[0];
+    const act = { ...sel, tabId: 'tab-' + sel.slug, considerations: sel.cons.map(([t, b], i) => { const key = sel.slug + i, open = s.acc === key; return { title: t, body: b, btnId: 'acc-b-' + key, panelId: 'acc-p-' + key, expanded: open ? 'true' : 'false', rows: open ? '1fr' : '0fr', vis: open ? 'visible' : 'hidden', rot: open ? 'rotate(45deg)' : 'none', iconBorder: open ? PINK : '#3A2F6E', iconColor: open ? PINK : '#C9BAFF', toggle: () => this.setState({ acc: open ? null : key }) }; }) };
+    const svcTabs = services.map((x) => { const on = x.slug === sel.slug; return { n: x.n, label: x.name, isDraft: x.isDraft, tabId: 'tab-' + x.slug, selected: on ? 'true' : 'false', tabindex: on ? 0 : -1, bg: on ? '#1C1638' : 'transparent', numColor: on ? PINK : '#B6ADD3', barOp: on ? 1 : 0, onClick: () => this.selectSvc(x.slug, false) }; });
+    const onTabKey = (e) => {
+      const i = services.findIndex((x) => x.slug === sel.slug); let j = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % services.length;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + services.length) % services.length;
+      if (e.key === 'Home') j = 0; if (e.key === 'End') j = services.length - 1;
+      if (j === null) return; e.preventDefault(); this.selectSvc(services[j].slug, false);
+      setTimeout(() => { const b = document.getElementById('tab-' + services[j].slug); b && b.focus(); }, 0);
+    };
+
+    const NAV = [['Solutions', 'solutions'], ['Industries', 'industries'], ['Case Studies', 'case-studies'], ['Company', 'company'], ['Careers', 'careers'], ['Insights', 'insights'], ['Contact', 'contact']];
+    const navItems = NAV.map(([label, key], i) => { const on = top === key; return { label, href: '#/' + key, current: on ? 'page' : undefined, color: on ? '#F4F0FF' : '#B6ADD3', dot: on ? 1 : 0, num: String(i + 1).padStart(2, '0') }; });
+
+    const stackToggles = services.map((x) => { const on = s.stackSel === x.slug; return { name: x.name, pressed: on ? 'true' : 'false', bg: on ? PINK : 'transparent', color: on ? '#0D0A1C' : '#F4F0FF', border: on ? PINK : '#3A2F6E', shadow: on ? '0 0 24px rgba(255,143,199,.45)' : 'none', onClick: () => this.setState({ stackSel: on ? null : x.slug }) }; });
+    const lst = this.LAYERS.map((l, i) => { const hit = !!s.stackSel && l.svc.includes(s.stackSel), dim = !!s.stackSel && !hit; return { ...l, i, hit, dim }; });
+    const layers = lst.map((l) => ({ ...l, op: l.dim ? .45 : 1, numColor: l.hit ? PINK : '#B9A6FF', dot: l.hit ? PINK : '#3A2F6E', dotShadow: l.hit ? '0 0 10px #FF8FC7' : 'none' }));
+    const plateS = wide ? 240 : 190, gap = wide ? 64 : 50;
+    const plates = lst.slice().reverse().map((l) => ({ n: l.n, ty: ((l.i - 1.5) * gap - (l.hit ? 16 : 0)) + 'px', border: l.hit ? PINK : '#4A3D88', bg: l.hit ? 'rgba(255,143,199,.16)' : 'rgba(28,22,56,.85)', grid: l.hit ? 'rgba(255,143,199,.3)' : 'rgba(185,166,255,.12)', shadow: l.hit ? '0 0 50px rgba(255,143,199,.5)' : '0 12px 30px rgba(0,0,0,.4)', labelColor: l.hit ? PINK : '#8C82B0' }));
+    const stackSvc = services.find((x) => x.slug === s.stackSel);
+
+    const industryDrafts = this.INDS.map((d, i) => ({ n: 'SAMPLE 0' + (i + 1), name: d.name, challenges: d.challenges }));
+    const industryTabs = industryDrafts.map((d, i) => { const on = s.indSel === i; return { n: '0' + (i + 1), name: this.INDS[i].name, selected: on ? 'true' : 'false', bg: on ? PINK : 'transparent', color: on ? '#0D0A1C' : '#F4F0FF', border: on ? PINK : '#3A2F6E', onClick: () => this.setState({ indSel: i }) }; });
+    const ci = this.INDS[s.indSel] || this.INDS[0]; const indDetail = [{ label: 'BUSINESS CHALLENGES', value: ci.challenges }, { label: 'RELEVANT SOLUTIONS', value: ci.solutions }, { label: 'EXAMPLE USE CASE', value: ci.useCase }, { label: 'RELATED CASE STUDY', value: ci.related }];
+    const industryFields = [['Industry name', 'The sector, named as the company describes it'], ['Business challenges', 'The operational problems specific to that sector'], ['Relevant solutions', 'Which capabilities apply, and how'], ['Verified use cases', 'Real, approved examples of the work'], ['Related case studies', 'Linked once clients approve publication']].map(([name, desc], i) => ({ n: '0' + (i + 1), name, desc }));
+    const dotGrid = Array.from({ length: 24 }, (_, i) => { const k = (i * 7) % 5; return { r: k === 0 ? '3px' : '50%', c: k === 0 ? PINK : '#4A3D88', f: k === 0 ? 'rgba(255,143,199,.3)' : 'transparent' }; });
+
+    const chip = (on) => ({ bg: on ? LAV : 'transparent', color: on ? '#0D0A1C' : '#F4F0FF', border: on ? LAV : '#3A2F6E', pressed: on ? 'true' : 'false' });
+    const caseFilters = ['All', 'Enterprise Software', 'Cloud Solutions', 'Systems Integration'].map((c) => ({ label: c, ...chip(s.caseCat === c), onClick: () => this.setState({ caseCat: c }) }));
+    const caseList = drafts ? this.CASES : [];
+    const filteredCases = caseList.filter((c) => s.caseCat === 'All' || c.cat === s.caseCat).map((c) => ({ ...c, href: '#/case-studies/' + c.id }));
+    const caseFound = top === 'case-studies' && sub ? caseList.find((c) => c.id === sub) : null;
+    const caseItem = caseFound ? { ...caseFound, svcHref: '#/solutions/' + caseFound.slug } : { title: '', cat: '', ctx: '', svcHref: '#/solutions' };
+    const caseSections = ['CONTEXT', 'CHALLENGE', 'APPROACH', 'TECHNOLOGY SCOPE', 'IMPLEMENTATION', 'OUTCOMES'].map((label, i) => ({ label, body: caseFound ? caseFound.sections[i] : '', color: i % 2 ? PINK : LAV }));
+
+    const jobList = drafts ? this.JOBS : [];
+    const jobs = jobList.map((j) => ({ ...j, href: '#/careers/' + j.slug }));
+    const jobFound = top === 'careers' && sub ? jobList.find((j) => j.slug === sub) : null;
+
+    const insList = drafts ? this.INS : [];
+    const qy = s.query.trim().toLowerCase();
+    const insF = insList.filter((a) => (s.insCat === 'All' || a.cat === s.insCat) && (!qy || (a.title + ' ' + a.cat).toLowerCase().includes(qy))).map((a) => ({ ...a, href: '#/insights/' + a.slug }));
+    const insFilters = ['All', 'Architecture', 'Cloud', 'Integration'].map((c) => ({ label: c, ...chip(s.insCat === c), onClick: () => this.setState({ insCat: c }) }));
+    const artFound = top === 'insights' && sub ? insList.find((a) => a.slug === sub) : null;
+
+    const page = { home: top === '', solutions: top === 'solutions', industries: top === 'industries', cases: top === 'case-studies' && !sub, caseDetail: !!caseFound, company: top === 'company', careers: top === 'careers' && !sub, jobDetail: !!jobFound, insights: top === 'insights' && !sub, article: !!artFound, contact: top === 'contact' };
+    page.notFound = !Object.values(page).some(Boolean);
+
+    const f = s.f, E = s.errors, fields = ['name', 'email', 'company', 'phone', 'interest', 'overview', 'timeline', 'consent'];
+    const inv = {}, has = {}, bc = {}, fb = {};
+    fields.forEach((k) => { const e = !!E[k]; inv[k] = e ? 'true' : 'false'; has[k] = e; bc[k] = e ? '#FF7A8A' : '#2A2350'; fb[k] = e ? '#1E0F1F' : '#0F0B22'; });
+    const errList = fields.filter((k) => E[k]).map((k) => ({ msg: E[k], href: '#', focus: (ev) => { ev.preventDefault(); const el = document.getElementById('f-' + k); el && el.focus(); } }));
+    const sending = s.status === 'sending';
+    const mailBody = encodeURIComponent(`Name: ${f.name}\nCompany: ${f.company}\nInterest: ${f.interest}\nTimeline: ${f.timeline}\n\n${f.overview}`);
+
+    return {
+      navBg: s.scrolled || s.menuOpen ? 'rgba(13,10,28,.82)' : 'rgba(13,10,28,0)', navBorder: s.scrolled ? '#2A2350' : 'transparent',
+      wideNav, compactNav: !wideNav, navItems, menuOpen: s.menuOpen, menuExpanded: s.menuOpen ? 'true' : 'false', menuLabel: s.menuOpen ? 'Close' : 'Menu',
+      burgerTop: s.menuOpen ? 'translateY(3.25px) rotate(45deg)' : 'none', burgerBot: s.menuOpen ? 'translateY(-3.25px) rotate(-45deg)' : 'none',
+      toggleMenu: () => this.setState((st) => ({ menuOpen: !st.menuOpen })),
+      onMenuKey: (e) => { if (e.key === 'Escape') { this.setState({ menuOpen: false }); this.menuBtnRef.current && this.menuBtnRef.current.focus(); } },
+      menuBtnRef: this.menuBtnRef, mainRef: this.mainRef, heroVisRef: this.heroVisRef, summaryRef: this.summaryRef, successRef: this.successRef, approachRef: this.approachRef, approachFillRef: this.approachFillRef,
+      page, showDrafts: drafts, noDrafts: !drafts, year: new Date().getFullYear(),
+      topoHero: this.buildTopo(7), topoCta: this.buildTopo(19), marquee: this.buildMarquee(),
+      heroVisW: wide ? 'min(1000px,70%)' : '140%', heroVisOp: wide ? 1 : .3,
+      heroServices: services.filter((x) => !x.isDraft), services,
+      stages: this.STAGES.map(([name, body], i) => { const on = i < s.stageOn; return { n: '0' + (i + 1), name, body, ring: on ? PINK : '#3A2F6E', dot: on ? PINK : '#110D24', dotText: on ? '#0D0A1C' : '#B6ADD3', shadow: on ? '0 0 24px rgba(255,143,199,.55)' : 'none', border: on ? '#4A3D88' : '#2A2350', bg: on ? '#1A1436' : 'rgba(21,17,43,.5)' }; }),
+      stageCounter: String(Math.max(1, s.stageOn)).padStart(2, '0'),
+      stackToggles, layers, plates, plateS: plateS + 'px', plateM: (-plateS / 2) + 'px', plateBoxH: wide ? '520px' : '400px', stackLabel: stackSvc ? stackSvc.name.toUpperCase() : 'ALL LAYERS',
+      industryDrafts, industryTabs, indDetail, industryFields, dotGrid,
+      svcTabs, act, onTabKey,
+      caseFilters, filteredCases, casesEmpty: drafts && filteredCases.length === 0, caseCount: filteredCases.length === 1 ? '1 SAMPLE CASE STUDY' : filteredCases.length + ' SAMPLE CASE STUDIES', resetCases: () => this.setState({ caseCat: 'All' }), caseItem, caseSections,
+      jobs, job: jobFound || { title: '', dept: '', loc: '', type: '', about: '', reqs: [], apply: '' },
+      insFilters, query: s.query, onQuery: (e) => this.setState({ query: e.target.value }), insCount: insF.length === 1 ? '1 SAMPLE ARTICLE' : insF.length + ' SAMPLE ARTICLES', insEmpty: drafts && insF.length === 0, hasFeatured: insF.length > 0, featured: insF[0] || { href: '#/insights', title: '', cat: '', status: '', excerpt: '' }, restArticles: insF.slice(1), resetIns: () => this.setState({ insCat: 'All', query: '' }), article: artFound ? { ...artFound, meta: 'SAMPLE AUTHOR · ' + artFound.mins + ' MIN READ · NOT YET PUBLISHED' } : { title: '', cat: '', status: '', meta: '', body: [] },
+      principles: [['Precise', 'Decisions are documented, scoped and traceable to the business need behind them.'], ['Dependable', 'Systems are built to be run, supported and changed safely over time.'], ['Forward-looking', 'Today’s work should make the next stage of growth easier, not harder.'], ['Human', 'Technology serves the people who use it. Plain language, clear ownership.']].map(([name, body], i) => {
+        const solid = i === 1 || i === 3, c = i === 1 ? LAV : PINK;
+        return { n: '0' + (i + 1), name, body, delay: i * 90, bg: solid ? c : '#15112B', fg: solid ? '#0D0A1C' : '#F4F0FF', sub: solid ? '#2A1F4A' : '#B6ADD3', accent: solid ? '#0D0A1C' : PINK, border: solid ? c : '#2A2350', shadow: solid ? `0 0 40px ${i === 1 ? 'rgba(185,166,255,.3)' : 'rgba(255,143,199,.3)'}` : 'none' };
+      }),
+      f, err: E, inv, has, bc, fb, onField: this.onField, onBlur: this.onBlur, onSubmit: this.onSubmit,
+      showSummary: s.showSummary && errList.length > 0, errList, errCount: errList.length === 1 ? '1 field' : errList.length + ' fields',
+      formSuccess: s.status === 'success', formVisible: s.status !== 'success', formFailed: s.status === 'error', failMsg: s.failMsg,
+      mailtoHref: `mailto:holden.mercer@outlook.com?subject=${encodeURIComponent('Project enquiry — ' + (f.company || 'Website'))}&body=${mailBody}`,
+      sending, sendingStr: sending ? 'true' : 'false', submitLabel: sending ? 'Sending…' : 'Send enquiry', submitBg: sending ? '#6F6699' : LAV, submitCursor: sending ? 'progress' : 'pointer',
+      overviewCount: f.overview.length + ' / 4000',
+      interestOptions: [...svcs.map((x) => ({ value: x.slug, label: x.name })), { value: 'not-sure', label: 'Not sure yet' }],
+      timelineOptions: ['As soon as possible', 'Within 3 months', '3–6 months', '6–12 months', 'Exploring options'],
+      budgetOptions: ['Under $50,000', '$50,000–$150,000', '$150,000–$500,000', 'Over $500,000', 'Prefer not to say'],
+      showBudget: P.showBudget ?? true,
+      resetForm: () => { this.startedAt = Date.now(); this.setState({ f: { ...this.EMPTY_F }, errors: {}, touched: {}, status: 'idle', showSummary: false }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
